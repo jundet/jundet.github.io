@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>算法导论 | GISTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="算法导论第一章 算法在计算中的应用1.2 作为一种技术的算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论">
+<meta property="og:url" content="gistime.cn/2018/10/08/算法导论/index.html">
+<meta property="og:site_name" content="GISTime">
+<meta property="og:description" content="算法导论第一章 算法在计算中的应用1.2 作为一种技术的算法">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-08T14:12:05.101Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法导论">
+<meta name="twitter:description" content="算法导论第一章 算法在计算中的应用1.2 作为一种技术的算法">
+    
+        <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GISTime</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">算法导论</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">算法导论</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-08T13:36:57.000Z" itemprop="datePublished" class="page-time">
+  2018-10-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#算法导论"><span class="post-toc-number">1.</span> <span class="post-toc-text">算法导论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一章-算法在计算中的应用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">第一章 算法在计算中的应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-作为一种技术的算法"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">1.2 作为一种技术的算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#练习"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">练习</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#思考题"><span class="post-toc-number">1.1.1.2.</span> <span class="post-toc-text">思考题</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二章-算法基础"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">第二章 算法基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-插入排序"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">2.1 插入排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#伪代码"><span class="post-toc-number">1.2.1.1.</span> <span class="post-toc-text">伪代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#python-实现"><span class="post-toc-number">1.2.1.2.</span> <span class="post-toc-text">python 实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#练习-1"><span class="post-toc-number">1.2.1.3.</span> <span class="post-toc-text">练习</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-分析算法"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.2 分析算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#练习-2"><span class="post-toc-number">1.2.2.0.1.</span> <span class="post-toc-text">练习</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-设计算法"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">2.3 设计算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-3-1-分治法"><span class="post-toc-number">1.2.3.1.</span> <span class="post-toc-text">2.3.1 分治法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第3章-函数的增长"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">第3章 函数的增长</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-渐进记号"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">3.1 渐进记号</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法导论"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">算法导论</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-08 21:36:57" datetime="2018-10-08T13:36:57.000Z"  itemprop="datePublished">2018-10-08</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="算法导论"><a href="#算法导论" class="headerlink" title="算法导论"></a>算法导论</h1><h2 id="第一章-算法在计算中的应用"><a href="#第一章-算法在计算中的应用" class="headerlink" title="第一章 算法在计算中的应用"></a>第一章 算法在计算中的应用</h2><h3 id="1-2-作为一种技术的算法"><a href="#1-2-作为一种技术的算法" class="headerlink" title="1.2 作为一种技术的算法"></a>1.2 作为一种技术的算法</h3><a id="more"></a>
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><p>1.2-2 插入排序运行步数为$8n^2$步，而归并排序运行$64nlgn$ 步，问对哪些n值，插入排序优于归并排序？<br>    $8n^2 &lt; 64nlgn$，n=2,3</p>
+<p>1.2.3 n最小值为何值时，运行时间为$100n^2$的一个算法在相同机器上快于运行时间为$2^n$ 的另一个算法？<br>    $100n^2  &lt; 2^n$,n=15</p>
+<h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><p>1-1 （运行时间比较）假设求解问题的算法需要$f(n)$ 毫秒，对下表中每个函数$f(n)$ 和时间t，确定可以在时间t内求解的问题的最大规模n。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1秒钟</th>
+<th>1分钟</th>
+<th>1小时</th>
+<th>1天</th>
+<th>1月</th>
+<th>1年</th>
+<th>1世纪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$lgn$</td>
+<td>$10^4$</td>
+<td>$6\times 10^5$</td>
+<td>$3.6\times 10^7$</td>
+<td>$8.64\times10^8$</td>
+<td>$2.592\times10^{10}$</td>
+<td>$3.1536\times10^{11}$</td>
+<td>$3.1536\times10^{13}$</td>
+</tr>
+<tr>
+<td>$\sqrt{n}$</td>
+<td>$10^6$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>$10^3$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$nlgn$</td>
+<td>386</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$n^2$</td>
+<td>31</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$n^3$</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$2^n$</td>
+<td>9</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$n!$</td>
+<td>6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="第二章-算法基础"><a href="#第二章-算法基础" class="headerlink" title="第二章 算法基础"></a>第二章 算法基础</h2><h3 id="2-1-插入排序"><a href="#2-1-插入排序" class="headerlink" title="2.1 插入排序"></a>2.1 插入排序</h3><h4 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSERTION-SORT(A)</span><br><span class="line">for j = 2 to A.length</span><br><span class="line">	key = A[j]</span><br><span class="line">	//inster A[j] into the sorted sequence A[1..j-1]</span><br><span class="line">	i = j-1</span><br><span class="line">	while i&gt;0 and A[i]&gt;key</span><br><span class="line">		A[i+1] = A[i]</span><br><span class="line">		i = i-1</span><br><span class="line">	A[j+1] = key</span><br></pre></td></tr></table></figure>
+<h4 id="python-实现"><a href="#python-实现" class="headerlink" title="python 实现"></a>python 实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sort</span><span class="params">(A)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(A)):</span><br><span class="line">        key = A[j]</span><br><span class="line">        i = j<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> i&gt;<span class="number">-1</span> <span class="keyword">and</span> A[i]&gt;key:</span><br><span class="line">            A[i+<span class="number">1</span>] = A[i]</span><br><span class="line">            i -= <span class="number">1</span></span><br><span class="line">        A[i+<span class="number">1</span>] = key</span><br><span class="line">    <span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
+<h4 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h4><p>2.1-2 重写INSERTION-SORT，使之按降序排序。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sort</span><span class="params">(A)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(A)):</span><br><span class="line">        key = A[j]</span><br><span class="line">        i = j<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> i&gt;<span class="number">-1</span> <span class="keyword">and</span> A[i]&lt;key: <span class="comment"># 将原来的A[i]&gt;k改为 A[i]&lt;k</span></span><br><span class="line">            A[i+<span class="number">1</span>] = A[i]</span><br><span class="line">            i -= <span class="number">1</span></span><br><span class="line">        A[i+<span class="number">1</span>] = key</span><br><span class="line"><span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
+<p>2.1-3 考虑以下查找问题：<br>    输入：n个数的一个序列A=<a<sub>1&lt;/sub&gt;，a<sub>2</sub>,…,a<sub>n</sub>&gt;    和一个数v<br>    输出：当v=A[i]时输出下标i，当v不在A中时输出特殊值 NIL<br>    写出线性查找的伪代码，它扫描整个序列来查找v。使用一个循环不变是来证明你的算法正确性。确保你的循环不变式满足三个必要的性质。</a<sub></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">j = -1</span><br><span class="line">for i = 0 to A.length:</span><br><span class="line">	if A[i] == v</span><br><span class="line">		j = i</span><br><span class="line">		break</span><br><span class="line">	else:</span><br><span class="line">       	i++</span><br><span class="line">if j == -1:</span><br><span class="line">	return NIL</span><br><span class="line">else:</span><br><span class="line">	return j</span><br></pre></td></tr></table></figure>
+<p>2.1-4 考虑将将两个n位二进制整数加起来，这两个整数分别存储在两个n位数组中A和B中，这两个整数的和应该按照二进制形式存储在一个（n+1）元数组C中，写出伪代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">z = 0</span><br><span class="line">for j = 1 to n：</span><br><span class="line">	i = n - j</span><br><span class="line">	m = A[i] + B[i] + z</span><br><span class="line">	if m%2==0:</span><br><span class="line">		c[i+1] = 0</span><br><span class="line">	else:</span><br><span class="line">		c[i+1] = 1</span><br><span class="line">	if m&gt;1:</span><br><span class="line">		z = 1</span><br><span class="line">	else:</span><br><span class="line">		z = 0</span><br><span class="line">	j++</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-分析算法"><a href="#2-2-分析算法" class="headerlink" title="2.2 分析算法"></a>2.2 分析算法</h3><h5 id="练习-2"><a href="#练习-2" class="headerlink" title="练习"></a>练习</h5><p>2.2-1 用$\Theta$ 记号表示函数$n^3/1000 - 100n^2 -100n +3$</p>
+<p>$\Theta(n^3)$</p>
+<p>2.2-1 对储存在数组A中的n个数进行排序：首先找出A中最小元素并将其与A[1]中的元素进行交换。接着找出A中的次最小元素并将其与A[2]中的元素进行交换。对A中前n-1个圆度按照该方式继续，该算法叫做选择排序，写出其伪代码。用$\Theta$给出选择排序的最好情况与最坏情况运行的时间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for i = 0 to A.length      </span><br><span class="line">	min = a[i]</span><br><span class="line">	tempj = i</span><br><span class="line">	for j = A.length - i to A.length  </span><br><span class="line">		if a[j] &lt; min:</span><br><span class="line">			min = a[j]</span><br><span class="line">			tempj = j</span><br><span class="line">	temp = a[i]</span><br><span class="line">	a[i] = min</span><br><span class="line">	a[j] = temp</span><br></pre></td></tr></table></figure>
+<p>最好情况时即已经排序好，则为$\Theta(n)$，最坏的情况为逆序，则为$\Theta(n^2)$</p>
+<p>2.2-3 线性查找平均需要检查输入序列的多少个元素，最坏的情况又如何？</p>
+<p>平均查找需要$\theta(n/2)$,最坏需要$\theta(n)$</p>
+<h3 id="2-3-设计算法"><a href="#2-3-设计算法" class="headerlink" title="2.3 设计算法"></a>2.3 设计算法</h3><h4 id="2-3-1-分治法"><a href="#2-3-1-分治法" class="headerlink" title="2.3.1 分治法"></a>2.3.1 分治法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MERGE(A, p, q, r)</span><br><span class="line">n1 = q - p + 1</span><br><span class="line">n2 = r - q</span><br><span class="line">let L[1..n1 + 1] and R[1..n2 + 1] by new arrays</span><br><span class="line">for i = 1 to n1</span><br><span class="line">	L[i] = A[p + i -1]</span><br><span class="line">for j =  1 to n2</span><br><span class="line">	R[j] = A[q + j]</span><br><span class="line">L[n1 + 1] = 无穷</span><br><span class="line">L[n2 + 1] = 无穷</span><br><span class="line">i = 1</span><br><span class="line">j = 1</span><br><span class="line">for k = p to r</span><br><span class="line">	if L[i] &lt;= R[j]</span><br><span class="line">		A[k] = L[i]</span><br><span class="line">		i = i + 1</span><br><span class="line">	else </span><br><span class="line">		A[k] = R[j]</span><br><span class="line">		j = j + 1</span><br></pre></td></tr></table></figure>
+<h2 id="第3章-函数的增长"><a href="#第3章-函数的增长" class="headerlink" title="第3章 函数的增长"></a>第3章 函数的增长</h2><h3 id="3-1-渐进记号"><a href="#3-1-渐进记号" class="headerlink" title="3.1 渐进记号"></a>3.1 渐进记号</h3>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-08T14:12:05.101Z" itemprop="dateUpdated">2018-10-08 22:12:05</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/10/08/算法导论/" target="_blank" rel="external">gistime.cn/2018/10/08/算法导论/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="gistime.cn">
+            <img src="/img/avatar.jpg" alt="GISTime">
+            GISTime
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=gistime.cn/2018/10/08/算法导论/&title=《算法导论》 — GISTime&pic=gistime.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=gistime.cn/2018/10/08/算法导论/&title=《算法导论》 — GISTime&source=算法导论第一章 算法在计算中的应用1.2 作为一种技术的算法" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=gistime.cn/2018/10/08/算法导论/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法导论》 — GISTime&url=gistime.cn/2018/10/08/算法导论/&via=gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=gistime.cn/2018/10/08/算法导论/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>GISTime &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=gistime.cn/2018/10/08/算法导论/&title=《算法导论》 — GISTime&pic=gistime.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=gistime.cn/2018/10/08/算法导论/&title=《算法导论》 — GISTime&source=算法导论第一章 算法在计算中的应用1.2 作为一种技术的算法" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=gistime.cn/2018/10/08/算法导论/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法导论》 — GISTime&url=gistime.cn/2018/10/08/算法导论/&via=gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=gistime.cn/2018/10/08/算法导论/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=gistime.cn/2018/10/08/算法导论/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
