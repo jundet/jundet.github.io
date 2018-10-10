@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="gistime.cn/"/>
-  <updated>2018-10-10T04:54:11.284Z</updated>
+  <updated>2018-10-10T05:11:20.332Z</updated>
   <id>gistime.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="gistime.cn/2018/10/10/MGN/"/>
     <id>gistime.cn/2018/10/10/MGN/</id>
     <published>2018-10-10T04:37:53.000Z</published>
-    <updated>2018-10-10T04:54:11.284Z</updated>
+    <updated>2018-10-10T05:11:20.332Z</updated>
     
     <content type="html"><![CDATA[<p>(MGN)Learning Discriminative Features with Multiple Granularity for Person Re-Identification</p><p><a href="http://www.sohu.com/a/238041608_633698" target="_blank" rel="noopener">视频介绍</a> ,<a href="https://arxiv.org/abs/1804.01438" target="_blank" rel="noopener">Paper</a>,<a href="https://github.com/seathiefwang/MGN-pytorch" target="_blank" rel="noopener">code1</a>,<a href="https://github.com/levyfan/reid-mgn" target="_blank" rel="noopener">code2</a></p><p>Market1501： rank1：95.7，mAP：86.9</p><p>利用多粒度实现了对全局和局部信息特征的同时提取。其中全局特征模块中对人的整体特征进行的提取可以更好的关注人的整体结构，对图片进行2分和3分的分割对人的局部信息进行提取。该网络依赖ResNet，ResNet大大提高了准确率（ResNet50本身可以达到 Market1501： rank1：89.13，mAP：73.5）</p><p>多粒度的思想能充分提取特征。</p>]]></content>
     
@@ -37,6 +37,8 @@
     
       <category term="行人再识别" scheme="gistime.cn/categories/%E8%A1%8C%E4%BA%BA%E5%86%8D%E8%AF%86%E5%88%AB/"/>
     
+    
+      <category term="多尺度" scheme="gistime.cn/tags/%E5%A4%9A%E5%B0%BA%E5%BA%A6/"/>
     
       <category term="行人再识别" scheme="gistime.cn/tags/%E8%A1%8C%E4%BA%BA%E5%86%8D%E8%AF%86%E5%88%AB/"/>
     
