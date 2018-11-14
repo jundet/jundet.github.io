@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>Video Person Re-Identification | GISTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="行人再识别">
+    <meta name="description" content="Leaderboard    rank1/mAP iLIDS-VID PRID2011 MARS DukeMTMC-VideoReID     SCAN 88.0/89.9 95.3/95.8 87.2/77.2 /   Co-attention 85.4/87.8 93.0/94.5 86.3/76.1 /   3DCNN&amp;amp;Non-local 81.3 91.2 84.3/77.0 /">
+<meta name="keywords" content="行人再识别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Video Person Re-Identification">
+<meta property="og:url" content="http://www.gistime.cn/2018/11/14/video person reid/index.html">
+<meta property="og:site_name" content="GISTime">
+<meta property="og:description" content="Leaderboard    rank1/mAP iLIDS-VID PRID2011 MARS DukeMTMC-VideoReID     SCAN 88.0/89.9 95.3/95.8 87.2/77.2 /   Co-attention 85.4/87.8 93.0/94.5 86.3/76.1 /   3DCNN&amp;amp;Non-local 81.3 91.2 84.3/77.0 /">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-14T08:00:03.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Video Person Re-Identification">
+<meta name="twitter:description" content="Leaderboard    rank1/mAP iLIDS-VID PRID2011 MARS DukeMTMC-VideoReID     SCAN 88.0/89.9 95.3/95.8 87.2/77.2 /   Co-attention 85.4/87.8 93.0/94.5 86.3/76.1 /   3DCNN&amp;amp;Non-local 81.3 91.2 84.3/77.0 /">
+    
+        <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/gistime.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gistime.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GISTime</h5>
+          <!-- <a href="mailto:GISTime for everyone" title="GISTime for everyone" class="mail">GISTime for everyone</a> -->
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Video Person Re-Identification</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Video Person Re-Identification</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-14T10:37:53.000Z" itemprop="datePublished" class="page-time">
+  2018-11-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/行人再识别/">行人再识别</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Leaderboard"><span class="post-toc-text">Leaderboard</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Region-based-Quality-Estimation-Network-for-Large-scale-Person-Re-identification"><span class="post-toc-text">Region-based Quality Estimation Network for Large-scale Person Re-identification</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Diversity-Regularized-Spatiotemporal-Attention-for-Video-based-Person-Re-identification"><span class="post-toc-text">Diversity Regularized Spatiotemporal Attention for Video-based Person Re-identification</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Video-Person-Re-identification-with-Competitive-Snippet-similarity-Aggregation-and-Co-attentive-Snippet-Embedding"><span class="post-toc-text">Video Person Re-identification with Competitive Snippet-similarity Aggregation and Co-attentive Snippet Embedding</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Video-based-Person-Re-identification-via-3D-Convolutional-Networks-and-Non-local-Attention"><span class="post-toc-text">Video-based Person Re-identification via 3D Convolutional Networks and Non-local Attention</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#SCAN-Self-and-Collaborative-Attention-Network-for-Video-Person-Re-identification"><span class="post-toc-text">SCAN: Self-and-Collaborative Attention Network for Video Person Re-identification</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Revisiting-Temporal-Modeling-for-Video-based-Person-ReID"><span class="post-toc-text">Revisiting Temporal Modeling for Video-based Person ReID</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-video person reid"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Video Person Re-Identification</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-14 18:37:53" datetime="2018-11-14T10:37:53.000Z"  itemprop="datePublished">2018-11-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/行人再识别/">行人再识别</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h4 id="Leaderboard"><a href="#Leaderboard" class="headerlink" title="Leaderboard"></a>Leaderboard</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>rank1/mAP</th>
+<th>iLIDS-VID</th>
+<th>PRID2011</th>
+<th>MARS</th>
+<th>DukeMTMC-VideoReID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#SCAN">SCAN</a></td>
+<td>88.0/89.9</td>
+<td>95.3/95.8</td>
+<td>87.2/77.2</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="#Co-attention">Co-attention</a></td>
+<td>85.4/87.8</td>
+<td>93.0/94.5</td>
+<td>86.3/76.1</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="3DCNN&amp;Non-local">3DCNN&amp;Non-local</a></td>
+<td>81.3</td>
+<td>91.2</td>
+<td>84.3/77.0</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="#STAN">STAN</a></td>
+<td>80.2/</td>
+<td>93.2/</td>
+<td>82.3/65.8</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="#RQEN">RQEN</a></td>
+<td>77.1/</td>
+<td>91.8/</td>
+<td>77.83/71.14</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="Region-based-Quality-Estimation-Network-for-Large-scale-Person-Re-identification"><a href="#Region-based-Quality-Estimation-Network-for-Large-scale-Person-Re-identification" class="headerlink" title="Region-based Quality Estimation Network for Large-scale Person Re-identification"></a><span id="RQEN">Region-based Quality Estimation Network for Large-scale Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1711.08766" target="_blank" rel="noopener">https://arxiv.org/abs/1711.08766</a></p>
+<p>code:<a href="https://github.com/sciencefans/Quality-Aware-Network" target="_blank" rel="noopener">https://github.com/sciencefans/Quality-Aware-Network</a></p>
+<h5 id="Diversity-Regularized-Spatiotemporal-Attention-for-Video-based-Person-Re-identification"><a href="#Diversity-Regularized-Spatiotemporal-Attention-for-Video-based-Person-Re-identification" class="headerlink" title="Diversity Regularized Spatiotemporal Attention for Video-based Person Re-identification"></a><span id="STAN">Diversity Regularized Spatiotemporal Attention for Video-based Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1803.09882" target="_blank" rel="noopener">https://arxiv.org/abs/1803.09882</a></p>
+<h5 id="Video-Person-Re-identification-with-Competitive-Snippet-similarity-Aggregation-and-Co-attentive-Snippet-Embedding"><a href="#Video-Person-Re-identification-with-Competitive-Snippet-similarity-Aggregation-and-Co-attentive-Snippet-Embedding" class="headerlink" title="Video Person Re-identification with Competitive Snippet-similarity Aggregation and Co-attentive Snippet Embedding"></a><span id="Co-attention">Video Person Re-identification with Competitive Snippet-similarity Aggregation and Co-attentive Snippet Embedding</span></h5><p>paper:<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_Video_Person_Re-Identification_CVPR_2018_paper.pdf" target="_blank" rel="noopener">http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_Video_Person_Re-Identification_CVPR_2018_paper.pdf</a></p>
+<h5 id="Video-based-Person-Re-identification-via-3D-Convolutional-Networks-and-Non-local-Attention"><a href="#Video-based-Person-Re-identification-via-3D-Convolutional-Networks-and-Non-local-Attention" class="headerlink" title="Video-based Person Re-identification via 3D Convolutional Networks and Non-local Attention"></a><span id="3DCNN&Non-local">Video-based Person Re-identification via 3D Convolutional Networks and Non-local Attention</span></h5><p>paper: <a href="https://arxiv.org/abs/1807.05073" target="_blank" rel="noopener">https://arxiv.org/abs/1807.05073</a></p>
+<h5 id="SCAN-Self-and-Collaborative-Attention-Network-for-Video-Person-Re-identification"><a href="#SCAN-Self-and-Collaborative-Attention-Network-for-Video-Person-Re-identification" class="headerlink" title="SCAN: Self-and-Collaborative Attention Network for Video Person Re-identification"></a><span id="SCAN">SCAN: Self-and-Collaborative Attention Network for Video Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1807.05688" target="_blank" rel="noopener">https://arxiv.org/abs/1807.05688</a></p>
+<h5 id="Revisiting-Temporal-Modeling-for-Video-based-Person-ReID"><a href="#Revisiting-Temporal-Modeling-for-Video-based-Person-ReID" class="headerlink" title="Revisiting Temporal Modeling for Video-based Person ReID"></a>Revisiting Temporal Modeling for Video-based Person ReID</h5><p>paper:<a href="https://arxiv.org/abs/1805.02104" target="_blank" rel="noopener">https://arxiv.org/abs/1805.02104</a></p>
+<p>code:<a href="https://github.com/jundet/Video-Person-ReID" target="_blank" rel="noopener">https://github.com/jundet/Video-Person-ReID</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-11-14T08:00:03.271Z" itemprop="dateUpdated">2018-11-14 16:00:03</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.gistime.cn">
+            <img src="/img/gistime.png" alt="GISTime">
+            GISTime
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/行人再识别/">行人再识别</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2018/11/14/video person reid/&title=《Video Person Re-Identification》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2018/11/14/video person reid/&title=《Video Person Re-Identification》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2018/11/14/video person reid/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Video Person Re-Identification》 — GISTime&url=http://www.gistime.cn/2018/11/14/video person reid/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2018/11/14/video person reid/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/25/MLclass/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">机器学习课程——糖尿病预测</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span><a href="http://www.gistime.cn/" target="_blank">GISTime</a> &copy; 2017 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备17010437号</a><br>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2018/11/14/video person reid/&title=《Video Person Re-Identification》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2018/11/14/video person reid/&title=《Video Person Re-Identification》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2018/11/14/video person reid/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Video Person Re-Identification》 — GISTime&url=http://www.gistime.cn/2018/11/14/video person reid/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2018/11/14/video person reid/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2018/11/14/video person reid/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'GISTime';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'GISTime';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>

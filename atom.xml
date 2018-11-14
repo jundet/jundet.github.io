@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.gistime.cn/"/>
-  <updated>2018-11-02T13:37:41.371Z</updated>
+  <updated>2018-11-14T08:00:03.271Z</updated>
   <id>http://www.gistime.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Video Person Re-Identification</title>
+    <link href="http://www.gistime.cn/2018/11/14/video%20person%20reid/"/>
+    <id>http://www.gistime.cn/2018/11/14/video person reid/</id>
+    <published>2018-11-14T10:37:53.000Z</published>
+    <updated>2018-11-14T08:00:03.271Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Leaderboard"><a href="#Leaderboard" class="headerlink" title="Leaderboard"></a>Leaderboard</h4><div class="table-container"><table><thead><tr><th>rank1/mAP</th><th>iLIDS-VID</th><th>PRID2011</th><th>MARS</th><th>DukeMTMC-VideoReID</th></tr></thead><tbody><tr><td><a href="#SCAN">SCAN</a></td><td>88.0/89.9</td><td>95.3/95.8</td><td>87.2/77.2</td><td>/</td></tr><tr><td><a href="#Co-attention">Co-attention</a></td><td>85.4/87.8</td><td>93.0/94.5</td><td>86.3/76.1</td><td>/</td></tr><tr><td><a href="3DCNN&amp;Non-local">3DCNN&amp;Non-local</a></td><td>81.3</td><td>91.2</td><td>84.3/77.0</td><td>/</td></tr><tr><td><a href="#STAN">STAN</a></td><td>80.2/</td><td>93.2/</td><td>82.3/65.8</td><td>/</td></tr><tr><td><a href="#RQEN">RQEN</a></td><td>77.1/</td><td>91.8/</td><td>77.83/71.14</td><td>/</td></tr></tbody></table></div><h5 id="Region-based-Quality-Estimation-Network-for-Large-scale-Person-Re-identification"><a href="#Region-based-Quality-Estimation-Network-for-Large-scale-Person-Re-identification" class="headerlink" title="Region-based Quality Estimation Network for Large-scale Person Re-identification"></a><span id="RQEN">Region-based Quality Estimation Network for Large-scale Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1711.08766" target="_blank" rel="noopener">https://arxiv.org/abs/1711.08766</a></p><p>code:<a href="https://github.com/sciencefans/Quality-Aware-Network" target="_blank" rel="noopener">https://github.com/sciencefans/Quality-Aware-Network</a></p><h5 id="Diversity-Regularized-Spatiotemporal-Attention-for-Video-based-Person-Re-identification"><a href="#Diversity-Regularized-Spatiotemporal-Attention-for-Video-based-Person-Re-identification" class="headerlink" title="Diversity Regularized Spatiotemporal Attention for Video-based Person Re-identification"></a><span id="STAN">Diversity Regularized Spatiotemporal Attention for Video-based Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1803.09882" target="_blank" rel="noopener">https://arxiv.org/abs/1803.09882</a></p><h5 id="Video-Person-Re-identification-with-Competitive-Snippet-similarity-Aggregation-and-Co-attentive-Snippet-Embedding"><a href="#Video-Person-Re-identification-with-Competitive-Snippet-similarity-Aggregation-and-Co-attentive-Snippet-Embedding" class="headerlink" title="Video Person Re-identification with Competitive Snippet-similarity Aggregation and Co-attentive Snippet Embedding"></a><span id="Co-attention">Video Person Re-identification with Competitive Snippet-similarity Aggregation and Co-attentive Snippet Embedding</span></h5><p>paper:<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_Video_Person_Re-Identification_CVPR_2018_paper.pdf" target="_blank" rel="noopener">http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_Video_Person_Re-Identification_CVPR_2018_paper.pdf</a></p><h5 id="Video-based-Person-Re-identification-via-3D-Convolutional-Networks-and-Non-local-Attention"><a href="#Video-based-Person-Re-identification-via-3D-Convolutional-Networks-and-Non-local-Attention" class="headerlink" title="Video-based Person Re-identification via 3D Convolutional Networks and Non-local Attention"></a><span id="3DCNN&Non-local">Video-based Person Re-identification via 3D Convolutional Networks and Non-local Attention</span></h5><p>paper: <a href="https://arxiv.org/abs/1807.05073" target="_blank" rel="noopener">https://arxiv.org/abs/1807.05073</a></p><h5 id="SCAN-Self-and-Collaborative-Attention-Network-for-Video-Person-Re-identification"><a href="#SCAN-Self-and-Collaborative-Attention-Network-for-Video-Person-Re-identification" class="headerlink" title="SCAN: Self-and-Collaborative Attention Network for Video Person Re-identification"></a><span id="SCAN">SCAN: Self-and-Collaborative Attention Network for Video Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1807.05688" target="_blank" rel="noopener">https://arxiv.org/abs/1807.05688</a></p><h5 id="Revisiting-Temporal-Modeling-for-Video-based-Person-ReID"><a href="#Revisiting-Temporal-Modeling-for-Video-based-Person-ReID" class="headerlink" title="Revisiting Temporal Modeling for Video-based Person ReID"></a>Revisiting Temporal Modeling for Video-based Person ReID</h5><p>paper:<a href="https://arxiv.org/abs/1805.02104" target="_blank" rel="noopener">https://arxiv.org/abs/1805.02104</a></p><p>code:<a href="https://github.com/jundet/Video-Person-ReID" target="_blank" rel="noopener">https://github.com/jundet/Video-Person-ReID</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;Leaderboard&quot;&gt;&lt;a href=&quot;#Leaderboard&quot; class=&quot;headerlink&quot; title=&quot;Leaderboard&quot;&gt;&lt;/a&gt;Leaderboard&lt;/h4&gt;&lt;div class=&quot;table-container&quot;&gt;
+&lt;table&gt;
+      
+    
+    </summary>
+    
+      <category term="行人再识别" scheme="http://www.gistime.cn/categories/%E8%A1%8C%E4%BA%BA%E5%86%8D%E8%AF%86%E5%88%AB/"/>
+    
+    
+      <category term="行人再识别" scheme="http://www.gistime.cn/tags/%E8%A1%8C%E4%BA%BA%E5%86%8D%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习课程——糖尿病预测</title>
