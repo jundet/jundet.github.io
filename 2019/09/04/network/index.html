@@ -14,31 +14,27 @@
     
     
     
-    <title>机器学习课程——糖尿病预测 | GISTime</title>
+    <title>神经网络反向传播 | GISTime</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="机器学习,生成对抗网络">
-    <meta name="description" content="机器学习课程——糖尿病预测 code 具体流程为 数据预处理  模型构建  实验结果   1、数据预处理  对数据集进行划分和归一化等常规操作后观察到两种类别存在不平衡的问题，这会对模型的训练产生偏差。为了解决该问题使用生成对抗网络（GAN）进行训练并产生新的数据加入到训练数据集中以平衡两种类别。生成对抗网络（GAN）能够学习到原有数据集的分布情况，产生的数据能与原有数据保持相同的分布即新的数据可">
-<meta name="keywords" content="机器学习,生成对抗网络">
+    <meta name="keywords" content="机器学习,神经网络">
+    <meta name="description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
+<meta name="keywords" content="机器学习,神经网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习课程——糖尿病预测">
-<meta property="og:url" content="http://www.gistime.cn/2018/10/25/MLclass/index.html">
+<meta property="og:title" content="神经网络反向传播">
+<meta property="og:url" content="http://www.gistime.cn/2019/09/04/network/index.html">
 <meta property="og:site_name" content="GISTime">
-<meta property="og:description" content="机器学习课程——糖尿病预测 code 具体流程为 数据预处理  模型构建  实验结果   1、数据预处理  对数据集进行划分和归一化等常规操作后观察到两种类别存在不平衡的问题，这会对模型的训练产生偏差。为了解决该问题使用生成对抗网络（GAN）进行训练并产生新的数据加入到训练数据集中以平衡两种类别。生成对抗网络（GAN）能够学习到原有数据集的分布情况，产生的数据能与原有数据保持相同的分布即新的数据可">
+<meta property="og:description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.gistime.cn/2018/10/25/MLclass/数据处理.png">
-<meta property="og:image" content="http://www.gistime.cn/2018/10/25/MLclass/GAN.png">
-<meta property="og:image" content="http://www.gistime.cn/2018/10/25/MLclass/融合.png">
-<meta property="og:image" content="http://www.gistime.cn/2018/10/25/MLclass/模型融合.png">
-<meta property="og:image" content="http://www.gistime.cn/2018/10/25/MLclass/模型融合(GAN).png">
-<meta property="og:updated_time" content="2019-04-20T07:13:19.076Z">
+<meta property="og:image" content="http://www.gistime.cn/2019/09/04/network/1.jpg">
+<meta property="og:updated_time" content="2019-09-05T05:02:57.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习课程——糖尿病预测">
-<meta name="twitter:description" content="机器学习课程——糖尿病预测 code 具体流程为 数据预处理  模型构建  实验结果   1、数据预处理  对数据集进行划分和归一化等常规操作后观察到两种类别存在不平衡的问题，这会对模型的训练产生偏差。为了解决该问题使用生成对抗网络（GAN）进行训练并产生新的数据加入到训练数据集中以平衡两种类别。生成对抗网络（GAN）能够学习到原有数据集的分布情况，产生的数据能与原有数据保持相同的分布即新的数据可">
-<meta name="twitter:image" content="http://www.gistime.cn/2018/10/25/MLclass/数据处理.png">
+<meta name="twitter:title" content="神经网络反向传播">
+<meta name="twitter:description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
+<meta name="twitter:image" content="http://www.gistime.cn/2019/09/04/network/1.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
     
@@ -112,7 +108,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">机器学习课程——糖尿病预测</div>
+        <div class="flex-col header-title ellipsis">神经网络反向传播</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -134,15 +130,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">机器学习课程——糖尿病预测</h1>
+        <h1 class="title">神经网络反向传播</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-10-25T13:36:57.000Z" itemprop="datePublished" class="page-time">
-  2018-10-25
+                <time datetime="2019-09-04T08:14:18.000Z" itemprop="datePublished" class="page-time">
+  2019-09-04
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/深度学习/">深度学习</a></li></ul>
 
             
         </h5>
@@ -159,21 +155,21 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#机器学习课程——糖尿病预测"><span class="post-toc-text">机器学习课程——糖尿病预测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#具体流程为"><span class="post-toc-text">具体流程为</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、数据预处理"><span class="post-toc-text">1、数据预处理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#null"><span class="post-toc-text"> </span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、模型构建"><span class="post-toc-text">2、模型构建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、实验结果"><span class="post-toc-text">3、实验结果</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#误差逆传播算法"><span class="post-toc-text">误差逆传播算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前项传播过程"><span class="post-toc-text">前项传播过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参数计算"><span class="post-toc-text">参数计算</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向传播过程"><span class="post-toc-text">反向传播过程</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-MLclass"
+<article id="post-network"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">机器学习课程——糖尿病预测</h1>
+        <h1 class="post-card-title">神经网络反向传播</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-10-25 21:36:57" datetime="2018-10-25T13:36:57.000Z"  itemprop="datePublished">2018-10-25</time>
+            <time class="post-time" title="2019-09-04 16:14:18" datetime="2019-09-04T08:14:18.000Z"  itemprop="datePublished">2019-09-04</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/深度学习/">深度学习</a></li></ul>
 
 
 
@@ -185,67 +181,57 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="机器学习课程——糖尿病预测"><a href="#机器学习课程——糖尿病预测" class="headerlink" title="机器学习课程——糖尿病预测"></a>机器学习课程——糖尿病预测</h1><p> <a href="https://github.com/jundet/ML" target="_blank" rel="noopener">code</a></p>
-<h4 id="具体流程为"><a href="#具体流程为" class="headerlink" title="具体流程为"></a>具体流程为</h4><ol>
-<li><p>数据预处理</p>
-</li>
-<li><p>模型构建</p>
-</li>
-<li><p>实验结果</p>
-</li>
-</ol>
-<h3 id="1、数据预处理"><a href="#1、数据预处理" class="headerlink" title="1、数据预处理"></a>1、数据预处理</h3><p><img src="/2018/10/25/MLclass/数据处理.png" alt="数据处理"></p>
-<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><p>对数据集进行划分和归一化等常规操作后观察到两种类别存在不平衡的问题，这会对模型的训练产生偏差。为了解决该问题使用生成对抗网络（GAN）进行训练并产生新的数据加入到训练数据集中以平衡两种类别。生成对抗网络（GAN）能够学习到原有数据集的分布情况，产生的数据能与原有数据保持相同的分布即新的数据可以在一定程度（GAN的设计与训练的好坏）上认为是真实的样本。</p>
-<p><img src="/2018/10/25/MLclass/GAN.png" alt="GAN"></p>
-<h3 id="2、模型构建"><a href="#2、模型构建" class="headerlink" title="2、模型构建"></a>2、模型构建</h3><p>1、分别使用神经网络（NN）、随机树（ET）、逻辑回归（Logistic）、支持向量机（SVM）、GradientBoosting（gdbt）、AdaBoost、XGBoost、LightGBM、CatBoost等模型对数据集进行训练和测试。</p>
-<p>2、尝试使用单模型进行融合，使用融合后的模型对数据进行训练和测试。模型融合使用多数投票分类器。</p>
-<figure class="image-bubble">
+            <h1 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h1><p>摘自机器学习-西瓜书-周志华</p>
+<p>部分内容为个人理解</p>
+<p>给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$个神经元的阈值用$\gamma_h$表示。输入层第$i$个神经元与隐层第$h$个神经元之间的连接权（权重）为$\nu_{ih}$，隐层第$h$个神经元与输出层第$j$个神经元之间的连接权为$\omega_{hj}$。记隐层第$h$个神经元接收到的输入为$\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$,输出层第$j$个神经元接收到的输入为$\beta_j=\sum_{h=1}^q\omega_{hj}b_h$,其中$b_n$为隐层第$h$个神经元的输出。假设隐层和输出层神经元都是用$Sigmoid$函数。对训练例$(x_k,y_k)$，假定神经网络的输出为$\hat y_k = (\hat y^k_1,\hat y^k_2,…,\hat y^k_l)$,即</p>
+<script type="math/tex; mode=display">
+\hat y^k_j = f(\beta_j - \theta_j) \tag{1}</script><p>则网络在$（x_k，y_k）$上的均方误差为</p>
+<script type="math/tex; mode=display">
+E_k=\frac{1}{2} \sum^l_{j=1}({\hat y^k_j} - y^k_j)^2 \tag{2}</script><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2018/10/25/MLclass/融合.png" alt="融合" title="">
+                    <img src="/2019/09/04/network/1.jpg" alt="" title="">
                 </div>
-                <div class="image-caption">融合</div>
+                <div class="image-caption"></div>
             </figure>
-<h3 id="3、实验结果"><a href="#3、实验结果" class="headerlink" title="3、实验结果"></a>3、实验结果</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th>模型融合</th>
-<th>神经网络</th>
-<th>CatBoost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>accuracy</td>
-<td>83.1%</td>
-<td>82.1%</td>
-<td>82.4%</td>
-</tr>
-<tr>
-<td>F1-score</td>
-<td>72.0%</td>
-<td>70.2%</td>
-<td>70.6%</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/10/25/MLclass/模型融合.png" alt="模型融合" title="">
-                </div>
-                <div class="image-caption">模型融合</div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/10/25/MLclass/模型融合(GAN).png" alt="模型融合(GAN)" title="">
-                </div>
-                <div class="image-caption">模型融合(GAN)</div>
-            </figure>
+<h2 id="前项传播过程"><a href="#前项传播过程" class="headerlink" title="前项传播过程"></a>前项传播过程</h2><p>输入层输入 $x_1,x_2,…,x_m$</p>
+<p>隐层输入 $\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$</p>
+<p>隐层输出$b_h= f(\alpha_h-\gamma_h)$</p>
+<p>输出层输入 $\beta_j=\sum_{h=1}^q\omega_{hj}b_h$</p>
+<p>输出层输出 $\hat y^k_j = f(\beta_j - \theta_j)$</p>
+<p>其中$f(\cdot)$为激活函数，文中使用$Sigmoid$函数</p>
+<p>$Sigmoid(x) = \frac{1}{1+e^{-x}}$</p>
+<h2 id="参数计算"><a href="#参数计算" class="headerlink" title="参数计算"></a>参数计算</h2><p>网络中需要计算的参数总数为$(d+l+1)q+l$,输入层到隐层的$d\times q$个权重值，隐层到输出层的$q\times l$个权重值，$q$个隐层神经元的阈值、$l$个输出层神经网络的阈值。</p>
+<h2 id="反向传播过程"><a href="#反向传播过程" class="headerlink" title="反向传播过程"></a>反向传播过程</h2><p>任意参数$\nu$的更新估计式为</p>
+<script type="math/tex; mode=display">
+\nu \gets \nu + \Delta\nu</script><p>BP算法基于梯度下降策略，以目标的负梯度方向对参数进行调整，对式(2)的误差$E_k$，给定学习率$\eta$,有</p>
+<script type="math/tex; mode=display">
+\Delta\omega_{hj} = -\eta \frac{\partial E_k}{\partial\omega_{hj}} \tag{3}</script><p>注意到$\omega_{hj}$先影响到$j$个输出层神经元的输入值$\beta_j$，在影响到其输出值$\hat y^k_j$,然后在影响到$E_k$,有</p>
+<script type="math/tex; mode=display">
+\frac{\partial E_k}{\partial\omega_{hj}} = \frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j}\cdot\frac{\partial \beta_j}{\partial\hat y^k_j} \tag{4}</script><p>根据$\beta_j$的定义显然有</p>
+<script type="math/tex; mode=display">
+\frac{\partial \beta_j}{\partial\hat y^k_j} = b_n \tag{5}</script><p>$Sigmoid$函数有一个很好的性质：</p>
+<script type="math/tex; mode=display">
+f^{'}(x)=f(x)(1-f(x))</script><p>令$g_j=-\frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j}$ ,则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g_j&=-\frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j} \\
+&=-(\hat y^k_j-y^k_j)f^{'}(\beta - \theta_j)\\
+&= \hat y^k_j(1-\hat y^k_j)(y^k_j-\hat y^k_j) 
+\end{aligned}\tag{6}</script><p>将式(6)和式(5)代入式(4)，再代入式(3)可以得到：</p>
+<script type="math/tex; mode=display">
+\Delta\omega_hj = \eta g_jb_h</script><p>类似的可以得到</p>
+<script type="math/tex; mode=display">
+\Delta\theta_j=-\eta g_j</script><script type="math/tex; mode=display">
+\Delta \nu_ih = \eta e_hx_i</script><script type="math/tex; mode=display">
+\Delta\gamma_h=-\eta e_h</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h}\\
+&=-\sum^l_{j=1}\frac{\partial E_k}{\partial \beta_j}\cdot\frac{\partial \beta_j}{\partial b_h}f^{'}(\alpha_h-\gamma_h)\\
+&=\sum^l_{j=1}\omega_{hj}g_jf^{'}(\alpha_h-\gamma_h)\\
+&=b_h(1-b_h)\sum^l_{j=1}\omega_{hj}g_j
+\end{aligned}</script>
         </div>
 
         <blockquote class="post-copyright">
@@ -253,7 +239,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-04-20T07:13:19.076Z" itemprop="dateUpdated">2019-04-20 15:13:19</time>
+    最后更新时间：<time datetime="2019-09-05T05:02:57.424Z" itemprop="dateUpdated">2019-09-05 13:02:57</time>
 </span><br>
 
 
@@ -273,7 +259,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生成对抗网络/">生成对抗网络</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
 
 
             
@@ -283,7 +269,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2018/10/25/MLclass/&title=《机器学习课程——糖尿病预测》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -293,22 +279,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2018/10/25/MLclass/&title=《机器学习课程——糖尿病预测》 — GISTime&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2018/10/25/MLclass/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/04/network/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习课程——糖尿病预测》 — GISTime&url=http://www.gistime.cn/2018/10/25/MLclass/&via=http://www.gistime.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《神经网络反向传播》 — GISTime&url=http://www.gistime.cn/2019/09/04/network/&via=http://www.gistime.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2018/10/25/MLclass/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/04/network/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -328,21 +314,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/11/14/video person reid/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Video Person Re-Identification</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/10/15/PCB/" id="post-next" class="post-nav-link">
+      <a href="/2019/01/29/Django /" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">基于局部和精细化分割的行人重识别</h4>
+        <h4 class="title">Django 使用教程</h4>
       </a>
     </div>
   
@@ -415,7 +394,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2018/10/25/MLclass/&title=《机器学习课程——糖尿病预测》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -425,22 +404,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2018/10/25/MLclass/&title=《机器学习课程——糖尿病预测》 — GISTime&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2018/10/25/MLclass/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/04/network/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习课程——糖尿病预测》 — GISTime&url=http://www.gistime.cn/2018/10/25/MLclass/&via=http://www.gistime.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《神经网络反向传播》 — GISTime&url=http://www.gistime.cn/2019/09/04/network/&via=http://www.gistime.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2018/10/25/MLclass/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/04/network/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -451,7 +430,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2018/10/25/MLclass/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/09/04/network/" alt="微信分享二维码">
 </div>
 
 
