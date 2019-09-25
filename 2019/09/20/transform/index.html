@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>transform | GISTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,深度学习,PyTorch">
+    <meta name="description" content="PyTorch数据处理之transforms1from torchvision import transforms PyTorch 官方文档 transforms主要应用于数据的预处理阶段。PIL Image是PyTorch中默认读取图像的方式，torchvision.transforms在图像处理中主要分为4类。 裁剪——Crop中心裁剪：transforms.CenterCrop随机裁剪：tr">
+<meta name="keywords" content="机器学习,深度学习,PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="transform">
+<meta property="og:url" content="http://www.gistime.cn/2019/09/20/transform/index.html">
+<meta property="og:site_name" content="GISTime">
+<meta property="og:description" content="PyTorch数据处理之transforms1from torchvision import transforms PyTorch 官方文档 transforms主要应用于数据的预处理阶段。PIL Image是PyTorch中默认读取图像的方式，torchvision.transforms在图像处理中主要分为4类。 裁剪——Crop中心裁剪：transforms.CenterCrop随机裁剪：tr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-24T04:06:11.807Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="transform">
+<meta name="twitter:description" content="PyTorch数据处理之transforms1from torchvision import transforms PyTorch 官方文档 transforms主要应用于数据的预处理阶段。PIL Image是PyTorch中默认读取图像的方式，torchvision.transforms在图像处理中主要分为4类。 裁剪——Crop中心裁剪：transforms.CenterCrop随机裁剪：tr">
+    
+        <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/gistime.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://www.gistime.cn" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gistime.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GISTime</h5>
+          <!-- <a href="mailto:GISTime for everyone" title="GISTime for everyone" class="mail">GISTime for everyone</a> -->
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">transform</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">transform</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-20T01:58:25.000Z" itemprop="datePublished" class="page-time">
+  2019-09-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PyTorch/">PyTorch</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PyTorch数据处理之transforms"><span class="post-toc-text">PyTorch数据处理之transforms</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#裁剪——Crop"><span class="post-toc-text">裁剪——Crop</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#翻转和旋转——Flip-and-Rotation"><span class="post-toc-text">翻转和旋转——Flip and Rotation</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图像变换"><span class="post-toc-text">图像变换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#随机处理"><span class="post-toc-text">随机处理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常用方法"><span class="post-toc-text">常用方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#transforms-Resize"><span class="post-toc-text">transforms.Resize</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#transforms-Normalize"><span class="post-toc-text">transforms.Normalize</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#transforms-ToTensor"><span class="post-toc-text">transforms.ToTensor</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-transform"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">transform</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-20 09:58:25" datetime="2019-09-20T01:58:25.000Z"  itemprop="datePublished">2019-09-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PyTorch/">PyTorch</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="PyTorch数据处理之transforms"><a href="#PyTorch数据处理之transforms" class="headerlink" title="PyTorch数据处理之transforms"></a>PyTorch数据处理之transforms</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br></pre></td></tr></table></figure>
+<p><a href="https://pytorch.org/docs/stable/torchvision/transforms.html#transforms-on-pil-image" target="_blank" rel="noopener">PyTorch 官方文档</a></p>
+<p>transforms主要应用于数据的预处理阶段。PIL Image是PyTorch中默认读取图像的方式，torchvision.transforms在图像处理中主要分为4类。</p>
+<h4 id="裁剪——Crop"><a href="#裁剪——Crop" class="headerlink" title="裁剪——Crop"></a>裁剪——Crop</h4><p>中心裁剪：transforms.CenterCrop<br>随机裁剪：transforms.RandomCrop<br>随机长宽比裁剪：transforms.RandomResizedCrop<br>上下左右中心裁剪：transforms.FiveCrop<br>上下左右中心裁剪后翻转，transforms.TenCrop</p>
+<h4 id="翻转和旋转——Flip-and-Rotation"><a href="#翻转和旋转——Flip-and-Rotation" class="headerlink" title="翻转和旋转——Flip and Rotation"></a>翻转和旋转——Flip and Rotation</h4><p>依概率p水平翻转：transforms.RandomHorizontalFlip(p=0.5)<br>依概率p垂直翻转：transforms.RandomVerticalFlip(p=0.5)<br>随机旋转：transforms.RandomRotation</p>
+<h4 id="图像变换"><a href="#图像变换" class="headerlink" title="图像变换"></a>图像变换</h4><p>resize：transforms.Resize<br>标准化：transforms.Normalize<br>转为tensor：transforms.ToTensor<br>填充：transforms.Pad<br>修改亮度、对比度和饱和度：transforms.ColorJitter<br>转灰度图：transforms.Grayscale<br>线性变换：transforms.LinearTransformation()<br>仿射变换：transforms.RandomAffine<br>依概率p转为灰度图：transforms.RandomGrayscale<br>将数据转换为PILImage：transforms.ToPILImage<br>transforms.Lambda：添加用户自定义的处理过程</p>
+<h4 id="随机处理"><a href="#随机处理" class="headerlink" title="随机处理"></a>随机处理</h4><p>transforms.RandomChoice(transforms)：从给定的一系列transforms中选一个进行操作<br>transforms.RandomApply(transforms, p=0.5)：给一个transform加上概率，依概率进行操作<br>transforms.RandomOrder：将transforms中的操作随机打乱</p>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><h5 id="transforms-Resize"><a href="#transforms-Resize" class="headerlink" title="transforms.Resize"></a>transforms.Resize</h5><p>class torchvision.transforms.Resize(size, interpolation=2)</p>
+<p>将输入的PIL图像缩放至size的分辨率</p>
+<p><strong>size</strong>：（输入类型为int或者sequence ）需要输出的图像大小</p>
+<p><strong>interpolation</strong>：采样（插值）方式（输入类型为int）。默认为PIL.Image.BILINEAR</p>
+<p>可选项：PIL.Image.NEAREST、PIL.Image.BILINEAR、PIL.Image.BICUBIC、PIL.Image.LANCZOS、PIL.Image.HAMMING、PIL.Image.BOX</p>
+<h5 id="transforms-Normalize"><a href="#transforms-Normalize" class="headerlink" title="transforms.Normalize"></a>transforms.Normalize</h5><p>class torchvision.transforms.Normalize(<em>mean</em>, <em>std</em>, <em>inplace=False</em>)</p>
+<p>使用平均或标准差标准化。其作用就是先将输入归一化到(0,1)，再使用公式”(x-mean)/std”，将每个元素分布到(-1,1) </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">transforms.Normalize([<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>], [<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line"></span><br><span class="line">tensor.sub_(mean[:, <span class="keyword">None</span>, <span class="keyword">None</span>]).div_(std[:, <span class="keyword">None</span>, <span class="keyword">None</span>])</span><br></pre></td></tr></table></figure>
+<h5 id="transforms-ToTensor"><a href="#transforms-ToTensor" class="headerlink" title="transforms.ToTensor"></a>transforms.ToTensor</h5><p>CLASS torchvision.transforms.ToTensor</p>
+<p>将PIL.image或者numpy.ndarray转为tensor</p>
+<p>将PIL.image或者numpy.ndarray(H x W x C) [0, 255]转换为 torch.FloatTensor(C x H x W)  [0.0, 1.0]</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-24T04:06:11.807Z" itemprop="dateUpdated">2019-09-24 12:06:11</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.gistime.cn">
+            <img src="/img/gistime.png" alt="GISTime">
+            GISTime
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyTorch/">PyTorch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/20/transform/&title=《transform》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/20/transform/&title=《transform》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/20/transform/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《transform》 — GISTime&url=http://www.gistime.cn/2019/09/20/transform/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/20/transform/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/09/20/loss/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">损失函数</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/19/Optimizer/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">优化器</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span><a href="http://www.gistime.cn/" target="_blank">GISTime</a> &copy; 2017 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备17010437号</a><br>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/20/transform/&title=《transform》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/20/transform/&title=《transform》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/20/transform/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《transform》 — GISTime&url=http://www.gistime.cn/2019/09/20/transform/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/20/transform/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/09/20/transform/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'GISTime';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'GISTime';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>

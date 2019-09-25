@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>企业笔试题 | GISTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="算法,机试题,编程">
+    <meta name="description" content="云从科技(clouldwalk)题目一题目描述输入一个数组，输出最长升序子序列的长度。 输入描述一组数组，长度不大于$10^5$. 输出描述一个整数，最长升序子序列的长度。 示例输入：     15,1,4,2,3 输出：     13 实现代码1234567891011121314151617181920212223242526272829def LIS(arr):    l = len(arr">
+<meta name="keywords" content="算法,机试题,编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="企业笔试题">
+<meta property="og:url" content="http://www.gistime.cn/2019/09/09/coder/index.html">
+<meta property="og:site_name" content="GISTime">
+<meta property="og:description" content="云从科技(clouldwalk)题目一题目描述输入一个数组，输出最长升序子序列的长度。 输入描述一组数组，长度不大于$10^5$. 输出描述一个整数，最长升序子序列的长度。 示例输入：     15,1,4,2,3 输出：     13 实现代码1234567891011121314151617181920212223242526272829def LIS(arr):    l = len(arr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.gistime.cn/2019/09/09/coder/cloudwalk1.jpg">
+<meta property="og:updated_time" content="2019-09-09T08:04:14.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="企业笔试题">
+<meta name="twitter:description" content="云从科技(clouldwalk)题目一题目描述输入一个数组，输出最长升序子序列的长度。 输入描述一组数组，长度不大于$10^5$. 输出描述一个整数，最长升序子序列的长度。 示例输入：     15,1,4,2,3 输出：     13 实现代码1234567891011121314151617181920212223242526272829def LIS(arr):    l = len(arr">
+<meta name="twitter:image" content="http://www.gistime.cn/2019/09/09/coder/cloudwalk1.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/gistime.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://www.gistime.cn" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gistime.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GISTime</h5>
+          <!-- <a href="mailto:GISTime for everyone" title="GISTime for everyone" class="mail">GISTime for everyone</a> -->
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">企业笔试题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">企业笔试题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-09T02:50:10.000Z" itemprop="datePublished" class="page-time">
+  2019-09-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#云从科技-clouldwalk"><span class="post-toc-text">云从科技(clouldwalk)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目一"><span class="post-toc-text">题目一</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#题目描述"><span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输入描述"><span class="post-toc-text">输入描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输出描述"><span class="post-toc-text">输出描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例"><span class="post-toc-text">示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码"><span class="post-toc-text">实现代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目二"><span class="post-toc-text">题目二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#题目描述-1"><span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输入描述-1"><span class="post-toc-text">输入描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输出描述-1"><span class="post-toc-text">输出描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例-1"><span class="post-toc-text">示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码-1"><span class="post-toc-text">实现代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目三"><span class="post-toc-text">题目三</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#题目描述-2"><span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输入描述-2"><span class="post-toc-text">输入描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输出描述-2"><span class="post-toc-text">输出描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例1"><span class="post-toc-text">示例1</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例2"><span class="post-toc-text">示例2</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码-2"><span class="post-toc-text">实现代码</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-coder"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">企业笔试题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-09 10:50:10" datetime="2019-09-09T02:50:10.000Z"  itemprop="datePublished">2019-09-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="云从科技-clouldwalk"><a href="#云从科技-clouldwalk" class="headerlink" title="云从科技(clouldwalk)"></a>云从科技(clouldwalk)</h2><h3 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个数组，输出最长升序子序列的长度。</p>
+<h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>一组数组，长度不大于$10^5$.</p>
+<h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>一个整数，最长升序子序列的长度。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>输入：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5,1,4,2,3</span><br></pre></td></tr></table></figure>
+<p>输出：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LIS</span><span class="params">(arr)</span>:</span></span><br><span class="line">    l = len(arr)</span><br><span class="line">    temp_arr = []</span><br><span class="line">    <span class="keyword">if</span> l == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> l == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        temp_arr.append(arr[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, l):</span><br><span class="line">            <span class="keyword">if</span> arr[i] &lt;= temp_arr[<span class="number">0</span>]:</span><br><span class="line">                temp_arr[<span class="number">0</span>] = arr[i]</span><br><span class="line">            <span class="keyword">elif</span> (temp_arr[<span class="number">0</span>] &lt; arr[i]) <span class="keyword">and</span> (arr[i] &lt;= temp_arr[<span class="number">-1</span>]):</span><br><span class="line">                low, high = <span class="number">0</span>, len(temp_arr)<span class="number">-1</span></span><br><span class="line">                <span class="keyword">while</span> low &lt;= high:</span><br><span class="line">                    mid = (low+high)//<span class="number">2</span></span><br><span class="line">                    <span class="keyword">if</span> temp_arr[mid] &gt;= arr[i]:</span><br><span class="line">                        temp_arr[mid] = arr[i]</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> arr[i]&gt;temp_arr[<span class="number">-1</span>]:</span><br><span class="line">                temp_arr.append(arr[i])</span><br><span class="line">        <span class="keyword">return</span> len(temp_arr)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = input()</span><br><span class="line">arr = s.split(<span class="string">','</span>)</span><br><span class="line">print(LIS(arr))</span><br></pre></td></tr></table></figure>
+<p>结果通过60%</p>
+<h3 id="题目二"><a href="#题目二" class="headerlink" title="题目二"></a>题目二</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>有四个四边形，已确定他们来源于一个矩形的切块，切块规则是，两根切割直线分别过矩形的两个对立边，把矩形切割成四块，并都满足一下前提条件：</p>
+<p>（1）切割直线不会经过矩形顶点；</p>
+<p>（2）切割直线与矩形边不垂直；</p>
+<p>（3）两切割线不相互垂直；</p>
+<p>（4）切割得到的四个边长度两两不等；</p>
+<p>切割示例如图所示</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/09/09/coder/cloudwalk1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>现在已知被切好的四个四边形的各个顶点坐标，求矩阵的长和宽</p>
+<h4 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述"></a>输入描述</h4><p>四个四边形的顶点坐标（确保是构成矩形，每四行代表一个四边形的四个顶点，顺时针顺序），如下所示</p>
+<p>x00,y00</p>
+<p>x01,y01</p>
+<p>x02,y02</p>
+<p>x03,y03</p>
+<p>x10,y10</p>
+<p>x11,y11</p>
+<p>x12,y12</p>
+<p>x13,y13</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<h4 id="输出描述-1"><a href="#输出描述-1" class="headerlink" title="输出描述"></a>输出描述</h4><p>长和宽a，b，确保a&gt;=b</p>
+<p>输出按四舍五入取整至个位。</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">50,500</span><br><span class="line">95.3333,500</span><br><span class="line">114.755,265.303</span><br><span class="line">50,234,286</span><br><span class="line">220,500</span><br><span class="line">220,315.714</span><br><span class="line">114.755,265.303</span><br><span class="line">95.3333,500</span><br><span class="line">220,50</span><br><span class="line">132.571,50</span><br><span class="line">114.755,265.303</span><br><span class="line">220,315.714</span><br><span class="line">50,50</span><br><span class="line">50,234.286</span><br><span class="line">114.755,265.303</span><br><span class="line">132.571,50</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">450,170</span><br></pre></td></tr></table></figure>
+<h4 id="实现代码-1"><a href="#实现代码-1" class="headerlink" title="实现代码"></a>实现代码</h4><h3 id="题目三"><a href="#题目三" class="headerlink" title="题目三"></a>题目三</h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>某个序列的子序列是从最初序列通过去除某些元素但不破坏余下元素的相对位置（在前或在后）而形成的新序列。现在给出两个字符串S1和S2（字符串只包含小写字母），请判断S2是否为S1的子序列。</p>
+<h4 id="输入描述-2"><a href="#输入描述-2" class="headerlink" title="输入描述"></a>输入描述</h4><p>输入两行</p>
+<p>第一行表示字符串S1</p>
+<p>第二行表示字符串S2</p>
+<h4 id="输出描述-2"><a href="#输出描述-2" class="headerlink" title="输出描述"></a>输出描述</h4><p>如果S2为S1的子序列，输出</p>
+<p>1</p>
+<p>否则，输出</p>
+<p>0</p>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abcdefa</span><br><span class="line"></span><br><span class="line">aca</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abcdefa</span><br><span class="line"></span><br><span class="line">aac</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="实现代码-2"><a href="#实现代码-2" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strline</span><span class="params">(str1,str2)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> str1 <span class="keyword">or</span> <span class="keyword">not</span> str2:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    temp = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str2)):</span><br><span class="line">        item = str2[i]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            item1 = str1.index(item, temp)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        temp = item1 + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">str1 = input()</span><br><span class="line">str2 = input()</span><br><span class="line">print(strline(str1, str2))</span><br></pre></td></tr></table></figure>
+<p>通过率100%</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-09T08:04:14.313Z" itemprop="dateUpdated">2019-09-09 16:04:14</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.gistime.cn">
+            <img src="/img/gistime.png" alt="GISTime">
+            GISTime
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机试题/">机试题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/09/coder/&title=《企业笔试题》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/09/coder/&title=《企业笔试题》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/09/coder/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《企业笔试题》 — GISTime&url=http://www.gistime.cn/2019/09/09/coder/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/09/coder/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/09/19/Optimizer/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">优化器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/04/network/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">神经网络反向传播</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span><a href="http://www.gistime.cn/" target="_blank">GISTime</a> &copy; 2017 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备17010437号</a><br>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/09/coder/&title=《企业笔试题》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/09/coder/&title=《企业笔试题》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/09/coder/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《企业笔试题》 — GISTime&url=http://www.gistime.cn/2019/09/09/coder/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/09/coder/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/09/09/coder/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'GISTime';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'GISTime';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>

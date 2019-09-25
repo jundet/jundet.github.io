@@ -14,27 +14,25 @@
     
     
     
-    <title>神经网络反向传播 | GISTime</title>
+    <title>linear model | GISTime</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="机器学习,神经网络">
-    <meta name="description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
-<meta name="keywords" content="机器学习,神经网络">
+    <meta name="keywords" content="机器学习">
+    <meta name="description" content="线性回归一元线性回归给定数据集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)}$试图学得线性回归$f(x_i)=wx_i+b$,使得$f(x_i)\simeq y_i$ 采用均方差度量$f(x_i)$与$y_i$之间的差距，最小化均方差  (w^*,b^*)=\arg min_{(w,b)}\sum_{i=1}^m(f(x_i)-y_i)^2=\arg min_{(w,b)">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="神经网络反向传播">
-<meta property="og:url" content="http://www.gistime.cn/2019/09/04/network/index.html">
+<meta property="og:title" content="linear model">
+<meta property="og:url" content="http://www.gistime.cn/2019/09/24/线性回归/index.html">
 <meta property="og:site_name" content="GISTime">
-<meta property="og:description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
+<meta property="og:description" content="线性回归一元线性回归给定数据集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)}$试图学得线性回归$f(x_i)=wx_i+b$,使得$f(x_i)\simeq y_i$ 采用均方差度量$f(x_i)$与$y_i$之间的差距，最小化均方差  (w^*,b^*)=\arg min_{(w,b)}\sum_{i=1}^m(f(x_i)-y_i)^2=\arg min_{(w,b)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.gistime.cn/2019/09/04/network/1.jpg">
-<meta property="og:updated_time" content="2019-09-05T05:02:57.424Z">
+<meta property="og:updated_time" content="2019-09-24T03:01:01.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="神经网络反向传播">
-<meta name="twitter:description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
-<meta name="twitter:image" content="http://www.gistime.cn/2019/09/04/network/1.jpg">
+<meta name="twitter:title" content="linear model">
+<meta name="twitter:description" content="线性回归一元线性回归给定数据集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)}$试图学得线性回归$f(x_i)=wx_i+b$,使得$f(x_i)\simeq y_i$ 采用均方差度量$f(x_i)$与$y_i$之间的差距，最小化均方差  (w^*,b^*)=\arg min_{(w,b)}\sum_{i=1}^m(f(x_i)-y_i)^2=\arg min_{(w,b)">
     
         <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
     
@@ -108,7 +106,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">神经网络反向传播</div>
+        <div class="flex-col header-title ellipsis">linear model</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -130,15 +128,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">神经网络反向传播</h1>
+        <h1 class="title">linear model</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-09-04T08:14:18.000Z" itemprop="datePublished" class="page-time">
-  2019-09-04
+                <time datetime="2019-09-24T01:46:53.000Z" itemprop="datePublished" class="page-time">
+  2019-09-24
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/深度学习/">深度学习</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
 
             
         </h5>
@@ -155,21 +153,21 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#误差逆传播算法"><span class="post-toc-text">误差逆传播算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前项传播过程"><span class="post-toc-text">前项传播过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参数计算"><span class="post-toc-text">参数计算</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向传播过程"><span class="post-toc-text">反向传播过程</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线性回归"><span class="post-toc-text">线性回归</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一元线性回归"><span class="post-toc-text">一元线性回归</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多元线性回归"><span class="post-toc-text">多元线性回归</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对数线性回归"><span class="post-toc-text">对数线性回归</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对数几率回归"><span class="post-toc-text">对数几率回归</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-network"
+<article id="post-线性回归"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">神经网络反向传播</h1>
+        <h1 class="post-card-title">linear model</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-09-04 16:14:18" datetime="2019-09-04T08:14:18.000Z"  itemprop="datePublished">2019-09-04</time>
+            <time class="post-time" title="2019-09-24 09:46:53" datetime="2019-09-24T01:46:53.000Z"  itemprop="datePublished">2019-09-24</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/深度学习/">深度学习</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
 
 
 
@@ -181,57 +179,41 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h1><p>摘自机器学习-西瓜书-周志华</p>
-<p>部分内容为个人理解</p>
-<p>给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$个神经元的阈值用$\gamma_h$表示。输入层第$i$个神经元与隐层第$h$个神经元之间的连接权（权重）为$\nu_{ih}$，隐层第$h$个神经元与输出层第$j$个神经元之间的连接权为$\omega_{hj}$。记隐层第$h$个神经元接收到的输入为$\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$,输出层第$j$个神经元接收到的输入为$\beta_j=\sum_{h=1}^q\omega_{hj}b_h$,其中$b_n$为隐层第$h$个神经元的输出。假设隐层和输出层神经元都是用$Sigmoid$函数。对训练例$(x_k,y_k)$，假定神经网络的输出为$\hat y_k = (\hat y^k_1,\hat y^k_2,…,\hat y^k_l)$,即</p>
+            <h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h3><p>给定数据集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)}$试图学得线性回归$f(x_i)=wx_i+b$,使得$f(x_i)\simeq y_i$</p>
+<p>采用均方差度量$f(x_i)$与$y_i$之间的差距，最小化均方差</p>
 <script type="math/tex; mode=display">
-\hat y^k_j = f(\beta_j - \theta_j) \tag{1}</script><p>则网络在$（x_k，y_k）$上的均方误差为</p>
+(w^*,b^*)=\arg min_{(w,b)}\sum_{i=1}^m(f(x_i)-y_i)^2=\arg min_{(w,b)}\sum_{i=1}^m(y_i-wx_i-b)^2</script><p>求解$w$和$b$使得$E_{(w,b)}=\sum_{i=1}^m(y_i-wx_i-b)^2$最小化的过程，称为线性回归模型的最小二乘参数估计，对$w$和$b$分别求导可得到</p>
 <script type="math/tex; mode=display">
-E_k=\frac{1}{2} \sum^l_{j=1}({\hat y^k_j} - y^k_j)^2 \tag{2}</script><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/09/04/network/1.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h2 id="前项传播过程"><a href="#前项传播过程" class="headerlink" title="前项传播过程"></a>前项传播过程</h2><p>输入层输入 $x_1,x_2,…,x_m$</p>
-<p>隐层输入 $\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$</p>
-<p>隐层输出$b_h= f(\alpha_h-\gamma_h)$</p>
-<p>输出层输入 $\beta_j=\sum_{h=1}^q\omega_{hj}b_h$</p>
-<p>输出层输出 $\hat y^k_j = f(\beta_j - \theta_j)$</p>
-<p>其中$f(\cdot)$为激活函数，文中使用$Sigmoid$函数</p>
-<p>$Sigmoid(x) = \frac{1}{1+e^{-x}}$</p>
-<h2 id="参数计算"><a href="#参数计算" class="headerlink" title="参数计算"></a>参数计算</h2><p>网络中需要计算的参数总数为$(d+l+1)q+l$,输入层到隐层的$d\times q$个权重值，隐层到输出层的$q\times l$个权重值，$q$个隐层神经元的阈值、$l$个输出层神经网络的阈值。</p>
-<h2 id="反向传播过程"><a href="#反向传播过程" class="headerlink" title="反向传播过程"></a>反向传播过程</h2><p>任意参数$\nu$的更新估计式为</p>
+\frac{\partial E_{(w,b)}}{\partial w}=2(w\sum_{i=1}^mx_i^2-\sum_{i=1}^m(y_i-b)x_i) \tag{1}</script><script type="math/tex; mode=display">
+\frac{\partial E_{(w,b)}}{\partial b}=2(mb-\sum_{i=1}^m(y_i-wx_i)) \tag{2}</script><p>令式（1）和式（2）为零可得到$w$和$b$的闭式解</p>
 <script type="math/tex; mode=display">
-\nu \gets \nu + \Delta\nu</script><p>BP算法基于梯度下降策略，以目标的负梯度方向对参数进行调整，对式(2)的误差$E_k$，给定学习率$\eta$,有</p>
+w=\frac{\sum_{i=1}^my_i(x_i-\bar{x})}{\sum_{i=1}^mx_ix_i^2-{\frac{1}{m}}(\sum_{i=1}^mx_i)^2}\\
+b=\frac{1}{m}\sum_{i=1}^m(y_i-wx_i)</script><p>其中$\bar{x}={\frac{1}{m}}(\sum_{i=1}^mx_i)$为$x$的均值。</p>
+<h3 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h3><p>$f(x_i)=w^Tx_i+b$使得$f(x_i)\simeq y_i$。参数的向量化形式为$\hat{w}=(w;b)$。最小化距离的向量形式为</p>
 <script type="math/tex; mode=display">
-\Delta\omega_{hj} = -\eta \frac{\partial E_k}{\partial\omega_{hj}} \tag{3}</script><p>注意到$\omega_{hj}$先影响到$j$个输出层神经元的输入值$\beta_j$，在影响到其输出值$\hat y^k_j$,然后在影响到$E_k$,有</p>
+\hat{w}^*=\arg min_{\hat{w}}(y-X\hat{w})^T(y-X\hat{w})</script><p>令$E_{\hat{w}}=(y-X\hat{w})^T(y-X\hat{w})$,对$\hat{w}$求导得到</p>
 <script type="math/tex; mode=display">
-\frac{\partial E_k}{\partial\omega_{hj}} = \frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j}\cdot\frac{\partial \beta_j}{\partial\hat y^k_j} \tag{4}</script><p>根据$\beta_j$的定义显然有</p>
+\frac{\partial E_{(\hat{w})}}{\partial \hat{w}}=xX^T(X\hat{w}-y) \tag{3}</script><p>令式（3）为零可以求得$\hat{w}$的最优解的闭式解。</p>
+<p>当$X^TX$为满秩矩阵或正定矩阵时可得</p>
 <script type="math/tex; mode=display">
-\frac{\partial \beta_j}{\partial\hat y^k_j} = b_n \tag{5}</script><p>$Sigmoid$函数有一个很好的性质：</p>
+\hat{w}^*=(X^TX)^{-1}X^Ty</script><p>其中$(X^TX)^{-1}$是矩阵$X^TX$的逆矩阵，令$\hat{x}_i=(x_i;1)$,最终学得的多元线性回归模型为</p>
 <script type="math/tex; mode=display">
-f^{'}(x)=f(x)(1-f(x))</script><p>令$g_j=-\frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j}$ ,则</p>
+f(\hat{x}_i)=\hat{x}^T_i(X^TX)^{-1}X^Ty</script><p>当$X^TX$不是满秩矩阵时常常引入正则化项。</p>
+<h4 id="对数线性回归"><a href="#对数线性回归" class="headerlink" title="对数线性回归"></a>对数线性回归</h4><script type="math/tex; mode=display">
+\ln{y}=w^Tx+b \tag{4}</script><p>式（4）实际上是在试图让$e^{w^Tx+b}$逼近$y$，虽然在形式上仍然是现象回归，但实质上实在求取输入空间到输出空间的非线性函数映射。</p>
+<h2 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h2><p>对数几率回归的实质是分类问题</p>
+<p>对于二分类任务，使用阶跃函数将实值$z$转换为$0/1$值。一种单位阶跃函数如下所示</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-g_j&=-\frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j} \\
-&=-(\hat y^k_j-y^k_j)f^{'}(\beta - \theta_j)\\
-&= \hat y^k_j(1-\hat y^k_j)(y^k_j-\hat y^k_j) 
-\end{aligned}\tag{6}</script><p>将式(6)和式(5)代入式(4)，再代入式(3)可以得到：</p>
+y=\left\{ \begin{array}{ll}
+0,&\textrm{z<0}\\
+0.5,&\textrm{z=0}\\
+1,&\textrm{z>0}
+\end{array} \right.</script><p>单位阶跃函数不连续，因此不能直接使用，而对数几率函数单调可微，对数几率函数是一种“Sigmoid函数”</p>
 <script type="math/tex; mode=display">
-\Delta\omega_hj = \eta g_jb_h</script><p>类似的可以得到</p>
+y=\frac{1}{1+e^{-(w^Tx+b)}}</script><p>类似于式（4）</p>
 <script type="math/tex; mode=display">
-\Delta\theta_j=-\eta g_j</script><script type="math/tex; mode=display">
-\Delta \nu_ih = \eta e_hx_i</script><script type="math/tex; mode=display">
-\Delta\gamma_h=-\eta e_h</script><p>其中</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h}\\
-&=-\sum^l_{j=1}\frac{\partial E_k}{\partial \beta_j}\cdot\frac{\partial \beta_j}{\partial b_h}f^{'}(\alpha_h-\gamma_h)\\
-&=\sum^l_{j=1}\omega_{hj}g_jf^{'}(\alpha_h-\gamma_h)\\
-&=b_h(1-b_h)\sum^l_{j=1}\omega_{hj}g_j
-\end{aligned}</script>
+\ln \frac{y}{1-y}=w^Tx+b</script><p>若将$y$视为样本$x$作为正例的可能性，则$1-y$是其反例可能性，两者的比值称为几率，反应了$x$作为正例的可能性。对几率取对数可得到对数几率（logit）$\ln \frac{y}{1-y}$，因此使用线性回归模型的预测结果取逼近真是标记的对数几率，其模型称为对数几率回归。</p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -239,7 +221,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-05T05:02:57.424Z" itemprop="dateUpdated">2019-09-05 13:02:57</time>
+    最后更新时间：<time datetime="2019-09-24T03:01:01.291Z" itemprop="dateUpdated">2019-09-24 11:01:01</time>
 </span><br>
 
 
@@ -259,7 +241,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 
 
             
@@ -269,7 +251,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/24/线性回归/&title=《linear model》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -279,22 +261,22 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/24/线性回归/&title=《linear model》 — GISTime&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/04/network/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/24/线性回归/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《神经网络反向传播》 — GISTime&url=http://www.gistime.cn/2019/09/04/network/&via=http://www.gistime.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《linear model》 — GISTime&url=http://www.gistime.cn/2019/09/24/线性回归/&via=http://www.gistime.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/04/network/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/24/线性回归/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -314,21 +296,14 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/09/19/Optimizer/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">优化器</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/01/29/Django /" id="post-next" class="post-nav-link">
+      <a href="/2019/09/20/loss/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Django 使用教程</h4>
+        <h4 class="title">损失函数</h4>
       </a>
     </div>
   
@@ -401,7 +376,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/24/线性回归/&title=《linear model》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -411,22 +386,22 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/24/线性回归/&title=《linear model》 — GISTime&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/04/network/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/24/线性回归/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《神经网络反向传播》 — GISTime&url=http://www.gistime.cn/2019/09/04/network/&via=http://www.gistime.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《linear model》 — GISTime&url=http://www.gistime.cn/2019/09/24/线性回归/&via=http://www.gistime.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/04/network/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/24/线性回归/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -437,7 +412,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/09/04/network/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/09/24/线性回归/" alt="微信分享二维码">
 </div>
 
 
