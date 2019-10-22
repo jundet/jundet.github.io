@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>排序算法 | GISTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="算法">
+    <meta name="description" content="常用排序算法的实现基本排序算法：冒泡，选择，插入，希尔，归并，快排 冒泡排序重复地走访过要排序的元素列，依次比较两个相邻的元素，如果他们的顺序（如从大到小、首字母从A到Z）错误就把他们交换过来。走访元素的工作是重复地进行直到没有相邻元素需要交换，也就是说该元素已经排序完成。 123456789101112131415def bubbleSort(data):    &apos;&apos;&apos;    冒泡排序    :">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="http://www.gistime.cn/2019/10/18/sequence/index.html">
+<meta property="og:site_name" content="GISTime">
+<meta property="og:description" content="常用排序算法的实现基本排序算法：冒泡，选择，插入，希尔，归并，快排 冒泡排序重复地走访过要排序的元素列，依次比较两个相邻的元素，如果他们的顺序（如从大到小、首字母从A到Z）错误就把他们交换过来。走访元素的工作是重复地进行直到没有相邻元素需要交换，也就是说该元素已经排序完成。 123456789101112131415def bubbleSort(data):    &apos;&apos;&apos;    冒泡排序    :">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-22T12:27:19.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法">
+<meta name="twitter:description" content="常用排序算法的实现基本排序算法：冒泡，选择，插入，希尔，归并，快排 冒泡排序重复地走访过要排序的元素列，依次比较两个相邻的元素，如果他们的顺序（如从大到小、首字母从A到Z）错误就把他们交换过来。走访元素的工作是重复地进行直到没有相邻元素需要交换，也就是说该元素已经排序完成。 123456789101112131415def bubbleSort(data):    &apos;&apos;&apos;    冒泡排序    :">
+    
+        <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/gistime.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://www.gistime.cn" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gistime.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GISTime</h5>
+          <!-- <a href="mailto:GISTime for everyone" title="GISTime for everyone" class="mail">GISTime for everyone</a> -->
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">排序算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">排序算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-18T05:43:52.000Z" itemprop="datePublished" class="page-time">
+  2019-10-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用排序算法的实现"><span class="post-toc-text">常用排序算法的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#冒泡排序"><span class="post-toc-text">冒泡排序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择排序"><span class="post-toc-text">选择排序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插入排序"><span class="post-toc-text">插入排序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#希尔排序"><span class="post-toc-text">希尔排序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#归并排序"><span class="post-toc-text">归并排序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#快速排序"><span class="post-toc-text">快速排序</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-sequence"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">排序算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-18 13:43:52" datetime="2019-10-18T05:43:52.000Z"  itemprop="datePublished">2019-10-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="常用排序算法的实现"><a href="#常用排序算法的实现" class="headerlink" title="常用排序算法的实现"></a>常用排序算法的实现</h1><p>基本排序算法：冒泡，选择，插入，希尔，归并，快排</p>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>重复地走访过要排序的元素列，依次比较两个相邻的元素，如果他们的顺序（如从大到小、首字母从A到Z）错误就把他们交换过来。走访元素的工作是重复地进行直到没有相邻元素需要交换，也就是说该元素已经排序完成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    冒泡排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    i = len(data)</span><br><span class="line">    <span class="keyword">while</span> i &gt; <span class="number">0</span>:</span><br><span class="line">        j = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> j &lt; i<span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">if</span> data[j] &gt; data[j+<span class="number">1</span>]:</span><br><span class="line">                data[j], data[j+<span class="number">1</span>] = data[j+<span class="number">1</span>],data[j]</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        i -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>重复的走访要排序的元素列，(升序)选出最小的元素与第一个元素交换，第二次选出除第一个元素外的最小的元素与第二个元素交换，直到所有排序完成结束。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectionSort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    选择排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(data)<span class="number">-1</span>:</span><br><span class="line">        j = i</span><br><span class="line">        <span class="keyword">while</span> j &lt; len(data):</span><br><span class="line">            <span class="keyword">if</span> data[i] &gt; data[j]:</span><br><span class="line">                data[i], data[j] = data[j], data[i]</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>创建一个空数组，从待排序的数组中依次选择一个元素，将该元素插入到新建数组的合适位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertSort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    插入排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    datatemp = [data[<span class="number">0</span>]]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, (len(data)<span class="number">-1</span>)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(datatemp)):</span><br><span class="line">            <span class="keyword">if</span> data[i] &gt; datatemp[<span class="number">-1</span>]:</span><br><span class="line">                datatemp.append(data[i])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">elif</span> data[i] &lt; datatemp[<span class="number">0</span>]:</span><br><span class="line">                datatemp.insert(<span class="number">0</span>, data[i])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">elif</span> datatemp[j] &lt; data[i] &lt; datatemp[j+<span class="number">1</span>]:</span><br><span class="line">                datatemp.insert(j+<span class="number">1</span>, data[i])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    data = datatemp</span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>分治法，先原序列进行递归二分，在最后一层对两个元素进行排序，然后开始利用递归合并成排序后的序列。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    归并排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> len(data)&lt;=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">    middle = len(data)//<span class="number">2</span></span><br><span class="line">    left = mergeSort(data[:middle])</span><br><span class="line">    right = mergeSort(data[middle:])</span><br><span class="line">    <span class="comment"># 治</span></span><br><span class="line">    <span class="keyword">return</span> merge(left, right)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left,right)</span>:</span></span><br><span class="line">    <span class="comment"># 分</span></span><br><span class="line">    c = []</span><br><span class="line">    h = j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> j&lt;len(left) <span class="keyword">and</span> h&lt;len(right):</span><br><span class="line">        <span class="keyword">if</span> left[j]&lt;right[h]:</span><br><span class="line">            c.append(left[j])</span><br><span class="line">            j+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            c.append(right[h])</span><br><span class="line">            h+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> j==len(left):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> right[h:]:</span><br><span class="line">            c.append(i)</span><br><span class="line">    <span class="keyword">if</span> h==len(right):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> left[j:]:</span><br><span class="line">            c.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> c</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quickSort</span><span class="params">(data, p, r)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    快排排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> p&lt;r:</span><br><span class="line">        q = partition(data, p, r)</span><br><span class="line">        quickSort(data, p, q<span class="number">-1</span>)</span><br><span class="line">        quickSort(data, q+<span class="number">1</span>, r)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(data, p, r)</span>:</span></span><br><span class="line">    <span class="comment"># 快速排序，原址重排</span></span><br><span class="line">    key = data[r]  <span class="comment"># 中间分割点</span></span><br><span class="line">    i = p<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(p, r):</span><br><span class="line">        <span class="keyword">if</span> data[j] &lt;= key:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            data[i], data[j] = data[j], data[i]</span><br><span class="line"></span><br><span class="line">    data[i+<span class="number">1</span>], data[r] = data[r], data[i+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-22T12:27:19.919Z" itemprop="dateUpdated">2019-10-22 20:27:19</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.gistime.cn">
+            <img src="/img/gistime.png" alt="GISTime">
+            GISTime
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/10/18/sequence/&title=《排序算法》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/10/18/sequence/&title=《排序算法》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/10/18/sequence/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — GISTime&url=http://www.gistime.cn/2019/10/18/sequence/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/10/18/sequence/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/18/Normalization/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">深度学习中的标准化</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span><a href="http://www.gistime.cn/" target="_blank">GISTime</a> &copy; 2017 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备17010437号</a><br>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/10/18/sequence/&title=《排序算法》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/10/18/sequence/&title=《排序算法》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/10/18/sequence/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — GISTime&url=http://www.gistime.cn/2019/10/18/sequence/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/10/18/sequence/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/10/18/sequence/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'GISTime';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'GISTime';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
