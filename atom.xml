@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.gistime.cn/"/>
-  <updated>2019-10-22T12:27:19.919Z</updated>
+  <updated>2019-11-11T08:31:36.117Z</updated>
   <id>http://www.gistime.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PyTorch 分布式</title>
+    <link href="http://www.gistime.cn/2019/11/11/distribute/"/>
+    <id>http://www.gistime.cn/2019/11/11/distribute/</id>
+    <published>2019-11-11T08:27:55.000Z</published>
+    <updated>2019-11-11T08:31:36.117Z</updated>
+    
+    <content type="html"><![CDATA[<p>PyTorch分布式训练</p><p>Parallel and Distributed Training： <a href="https://pytorch.org/tutorials/intermediate/ddp_tutorial.html" target="_blank" rel="noopener">https://pytorch.org/tutorials/intermediate/ddp_tutorial.html</a></p><p><a href="https://pytorch.org/docs/stable/distributed.html?highlight=distribut#module-torch.distributed" target="_blank" rel="noopener">https://pytorch.org/docs/stable/distributed.html?highlight=distribut#module-torch.distributed</a></p><p>Github代码示例</p><p>官方示例1：<a href="https://github.com/seba-1511/dist_tuto.pth" target="_blank" rel="noopener">https://github.com/seba-1511/dist_tuto.pth</a></p><p>官方示例2：<a href="https://github.com/pytorch/examples/tree/master/imagenet" target="_blank" rel="noopener">https://github.com/pytorch/examples/tree/master/imagenet</a></p><p><a href="https://github.com/yangkky/distributed_tutorial" target="_blank" rel="noopener">https://github.com/yangkky/distributed_tutorial</a></p><p>其他介绍：</p><p><a href="https://blog.csdn.net/zwqjoy/article/details/89415933" target="_blank" rel="noopener">https://blog.csdn.net/zwqjoy/article/details/89415933</a></p><p><a href="https://blog.csdn.net/m0_38008956/article/details/86559432" target="_blank" rel="noopener">https://blog.csdn.net/m0_38008956/article/details/86559432</a></p><p><a href="https://zhuanlan.zhihu.com/p/68717029" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/68717029</a></p><p><a href="https://zhuanlan.zhihu.com/p/38949622" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38949622</a></p><p><a href="https://blog.csdn.net/u010557442/article/details/79431520" target="_blank" rel="noopener">https://blog.csdn.net/u010557442/article/details/79431520</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;PyTorch分布式训练&lt;/p&gt;
+&lt;p&gt;Parallel and Distributed Training： &lt;a href=&quot;https://pytorch.org/tutorials/intermediate/ddp_tutorial.html&quot; target=&quot;_bl
+      
+    
+    </summary>
+    
+      <category term="PyTorch" scheme="http://www.gistime.cn/categories/PyTorch/"/>
+    
+    
+      <category term="深度学习" scheme="http://www.gistime.cn/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="PyTorch" scheme="http://www.gistime.cn/tags/PyTorch/"/>
+    
+  </entry>
   
   <entry>
     <title>排序算法</title>

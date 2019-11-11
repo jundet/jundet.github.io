@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>PyTorch 分布式</title>
+    <url>/2019/11/11/distribute/</url>
+    <content><![CDATA[<p>PyTorch分布式训练</p>
+<p>Parallel and Distributed Training： <a href="https://pytorch.org/tutorials/intermediate/ddp_tutorial.html" target="_blank" rel="noopener">https://pytorch.org/tutorials/intermediate/ddp_tutorial.html</a></p>
+<p><a href="https://pytorch.org/docs/stable/distributed.html?highlight=distribut#module-torch.distributed" target="_blank" rel="noopener">https://pytorch.org/docs/stable/distributed.html?highlight=distribut#module-torch.distributed</a></p>
+<p>Github代码示例</p>
+<p>官方示例1：<a href="https://github.com/seba-1511/dist_tuto.pth" target="_blank" rel="noopener">https://github.com/seba-1511/dist_tuto.pth</a></p>
+<p>官方示例2：<a href="https://github.com/pytorch/examples/tree/master/imagenet" target="_blank" rel="noopener">https://github.com/pytorch/examples/tree/master/imagenet</a></p>
+<p><a href="https://github.com/yangkky/distributed_tutorial" target="_blank" rel="noopener">https://github.com/yangkky/distributed_tutorial</a></p>
+<p>其他介绍：</p>
+<p><a href="https://blog.csdn.net/zwqjoy/article/details/89415933" target="_blank" rel="noopener">https://blog.csdn.net/zwqjoy/article/details/89415933</a></p>
+<p><a href="https://blog.csdn.net/m0_38008956/article/details/86559432" target="_blank" rel="noopener">https://blog.csdn.net/m0_38008956/article/details/86559432</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/68717029" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/68717029</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/38949622" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38949622</a></p>
+<p><a href="https://blog.csdn.net/u010557442/article/details/79431520" target="_blank" rel="noopener">https://blog.csdn.net/u010557442/article/details/79431520</a></p>
+]]></content>
+      <categories>
+        <category>PyTorch</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>PyTorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>排序算法</title>
+    <url>/2019/10/18/sequence/</url>
+    <content><![CDATA[<h1 id="常用排序算法的实现"><a href="#常用排序算法的实现" class="headerlink" title="常用排序算法的实现"></a>常用排序算法的实现</h1><p>基本排序算法：冒泡，选择，插入，希尔，归并，快排</p>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>重复地走访过要排序的元素列，依次比较两个相邻的元素，如果他们的顺序（如从大到小、首字母从A到Z）错误就把他们交换过来。走访元素的工作是重复地进行直到没有相邻元素需要交换，也就是说该元素已经排序完成。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    冒泡排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    i = len(data)</span><br><span class="line">    <span class="keyword">while</span> i &gt; <span class="number">0</span>:</span><br><span class="line">        j = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> j &lt; i<span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">if</span> data[j] &gt; data[j+<span class="number">1</span>]:</span><br><span class="line">                data[j], data[j+<span class="number">1</span>] = data[j+<span class="number">1</span>],data[j]</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        i -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>重复的走访要排序的元素列，(升序)选出最小的元素与第一个元素交换，第二次选出除第一个元素外的最小的元素与第二个元素交换，直到所有排序完成结束。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectionSort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    选择排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(data)<span class="number">-1</span>:</span><br><span class="line">        j = i</span><br><span class="line">        <span class="keyword">while</span> j &lt; len(data):</span><br><span class="line">            <span class="keyword">if</span> data[i] &gt; data[j]:</span><br><span class="line">                data[i], data[j] = data[j], data[i]</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>创建一个空数组，从待排序的数组中依次选择一个元素，将该元素插入到新建数组的合适位置。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertSort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    插入排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    datatemp = [data[<span class="number">0</span>]]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, (len(data)<span class="number">-1</span>)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(datatemp)):</span><br><span class="line">            <span class="keyword">if</span> data[i] &gt; datatemp[<span class="number">-1</span>]:</span><br><span class="line">                datatemp.append(data[i])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">elif</span> data[i] &lt; datatemp[<span class="number">0</span>]:</span><br><span class="line">                datatemp.insert(<span class="number">0</span>, data[i])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">elif</span> datatemp[j] &lt; data[i] &lt; datatemp[j+<span class="number">1</span>]:</span><br><span class="line">                datatemp.insert(j+<span class="number">1</span>, data[i])</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    data = datatemp</span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>分治法，先原序列进行递归二分，在最后一层对两个元素进行排序，然后开始利用递归合并成排序后的序列。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    归并排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> len(data)&lt;=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">    middle = len(data)//<span class="number">2</span></span><br><span class="line">    left = mergeSort(data[:middle])</span><br><span class="line">    right = mergeSort(data[middle:])</span><br><span class="line">    <span class="comment"># 治</span></span><br><span class="line">    <span class="keyword">return</span> merge(left, right)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left,right)</span>:</span></span><br><span class="line">    <span class="comment"># 分</span></span><br><span class="line">    c = []</span><br><span class="line">    h = j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> j&lt;len(left) <span class="keyword">and</span> h&lt;len(right):</span><br><span class="line">        <span class="keyword">if</span> left[j]&lt;right[h]:</span><br><span class="line">            c.append(left[j])</span><br><span class="line">            j+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            c.append(right[h])</span><br><span class="line">            h+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> j==len(left):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> right[h:]:</span><br><span class="line">            c.append(i)</span><br><span class="line">    <span class="keyword">if</span> h==len(right):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> left[j:]:</span><br><span class="line">            c.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> c</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quickSort</span><span class="params">(data, p, r)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    快排排序</span></span><br><span class="line"><span class="string">    :param data: 原序列</span></span><br><span class="line"><span class="string">    :return: 升序排列后序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> p&lt;r:</span><br><span class="line">        q = partition(data, p, r)</span><br><span class="line">        quickSort(data, p, q<span class="number">-1</span>)</span><br><span class="line">        quickSort(data, q+<span class="number">1</span>, r)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(data, p, r)</span>:</span></span><br><span class="line">    <span class="comment"># 快速排序，原址重排</span></span><br><span class="line">    key = data[r]  <span class="comment"># 中间分割点</span></span><br><span class="line">    i = p<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(p, r):</span><br><span class="line">        <span class="keyword">if</span> data[j] &lt;= key:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            data[i], data[j] = data[j], data[i]</span><br><span class="line"></span><br><span class="line">    data[i+<span class="number">1</span>], data[r] = data[r], data[i+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深度学习中的标准化</title>
+    <url>/2019/10/18/Normalization/</url>
+    <content><![CDATA[<h1 id="深度学习中的标准化-Normalization"><a href="#深度学习中的标准化-Normalization" class="headerlink" title="深度学习中的标准化(Normalization)"></a>深度学习中的标准化(Normalization)</h1><h2 id="深度网络训练的问题"><a href="#深度网络训练的问题" class="headerlink" title="深度网络训练的问题"></a>深度网络训练的问题</h2><p>假设网络没有非线性函数，不考虑偏置项，设每层网络层输入为$x^{(k-1)} \in R^{n_{k-1}}$,参数为$W^{(k)}\in R^{n_kn_{k-1}}$,输出为$x^{(k)}\in R^{n_{k-1}}$,每一层的操作是</p>
+<script type="math/tex; mode=display">
+x^{(k)}=W^{(k)}x^{(k-1)}\\
+= W^{(k)}W^{(k-1)}...W^{(1)}x^{(0)}</script><h3 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h3><p>设$W=(0.5)$的元素值小于1，此时随着层数k的不断增加，w不断减少最终接近于0使得梯度下降非常缓慢造成梯度消失。</p>
+<h3 id="梯度爆炸"><a href="#梯度爆炸" class="headerlink" title="梯度爆炸"></a>梯度爆炸</h3><p>设$W=(1.5)$的元素值大于1，此时随着层数k的不断增加，w不断增加最终接近于正无穷。使得梯度下降过大造成梯度爆炸。</p>
+<p>使用激活函数可以限制每层输出值得输出范围在一定程度上消除梯度消失和梯度爆炸的影响。但是目前的激活函数中Sigmoid激活函数在经过多层后输出值会落在饱和区。从而减慢训练，ReLU激活函数克服了Sigmoid的缺点，增加了网络的稀疏性，但没有很好的解决梯度消失和梯度爆炸的影响。</p>
+<h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><p>在同一个batch中的不同样本相同对应位置进行归一化。（将原有落在饱和区间的数据分布到标准正态分布上）</p>
+<p>标准化公式为</p>
+<script type="math/tex; mode=display">
+\hat{x_i}=\frac{1}{\sigma _i}(x_i-\mu _i) \tag{1}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\mu _i = \frac{1}{m}\sum_{k\in S_i}x_k, (均值)\\
+\sigma _i = \sqrt{\frac{1}{m}\sum_{k\in S_i}(x_k-\mu _i)^2 +\epsilon} ,(方差)</script><p>其中$\epsilon$是一个很小的正值，比如$10^{-8}$,这样可以强制避免$\sqrt{z}$ 的梯度在z=0时未定义的问题。在测试阶段$\mu$和$\sigma$可以被替换为训练阶段收集的运行均值。这使得模型可以对单一样本评估，而无需使用定义与整个小批量的$\mu$和$\sigma$。</p>
+<p>直接使用标准化公式会导致网络表达能力下降，为了防止这一点，每个神经元增加两个调节参数（scale和shift），这两个参数是通过训练来学习到的，用来对变换后数据再变换，使得网络表达能力增强，即对变换后的数据进行如下的scale和shift操作：</p>
+<script type="math/tex; mode=display">
+y^{(k)}=\gamma ^{(k)}\hat{x}^{(k)}+\beta ^{(k)} \tag{2}</script><p>通过公式（1）我们可以将输入数据分布到均值为1，方差为0的标准正态分布上。但是这样的操作会使得BN层后面的神经元无论怎么学习都会统一缩放到这一区域。使用公式（2）可以将经过标准化的数据分布到均值为$\beta$方差为$\gamma ^2$的区间上，而$\beta$和$\gamma$两个参数与其他训练参数相同，通过梯度下降的方式学得。这样BN层便能将输入数据缩放至最适合该神经元的区间（分布）上。<br>在卷积神经网络中，数据维度为（N,C,H,W）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./Normalization/1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>卷积层上的BN使用了类似权值共享的策略，把一整张特征图当做一个神经元进行处理。卷积神经网络经过卷积后得到的是一系列的特征图，网络某一层输入数据可以表示为四维矩阵(N,C,H,W)。在CNN中我们可以把每个特征图看成是一个特征处理（一个神经元），因此在使用Batch Normalization，mini-batch size 的大小就是：NHW，于是对于每个特征图都只有一对可学习参数：$\beta$和$\gamma$。相当于求取所有样本所对应的一个特征图的所有神经元的平均值、方差，然后对这个特征图神经元做归一化。</p>
+<p>PyTorch中BatchNorm2d的实现公式</p>
+<script type="math/tex; mode=display">
+y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta</script><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li><p>训练速度更快。因为网络的数据分布更加稳定，模型更易训练。</p>
+</li>
+<li><p>使用更大的学习率。因为网络的数据分布稳定，使用更大的学习率不会轻易造成损失函数曲线发散。能够加快训练的收敛速度。</p>
+</li>
+<li><p>不需要太关注模型参数的初始化。模型的随机初始化结果对模型的训练没有太大影响。</p>
+</li>
+<li><p>正则化效果。使用mini-batch的统计值近似训练数据的统计值，使得BN层具有正则化的效果</p>
+</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>BN依赖于batch size, 对batch size敏感。当batch size太小时， batch的统计值不能代表训练的统计值，使得训练过程更加困难</li>
+<li>在迁移学习fine-tune阶段，模型的BN层参数固定不变，这是不合理的因为迁移学习的预训练数据集和目标数据集有非常大的不同</li>
+<li>不能用于测试阶段。测试阶段使用训练集的统计值取近似测试集的统计值是不合理的。</li>
+</ul>
+<h2 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h2><p>针对BN的一些缺点，Group Normalization 对channel进行分组，对每组channel进行Normalization</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./Normalization/2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>深度学习</tag>
+        <tag>PyTorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线性回归</title>
+    <url>/2019/09/24/linearmodel/</url>
+    <content><![CDATA[<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h3><p>给定数据集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)}$试图学得线性回归$f(x_i)=wx_i+b$,使得$f(x_i)\simeq y_i$</p>
+<p>采用均方差度量$f(x_i)$与$y_i$之间的差距，最小化均方差</p>
+<script type="math/tex; mode=display">
+(w^*,b^*)=\arg min_{(w,b)}\sum_{i=1}^m(f(x_i)-y_i)^2=\arg min_{(w,b)}\sum_{i=1}^m(y_i-wx_i-b)^2</script><p>求解$w$和$b$使得$E_{(w,b)}=\sum_{i=1}^m(y_i-wx_i-b)^2$最小化的过程，称为线性回归模型的最小二乘参数估计，对$w$和$b$分别求导可得到</p>
+<script type="math/tex; mode=display">
+\frac{\partial E_{(w,b)}}{\partial w}=2(w\sum_{i=1}^mx_i^2-\sum_{i=1}^m(y_i-b)x_i) \tag{1}</script><script type="math/tex; mode=display">
+\frac{\partial E_{(w,b)}}{\partial b}=2(mb-\sum_{i=1}^m(y_i-wx_i)) \tag{2}</script><p>令式（1）和式（2）为零可得到$w$和$b$的闭式解</p>
+<script type="math/tex; mode=display">
+w=\frac{\sum_{i=1}^my_i(x_i-\bar{x})}{\sum_{i=1}^mx_ix_i^2-{\frac{1}{m}}(\sum_{i=1}^mx_i)^2}\\
+b=\frac{1}{m}\sum_{i=1}^m(y_i-wx_i)</script><p>其中$\bar{x}={\frac{1}{m}}(\sum_{i=1}^mx_i)$为$x$的均值。</p>
+<h3 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h3><p>$f(x_i)=w^Tx_i+b$使得$f(x_i)\simeq y_i$。参数的向量化形式为$\hat{w}=(w;b)$。最小化距离的向量形式为</p>
+<script type="math/tex; mode=display">
+\hat{w}^*=\arg min_{\hat{w}}(y-X\hat{w})^T(y-X\hat{w})</script><p>令$E_{\hat{w}}=(y-X\hat{w})^T(y-X\hat{w})$,对$\hat{w}$求导得到</p>
+<script type="math/tex; mode=display">
+\frac{\partial E_{(\hat{w})}}{\partial \hat{w}}=xX^T(X\hat{w}-y) \tag{3}</script><p>令式（3）为零可以求得$\hat{w}$的最优解的闭式解。</p>
+<p>当$X^TX$为满秩矩阵或正定矩阵时可得</p>
+<script type="math/tex; mode=display">
+\hat{w}^*=(X^TX)^{-1}X^Ty</script><p>其中$(X^TX)^{-1}$是矩阵$X^TX$的逆矩阵，令$\hat{x}_i=(x_i;1)$,最终学得的多元线性回归模型为</p>
+<script type="math/tex; mode=display">
+f(\hat{x}_i)=\hat{x}^T_i(X^TX)^{-1}X^Ty</script><p>当$X^TX$不是满秩矩阵时常常引入正则化项。</p>
+<h4 id="对数线性回归"><a href="#对数线性回归" class="headerlink" title="对数线性回归"></a>对数线性回归</h4><script type="math/tex; mode=display">
+\ln{y}=w^Tx+b \tag{4}</script><p>式（4）实际上是在试图让$e^{w^Tx+b}$逼近$y$，虽然在形式上仍然是现象回归，但实质上实在求取输入空间到输出空间的非线性函数映射。</p>
+<h2 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h2><p>对数几率回归的实质是分类问题</p>
+<p>对于二分类任务，使用阶跃函数将实值$z$转换为$0/1$值。一种单位阶跃函数如下所示</p>
+<script type="math/tex; mode=display">
+y=\left\{ \begin{array}{ll}
+0,&\textrm{z<0}\\
+0.5,&\textrm{z=0}\\
+1,&\textrm{z>0}
+\end{array} \right.</script><p>单位阶跃函数不连续，因此不能直接使用，而对数几率函数单调可微，对数几率函数是一种“Sigmoid函数”</p>
+<script type="math/tex; mode=display">
+y=\frac{1}{1+e^{-(w^Tx+b)}}</script><p>类似于式（4）</p>
+<script type="math/tex; mode=display">
+\ln \frac{y}{1-y}=w^Tx+b</script><p>若将$y$视为样本$x$作为正例的可能性，则$1-y$是其反例可能性，两者的比值称为几率，反应了$x$作为正例的可能性。对几率取对数可得到对数几率（logit）$\ln \frac{y}{1-y}$，因此使用线性回归模型的预测结果取逼近真是标记的对数几率，其模型称为对数几率回归。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>损失函数</title>
+    <url>/2019/09/20/loss/</url>
+    <content><![CDATA[<h1 id="PyTorch中的损失函数"><a href="#PyTorch中的损失函数" class="headerlink" title="PyTorch中的损失函数"></a>PyTorch中的损失函数</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br></pre></td></tr></table></figure>
+<p><a href="https://pytorch.org/docs/stable/nn.html#loss-functions" target="_blank" rel="noopener">PyTorch 官方文档</a></p>
+<p>PyTorch中的损失函数有L1Loss、MSELoss、CrossEntropyLoss、NLLLoss、PoissonNLLLoss、KLDivLoss、BCELoss、BCEWithLogitsLoss、MarginRankingLoss、HingeEmbeddingLoss、MultiLabelMarginLoss、SmoothL1Loss、SoftMarginLoss、MultiLabelSoftMarginLoss、CosineEmbeddingLoss、MultiMarginLoss、TripletMarginLoss等损失函数。</p>
+<h3 id="L1Loss"><a href="#L1Loss" class="headerlink" title="L1Loss"></a>L1Loss</h3><p>CLASS torch.nn.L1Loss(size_average=None, reduce=None, reduction=’mean’)</p>
+<p>计算差值的绝对值。</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><h5 id="reduction"><a href="#reduction" class="headerlink" title="reduction"></a>reduction</h5><p>可选项为‘none’、‘mean’、‘sum’。‘mean’返回平均值，‘sum’返回损失值之和。</p>
+<p>其他两个参数已经弃用</p>
+<h3 id="MSELoss"><a href="#MSELoss" class="headerlink" title="MSELoss"></a>MSELoss</h3><p>CLASS torch.nn.MSELoss(size_average=None, reduce=None, reduction=’mean’)</p>
+<p>计算差值的平方。</p>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><h5 id="reduction-1"><a href="#reduction-1" class="headerlink" title="reduction"></a>reduction</h5><p>可选项为none、mean、sum。mean返回平均值，sum返回损失值之和。</p>
+<p>其他两个参数已经弃用</p>
+<h3 id="CrossEntropyLoss"><a href="#CrossEntropyLoss" class="headerlink" title="CrossEntropyLoss"></a>CrossEntropyLoss</h3><p>CLASS torch.nn.CrossEntropyLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction=’mean’)</p>
+<p>计算交叉熵损失。</p>
+<h4 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h4><h5 id="weight"><a href="#weight" class="headerlink" title="weight"></a>weight</h5><p>tenser，n个元素，代表n类的权重，当样本不平衡时使用会非常有用，默认为None</p>
+<p>当weight=None时</p>
+<script type="math/tex; mode=display">
+loss(x,class)=-log{\frac {e^{x[class]}}{\sum_je^{x[j]}}}=-x[class]+log(\sum_je^{x[j]})</script><p>当weight被指定时</p>
+<script type="math/tex; mode=display">
+loss(s,class)=weights[class]*(-x[class]+log(\sum_je^{x[j]}))</script><h5 id="reduction-2"><a href="#reduction-2" class="headerlink" title="reduction"></a>reduction</h5><p>可选项为none、mean、sum。mean返回平均值，sum返回损失值之和。</p>
+<h3 id="TripletMarginLoss"><a href="#TripletMarginLoss" class="headerlink" title="TripletMarginLoss"></a>TripletMarginLoss</h3><p>CLASS torch.nn.TripletMarginLoss(margin=1.0, p=2.0, eps=1e-06, swap=False, size_average=None, reduce=None, reduction=’mean’)</p>
+<p>计算三元组损失</p>
+<script type="math/tex; mode=display">
+L(a,p,n)=\max\{d(a_i,p_i)-d(a_i,n_i)+margin,0\}</script><p>其中$d(x_i,y_i)=||x_i-y_i||_p$</p>
+<h5 id="margin"><a href="#margin" class="headerlink" title="margin"></a>margin</h5><p>边界大小，默认为1</p>
+<h5 id="reduction-3"><a href="#reduction-3" class="headerlink" title="reduction"></a>reduction</h5><p>可选项为none、mean、sum。mean返回平均值，sum返回损失值之和。</p>
+<p>TripletSemihardLoss和TripletLoss的实现方式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.nn <span class="keyword">import</span> functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TripletSemihardLoss</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Shape:</span></span><br><span class="line"><span class="string">        - Input: :math:`(N, C)` where `C = number of channels`</span></span><br><span class="line"><span class="string">        - Target: :math:`(N)`</span></span><br><span class="line"><span class="string">        - Output: scalar.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, device, margin=<span class="number">0</span>, size_average=True)</span>:</span></span><br><span class="line">        super(TripletSemihardLoss, self).__init__()</span><br><span class="line">        self.margin = margin</span><br><span class="line">        self.size_average = size_average</span><br><span class="line">        self.device = device</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, input, target)</span>:</span></span><br><span class="line">        y_true = target.int().unsqueeze(<span class="number">-1</span>)</span><br><span class="line">        same_id = torch.eq(y_true, y_true.t()).type_as(input)</span><br><span class="line"></span><br><span class="line">        pos_mask = same_id</span><br><span class="line">        neg_mask = <span class="number">1</span> - same_id</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">_mask_max</span><span class="params">(input_tensor, mask, axis=None, keepdims=False)</span>:</span></span><br><span class="line">            input_tensor = input_tensor - <span class="number">1e6</span> * (<span class="number">1</span> - mask)</span><br><span class="line">            _max, _idx = torch.max(input_tensor, dim=axis, keepdim=keepdims)</span><br><span class="line">            <span class="keyword">return</span> _max, _idx</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">_mask_min</span><span class="params">(input_tensor, mask, axis=None, keepdims=False)</span>:</span></span><br><span class="line">            input_tensor = input_tensor + <span class="number">1e6</span> * (<span class="number">1</span> - mask)</span><br><span class="line">            _min, _idx = torch.min(input_tensor, dim=axis, keepdim=keepdims)</span><br><span class="line">            <span class="keyword">return</span> _min, _idx</span><br><span class="line"></span><br><span class="line">        <span class="comment"># output[i, j] = || feature[i, :] - feature[j, :] ||_2</span></span><br><span class="line">        dist_squared = torch.sum(input ** <span class="number">2</span>, dim=<span class="number">1</span>, keepdim=<span class="keyword">True</span>) + \</span><br><span class="line">                       torch.sum(input.t() ** <span class="number">2</span>, dim=<span class="number">0</span>, keepdim=<span class="keyword">True</span>) - \</span><br><span class="line">                       <span class="number">2.0</span> * torch.matmul(input, input.t())</span><br><span class="line">        dist = dist_squared.clamp(min=<span class="number">1e-16</span>).sqrt()</span><br><span class="line"></span><br><span class="line">        pos_max, pos_idx = _mask_max(dist, pos_mask, axis=<span class="number">-1</span>)</span><br><span class="line">        neg_min, neg_idx = _mask_min(dist, neg_mask, axis=<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># loss(x, y) = max(0, -y * (x1 - x2) + margin)</span></span><br><span class="line">        y = torch.ones(same_id.size()[<span class="number">0</span>]).to(self.device)</span><br><span class="line">        <span class="keyword">return</span> F.margin_ranking_loss(neg_min.float(),</span><br><span class="line">                                     pos_max.float(),</span><br><span class="line">                                     y,</span><br><span class="line">                                     self.margin,</span><br><span class="line">                                     self.size_average)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TripletLoss</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="string">"""Triplet loss with hard positive/negative mining.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Reference:</span></span><br><span class="line"><span class="string">    Hermans et al. In Defense of the Triplet Loss for Person Re-Identification. arXiv:1703.07737.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Code imported from https://github.com/Cysu/open-reid/blob/master/reid/loss/triplet.py.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        margin (float): margin for triplet.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, margin=<span class="number">0.3</span>, mutual_flag = False)</span>:</span></span><br><span class="line">        super(TripletLoss, self).__init__()</span><br><span class="line">        self.margin = margin</span><br><span class="line">        self.ranking_loss = nn.MarginRankingLoss(margin=margin)</span><br><span class="line">        self.mutual = mutual_flag</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, inputs, targets)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Args:</span></span><br><span class="line"><span class="string">            inputs: feature matrix with shape (batch_size, feat_dim)</span></span><br><span class="line"><span class="string">            targets: ground truth labels with shape (num_classes)</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n = inputs.size(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># Compute pairwise distance, replace by the official when merged</span></span><br><span class="line">        dist = torch.pow(inputs, <span class="number">2</span>).sum(dim=<span class="number">1</span>, keepdim=<span class="keyword">True</span>).expand(n, n)</span><br><span class="line">        dist = dist + dist.t()</span><br><span class="line">        dist.addmm_(<span class="number">1</span>, <span class="number">-2</span>, inputs, inputs.t())</span><br><span class="line">        dist = dist.clamp(min=<span class="number">1e-12</span>).sqrt()  <span class="comment"># for numerical stability</span></span><br><span class="line">        <span class="comment"># For each anchor, find the hardest positive and negative</span></span><br><span class="line">        mask = targets.expand(n, n).eq(targets.expand(n, n).t())</span><br><span class="line">        dist_ap, dist_an = [], []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            dist_ap.append(dist[i][mask[i]].max().unsqueeze(<span class="number">0</span>))</span><br><span class="line">            dist_an.append(dist[i][mask[i] == <span class="number">0</span>].min().unsqueeze(<span class="number">0</span>))</span><br><span class="line">        dist_ap = torch.cat(dist_ap)</span><br><span class="line">        dist_an = torch.cat(dist_an)</span><br><span class="line">        <span class="comment"># Compute ranking hinge loss</span></span><br><span class="line">        y = torch.ones_like(dist_an)</span><br><span class="line">        loss = self.ranking_loss(dist_an, dist_ap, y)</span><br><span class="line">        <span class="keyword">if</span> self.mutual:</span><br><span class="line">            <span class="keyword">return</span> loss, dist</span><br><span class="line">        <span class="keyword">return</span> loss</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>PyTorch</tag>
+        <tag>loss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>transform</title>
+    <url>/2019/09/20/transform/</url>
+    <content><![CDATA[<h1 id="PyTorch数据处理之transforms"><a href="#PyTorch数据处理之transforms" class="headerlink" title="PyTorch数据处理之transforms"></a>PyTorch数据处理之transforms</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br></pre></td></tr></table></figure>
+<p><a href="https://pytorch.org/docs/stable/torchvision/transforms.html#transforms-on-pil-image" target="_blank" rel="noopener">PyTorch 官方文档</a></p>
+<p>transforms主要应用于数据的预处理阶段。PIL Image是PyTorch中默认读取图像的方式，torchvision.transforms在图像处理中主要分为4类。</p>
+<h4 id="裁剪——Crop"><a href="#裁剪——Crop" class="headerlink" title="裁剪——Crop"></a>裁剪——Crop</h4><p>中心裁剪：transforms.CenterCrop<br>随机裁剪：transforms.RandomCrop<br>随机长宽比裁剪：transforms.RandomResizedCrop<br>上下左右中心裁剪：transforms.FiveCrop<br>上下左右中心裁剪后翻转，transforms.TenCrop</p>
+<h4 id="翻转和旋转——Flip-and-Rotation"><a href="#翻转和旋转——Flip-and-Rotation" class="headerlink" title="翻转和旋转——Flip and Rotation"></a>翻转和旋转——Flip and Rotation</h4><p>依概率p水平翻转：transforms.RandomHorizontalFlip(p=0.5)<br>依概率p垂直翻转：transforms.RandomVerticalFlip(p=0.5)<br>随机旋转：transforms.RandomRotation</p>
+<h4 id="图像变换"><a href="#图像变换" class="headerlink" title="图像变换"></a>图像变换</h4><p>resize：transforms.Resize<br>标准化：transforms.Normalize<br>转为tensor：transforms.ToTensor<br>填充：transforms.Pad<br>修改亮度、对比度和饱和度：transforms.ColorJitter<br>转灰度图：transforms.Grayscale<br>线性变换：transforms.LinearTransformation()<br>仿射变换：transforms.RandomAffine<br>依概率p转为灰度图：transforms.RandomGrayscale<br>将数据转换为PILImage：transforms.ToPILImage<br>transforms.Lambda：添加用户自定义的处理过程</p>
+<h4 id="随机处理"><a href="#随机处理" class="headerlink" title="随机处理"></a>随机处理</h4><p>transforms.RandomChoice(transforms)：从给定的一系列transforms中选一个进行操作<br>transforms.RandomApply(transforms, p=0.5)：给一个transform加上概率，依概率进行操作<br>transforms.RandomOrder：将transforms中的操作随机打乱</p>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><h5 id="transforms-Resize"><a href="#transforms-Resize" class="headerlink" title="transforms.Resize"></a>transforms.Resize</h5><p>class torchvision.transforms.Resize(size, interpolation=2)</p>
+<p>将输入的PIL图像缩放至size的分辨率</p>
+<p><strong>size</strong>：（输入类型为int或者sequence ）需要输出的图像大小</p>
+<p><strong>interpolation</strong>：采样（插值）方式（输入类型为int）。默认为PIL.Image.BILINEAR</p>
+<p>可选项：PIL.Image.NEAREST、PIL.Image.BILINEAR、PIL.Image.BICUBIC、PIL.Image.LANCZOS、PIL.Image.HAMMING、PIL.Image.BOX</p>
+<h5 id="transforms-Normalize"><a href="#transforms-Normalize" class="headerlink" title="transforms.Normalize"></a>transforms.Normalize</h5><p>class torchvision.transforms.Normalize(<em>mean</em>, <em>std</em>, <em>inplace=False</em>)</p>
+<p>使用平均或标准差标准化。其作用就是先将输入归一化到(0,1)，再使用公式”(x-mean)/std”，将每个元素分布到(-1,1) </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">transforms.Normalize([<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>], [<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line"></span><br><span class="line">tensor.sub_(mean[:, <span class="keyword">None</span>, <span class="keyword">None</span>]).div_(std[:, <span class="keyword">None</span>, <span class="keyword">None</span>])</span><br></pre></td></tr></table></figure>
+<h5 id="transforms-ToTensor"><a href="#transforms-ToTensor" class="headerlink" title="transforms.ToTensor"></a>transforms.ToTensor</h5><p>CLASS torchvision.transforms.ToTensor</p>
+<p>将PIL.image或者numpy.ndarray转为tensor</p>
+<p>将PIL.image或者numpy.ndarray(H x W x C) [0, 255]转换为 torch.FloatTensor(C x H x W)  [0.0, 1.0]</p>
+]]></content>
+      <categories>
+        <category>PyTorch</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>深度学习</tag>
+        <tag>PyTorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>优化器</title>
+    <url>/2019/09/19/Optimizer/</url>
+    <content><![CDATA[<h2 id="PyTorch中的优化器"><a href="#PyTorch中的优化器" class="headerlink" title="PyTorch中的优化器"></a>PyTorch中的优化器</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br></pre></td></tr></table></figure>
+<p>PyTorch提供个多个优化器，其中常用的有SGD、ASGD、RMSprop、Adam等。</p>
+<h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><p>CLASS torch.optim.SGD(params, lr=<required parameter="">, momentum=0, dampening=0, weight_decay=0, nesterov=False)</required></p>
+<p>随机梯度下降</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><h5 id="params-iterable"><a href="#params-iterable" class="headerlink" title="params(iterable)"></a>params(iterable)</h5><p>待优化参数的iterable或者是定义了参数组的dict</p>
+<h5 id="lr-float"><a href="#lr-float" class="headerlink" title="lr(float)"></a>lr(float)</h5><p>学习率</p>
+<h5 id="momentum-float"><a href="#momentum-float" class="headerlink" title="momentum(float)"></a>momentum(float)</h5><p>动量因子（默认为0）</p>
+<h5 id="dampening-float"><a href="#dampening-float" class="headerlink" title="dampening(float)"></a>dampening(float)</h5><p>动量的抑制因子（默认为0）</p>
+<h5 id="nesterov-bool"><a href="#nesterov-bool" class="headerlink" title="nesterov(bool)"></a>nesterov(bool)</h5><p>使用Nesterov动量（默认为False）</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&Require:学习率\varepsilon,动量\alpha \\
+&Require:初始参数\theta,初始速度v \\
+    &while 没有达到停止准则do\\
+    &从训练集中采用包含m个样本\{x^1,...,x^m\}的小批量，对应目标为y^i\\
+    &应用临时更新:\widetilde{\theta} \gets\theta +\alpha v\\
+    &计算梯度(在临时点):g\gets \frac{1}{m}\nabla_{\widetilde{\theta}}\sum_i L(f(x^i;\widetilde{\theta}),y^i)\\
+    &计算速度更新:v\gets \alpha v-\varepsilon g\\
+    &应用更新:\theta \gets \theta+v\\
+    &end while
+\end{aligned}</script><h3 id="ASGD"><a href="#ASGD" class="headerlink" title="ASGD"></a>ASGD</h3><p>class torch.optim.ASGD(params, lr=0.01, lambd=0.0001, alpha=0.75, t0=1000000.0, weight_decay=0)[source]</p>
+<p>平均随机梯度下降</p>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><h5 id="params-iterable-1"><a href="#params-iterable-1" class="headerlink" title="params(iterable)"></a>params(iterable)</h5><p>待优化参数的iterable或者是定义了参数组的dict</p>
+<h5 id="lr-float-1"><a href="#lr-float-1" class="headerlink" title="lr(float)"></a>lr(float)</h5><p>学习率，默认为（1e-2）</p>
+<h5 id="lambd-float"><a href="#lambd-float" class="headerlink" title="lambd(float)"></a>lambd(float)</h5><p>衰减项，默认为（1e-4）</p>
+<h5 id="alpha-float"><a href="#alpha-float" class="headerlink" title="alpha(float)"></a>alpha(float)</h5><p>eta更新指数，默认为0.75</p>
+<h5 id="t0-float"><a href="#t0-float" class="headerlink" title="t0(float)"></a>t0(float)</h5><p>指明在哪一次开始平均化，默认为（1e6）</p>
+<h5 id="weight-decay-float"><a href="#weight-decay-float" class="headerlink" title="weight_decay(float)"></a>weight_decay(float)</h5><p>权重衰减（L2惩罚）默认为0</p>
+<h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><p>class torch.optim.Adam(params, lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0)</p>
+<p>来源于adaptive moments</p>
+<h4 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h4><h5 id="params-iterable-2"><a href="#params-iterable-2" class="headerlink" title="params (iterable)"></a>params (iterable)</h5><p>待优化参数的iterable或者是定义了参数组的dict</p>
+<h5 id="lr-float-可选"><a href="#lr-float-可选" class="headerlink" title="lr (float, 可选)"></a>lr (float, 可选)</h5><p> 学习率（默认：1e-3）</p>
+<h5 id="betas-Tuple-float-float-可选"><a href="#betas-Tuple-float-float-可选" class="headerlink" title="betas (Tuple[float, float], 可选)"></a>betas (Tuple[float, float], 可选)</h5><p> 用于计算梯度以及梯度平方的运行平均值的系数（默认：0.9，0.999）</p>
+<h5 id="eps-float-可选"><a href="#eps-float-可选" class="headerlink" title="eps (float, 可选)"></a>eps (float, 可选)</h5><p> 为了增加数值计算的稳定性而加到分母里的项（默认：1e-8）</p>
+<h5 id="weight-decay-float-可选"><a href="#weight-decay-float-可选" class="headerlink" title="weight_decay (float, 可选)"></a>weight_decay (float, 可选)</h5><p> 权重衰减（L2惩罚）（默认: 0）</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&Require:步长\varepsilon(建议默认为0.001) \\
+&Require:矩估计的指数衰减速度，\rho_1和\rho_2在区间[0,1]zhong (建议默认为[0.9,0.999]) \\
+&Require:用于数值稳定的小常熟\delta(建议默认为1e-8) \\
+&Require:初始参数\theta;\\
+& 初始化一阶矩和二阶矩变量s=0,r=0;\\
+& 初始化时间步t=0;\\
+    &while 没有达到停止准则do\\
+    &从训练集中采用包含m个样本\{x^1,...,x^m\}的小批量，对应目标为y^i\\
+    &计算梯度:g\gets \frac{1}{m}\nabla_{\widetilde{\theta}}\sum_i L(f(x^i;\widetilde{\theta}),y^i)\\
+    &t\gets t+1\\
+    &更新有偏一阶矩估计:s\gets \rho_1s+(1-\rho_1)g\\
+    &更新有偏二阶矩估计:s\gets \rho_1r+(1-\rho_2)g\odot g\\
+    &修正一阶矩的偏差:\hat{s}\gets \frac{s}{a-\rho_1^t}\\
+    &修正二阶矩的偏差:\hat{r}\gets \frac{s}{a-\rho_2^t}\\
+    &计算更新:\Delta\theta=-\varepsilon \frac{\hat{s}}{\sqrt{\hat{r}+\delta}}\\
+    &应用更新:\theta \gets \theta+\Delta\theta\\
+    &end while
+\end{aligned}</script>]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>深度学习</tag>
+        <tag>PyTorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>神经网络反向传播</title>
+    <url>/2019/09/04/network/</url>
+    <content><![CDATA[<h1 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h1><p>摘自机器学习-西瓜书-周志华</p>
+<p>部分内容为个人理解</p>
+<p>给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$个神经元的阈值用$\gamma_h$表示。输入层第$i$个神经元与隐层第$h$个神经元之间的连接权（权重）为$\nu_{ih}$，隐层第$h$个神经元与输出层第$j$个神经元之间的连接权为$\omega_{hj}$。记隐层第$h$个神经元接收到的输入为$\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$,输出层第$j$个神经元接收到的输入为$\beta_j=\sum_{h=1}^q\omega_{hj}b_h$,其中$b_n$为隐层第$h$个神经元的输出。假设隐层和输出层神经元都是用$Sigmoid$函数。对训练例$(x_k,y_k)$，假定神经网络的输出为$\hat y_k = (\hat y^k_1,\hat y^k_2,…,\hat y^k_l)$,即</p>
+<script type="math/tex; mode=display">
+\hat y^k_j = f(\beta_j - \theta_j) \tag{1}</script><p>则网络在$（x_k，y_k）$上的均方误差为</p>
+<script type="math/tex; mode=display">
+E_k=\frac{1}{2} \sum^l_{j=1}({\hat y^k_j} - y^k_j)^2 \tag{2}</script><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/09/04/network/1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="前项传播过程"><a href="#前项传播过程" class="headerlink" title="前项传播过程"></a>前项传播过程</h2><p>输入层输入 $x_1,x_2,…,x_m$</p>
+<p>隐层输入 $\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$</p>
+<p>隐层输出$b_h= f(\alpha_h-\gamma_h)$</p>
+<p>输出层输入 $\beta_j=\sum_{h=1}^q\omega_{hj}b_h$</p>
+<p>输出层输出 $\hat y^k_j = f(\beta_j - \theta_j)$</p>
+<p>其中$f(\cdot)$为激活函数，文中使用$Sigmoid$函数</p>
+<p>$Sigmoid(x) = \frac{1}{1+e^{-x}}$</p>
+<h2 id="参数计算"><a href="#参数计算" class="headerlink" title="参数计算"></a>参数计算</h2><p>网络中需要计算的参数总数为$(d+l+1)q+l$,输入层到隐层的$d\times q$个权重值，隐层到输出层的$q\times l$个权重值，$q$个隐层神经元的阈值、$l$个输出层神经网络的阈值。</p>
+<h2 id="反向传播过程"><a href="#反向传播过程" class="headerlink" title="反向传播过程"></a>反向传播过程</h2><p>任意参数$\nu$的更新估计式为</p>
+<script type="math/tex; mode=display">
+\nu \gets \nu + \Delta\nu</script><p>BP算法基于梯度下降策略，以目标的负梯度方向对参数进行调整，对式(2)的误差$E_k$，给定学习率$\eta$,有</p>
+<script type="math/tex; mode=display">
+\Delta\omega_{hj} = -\eta \frac{\partial E_k}{\partial\omega_{hj}} \tag{3}</script><p>注意到$\omega_{hj}$先影响到$j$个输出层神经元的输入值$\beta_j$，在影响到其输出值$\hat y^k_j$,然后在影响到$E_k$,有</p>
+<script type="math/tex; mode=display">
+\frac{\partial E_k}{\partial\omega_{hj}} = \frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j}\cdot\frac{\partial \beta_j}{\partial\hat y^k_j} \tag{4}</script><p>根据$\beta_j$的定义显然有</p>
+<script type="math/tex; mode=display">
+\frac{\partial \beta_j}{\partial\hat y^k_j} = b_n \tag{5}</script><p>$Sigmoid$函数有一个很好的性质：</p>
+<script type="math/tex; mode=display">
+f^{'}(x)=f(x)(1-f(x))</script><p>令$g_j=-\frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j}$ ,则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g_j&=-\frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j} \\
+&=-(\hat y^k_j-y^k_j)f^{'}(\beta - \theta_j)\\
+&= \hat y^k_j(1-\hat y^k_j)(y^k_j-\hat y^k_j) 
+\end{aligned}\tag{6}</script><p>将式(6)和式(5)代入式(4)，再代入式(3)可以得到：</p>
+<script type="math/tex; mode=display">
+\Delta\omega_hj = \eta g_jb_h</script><p>类似的可以得到</p>
+<script type="math/tex; mode=display">
+\Delta\theta_j=-\eta g_j</script><script type="math/tex; mode=display">
+\Delta \nu_ih = \eta e_hx_i</script><script type="math/tex; mode=display">
+\Delta\gamma_h=-\eta e_h</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h}\\
+&=-\sum^l_{j=1}\frac{\partial E_k}{\partial \beta_j}\cdot\frac{\partial \beta_j}{\partial b_h}f^{'}(\alpha_h-\gamma_h)\\
+&=\sum^l_{j=1}\omega_{hj}g_jf^{'}(\alpha_h-\gamma_h)\\
+&=b_h(1-b_h)\sum^l_{j=1}\omega_{hj}g_j
+\end{aligned}</script>]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>神经网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django 使用教程</title>
+    <url>/2019/01/29/Django%20/</url>
+    <content><![CDATA[<h2 id="示例1：安装Django并创建简单项目"><a href="#示例1：安装Django并创建简单项目" class="headerlink" title="示例1：安装Django并创建简单项目"></a>示例1：安装Django并创建简单项目</h2><p>详情见<a href="https://docs.djangoproject.com/zh-hans/2.1/intro/tutorial01/" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.1/intro/tutorial01/</a></p>
+<p>环境基础为windows10+anaconda3</p>
+<h3 id="1、安装Django（版本2-1-5）"><a href="#1、安装Django（版本2-1-5）" class="headerlink" title="1、安装Django（版本2.1.5）"></a>1、安装Django（版本2.1.5）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install Django==2.1.5</span><br></pre></td></tr></table></figure>
+<h3 id="2、查看版本"><a href="#2、查看版本" class="headerlink" title="2、查看版本"></a>2、查看版本</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python -m django --version</span><br></pre></td></tr></table></figure>
+<h3 id="3、创建项目"><a href="#3、创建项目" class="headerlink" title="3、创建项目"></a>3、创建项目</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">django-admin startproject mysite</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">项目的目录结构</span><br><span class="line">mysite/</span><br><span class="line">    manage.py</span><br><span class="line">    mysite/</span><br><span class="line">        __init__.py</span><br><span class="line">        settings.py</span><br><span class="line">        urls.py</span><br><span class="line">        wsgi.py</span><br></pre></td></tr></table></figure>
+<p>目录说明</p>
+<p>mysite：项目名，项目的容器。</p>
+<p>manage.py:项目启动入口，用于与django内部进行交互</p>
+<p>init.py:初始化文件</p>
+<p>settings.py:项目配置信息</p>
+<p>urls.py:项目中webapi的路由配置</p>
+<p>wsgi.py:一个 WSGI 兼容的 Web 服务器的入口</p>
+<h3 id="4、启动项目"><a href="#4、启动项目" class="headerlink" title="4、启动项目"></a>4、启动项目</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python manage.py runserver</span><br></pre></td></tr></table></figure>
+<p>默认端口为127.0.0.1:8080,可以在runserver后添加自拟端口</p>
+<h3 id="5、创建应用"><a href="#5、创建应用" class="headerlink" title="5、创建应用"></a>5、创建应用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python manage.py startapp polls</span><br></pre></td></tr></table></figure>
+<h3 id="6、创建视图"><a href="#6、创建视图" class="headerlink" title="6、创建视图"></a>6、创建视图</h3><p>在polls/views.py中修改代码为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Hello, world. You're at the polls index."</span>)</span><br></pre></td></tr></table></figure>
+<p>在polls文件夹下创建urls.py并添加代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, views.index, name=<span class="string">'index'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>在mysite/urls.py中修改代码为</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> include, path</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'polls/'</span>, include(<span class="string">'polls.urls'</span>)),</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>运行 python  manage.py runserver 并访问 localhost:8000/polls(不是 localhost:8000)，将会看到Hello, world. You’re at the polls index.</p>
+<h2 id="示例2："><a href="#示例2：" class="headerlink" title="示例2："></a>示例2：</h2>]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>前端开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Video Person Re-Identification</title>
+    <url>/2018/11/14/video%20person%20reid/</url>
+    <content><![CDATA[<p><a href="https://handong1587.github.io/deep_learning/2015/10/09/re-id.html" target="_blank" rel="noopener">Paper</a> <a href="http://robustsystems.coe.neu.edu/sites/robustsystems.coe.neu.edu/files/systems/projectpages/reiddataset.html" target="_blank" rel="noopener">Datasets</a> <a href="https://github.com/KaiyangZhou/deep-person-reid" target="_blank" rel="noopener">Code1</a> <a href="https://github.com/jiyanggao/Video-Person-ReID" target="_blank" rel="noopener">Code2</a></p>
+<h4 id="Leaderboard"><a href="#Leaderboard" class="headerlink" title="Leaderboard"></a>Leaderboard</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>rank1/mAP</th>
+<th>iLIDS-VID</th>
+<th>PRID2011</th>
+<th>MARS</th>
+<th>DukeMTMC-VideoReID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#SCAN">SCAN</a></td>
+<td>88.0/89.9</td>
+<td>95.3/95.8</td>
+<td>87.2/77.2</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="#Co-attention">Co-attention</a></td>
+<td>85.4/87.8</td>
+<td>93.0/94.5</td>
+<td>86.3/76.1</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="3DCNNNon-local">3DCNN&amp;Non-local</a></td>
+<td>81.3</td>
+<td>91.2</td>
+<td>84.3/77.0</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="#STAN">STAN</a></td>
+<td>80.2/</td>
+<td>93.2/</td>
+<td>82.3/65.8</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="#RQEN">RQEN</a></td>
+<td>77.1/</td>
+<td>91.8/</td>
+<td>77.83/71.14</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="RQEN-Region-based-Quality-Estimation-Network-for-Large-scale-Person-Re-identification"><a href="#RQEN-Region-based-Quality-Estimation-Network-for-Large-scale-Person-Re-identification" class="headerlink" title="(RQEN)Region-based Quality Estimation Network for Large-scale Person Re-identification"></a><span id="RQEN">(RQEN)Region-based Quality Estimation Network for Large-scale Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1711.08766" target="_blank" rel="noopener">https://arxiv.org/abs/1711.08766</a></p>
+<p>code:<a href="https://github.com/sciencefans/Quality-Aware-Network" target="_blank" rel="noopener">https://github.com/sciencefans/Quality-Aware-Network</a></p>
+<h5 id="ATAN-Diversity-Regularized-Spatiotemporal-Attention-for-Video-based-Person-Re-identification"><a href="#ATAN-Diversity-Regularized-Spatiotemporal-Attention-for-Video-based-Person-Re-identification" class="headerlink" title="(ATAN)Diversity Regularized Spatiotemporal Attention for Video-based Person Re-identification"></a><span id="STAN">(ATAN)Diversity Regularized Spatiotemporal Attention for Video-based Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1803.09882" target="_blank" rel="noopener">https://arxiv.org/abs/1803.09882</a></p>
+<h5 id="Co-attention-Video-Person-Re-identification-with-Competitive-Snippet-similarity-Aggregation-and-Co-attentive-Snippet-Embedding"><a href="#Co-attention-Video-Person-Re-identification-with-Competitive-Snippet-similarity-Aggregation-and-Co-attentive-Snippet-Embedding" class="headerlink" title="(Co-attention)Video Person Re-identification with Competitive Snippet-similarity Aggregation and Co-attentive Snippet Embedding"></a><span id="Co-attention">(Co-attention)Video Person Re-identification with Competitive Snippet-similarity Aggregation and Co-attentive Snippet Embedding</span></h5><p>paper:<a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_Video_Person_Re-Identification_CVPR_2018_paper.pdf" target="_blank" rel="noopener">http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_Video_Person_Re-Identification_CVPR_2018_paper.pdf</a></p>
+<h5 id="3DCNN-amp-Non-local-Video-based-Person-Re-identification-via-3D-Convolutional-Networks-and-Non-local-Attention"><a href="#3DCNN-amp-Non-local-Video-based-Person-Re-identification-via-3D-Convolutional-Networks-and-Non-local-Attention" class="headerlink" title="(3DCNN&amp;Non-local)Video-based Person Re-identification via 3D Convolutional Networks and Non-local Attention"></a><span id="3DCNNNon-local">(3DCNN&amp;Non-local)Video-based Person Re-identification via 3D Convolutional Networks and Non-local Attention</span></h5><p>paper: <a href="https://arxiv.org/abs/1807.05073" target="_blank" rel="noopener">https://arxiv.org/abs/1807.05073</a></p>
+<h5 id="SCAN-Self-and-Collaborative-Attention-Network-for-Video-Person-Re-identification"><a href="#SCAN-Self-and-Collaborative-Attention-Network-for-Video-Person-Re-identification" class="headerlink" title="SCAN: Self-and-Collaborative Attention Network for Video Person Re-identification"></a><span id="SCAN">SCAN: Self-and-Collaborative Attention Network for Video Person Re-identification</span></h5><p>paper:<a href="https://arxiv.org/abs/1807.05688" target="_blank" rel="noopener">https://arxiv.org/abs/1807.05688</a></p>
+<h5 id="Revisiting-Temporal-Modeling-for-Video-based-Person-ReID"><a href="#Revisiting-Temporal-Modeling-for-Video-based-Person-ReID" class="headerlink" title="Revisiting Temporal Modeling for Video-based Person ReID"></a>Revisiting Temporal Modeling for Video-based Person ReID</h5><p>paper:<a href="https://arxiv.org/abs/1805.02104" target="_blank" rel="noopener">https://arxiv.org/abs/1805.02104</a></p>
+<p>code:<a href="https://github.com/jundet/Video-Person-ReID" target="_blank" rel="noopener">https://github.com/jundet/Video-Person-ReID</a></p>
+]]></content>
+      <categories>
+        <category>行人再识别</category>
+      </categories>
+      <tags>
+        <tag>行人再识别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习课程——糖尿病预测</title>
+    <url>/2018/10/25/MLclass/</url>
+    <content><![CDATA[<h1 id="机器学习课程——糖尿病预测"><a href="#机器学习课程——糖尿病预测" class="headerlink" title="机器学习课程——糖尿病预测"></a>机器学习课程——糖尿病预测</h1><p> <a href="https://github.com/jundet/ML" target="_blank" rel="noopener">code</a></p>
+<h4 id="具体流程为"><a href="#具体流程为" class="headerlink" title="具体流程为"></a>具体流程为</h4><ol>
+<li><p>数据预处理</p>
+</li>
+<li><p>模型构建</p>
+</li>
+<li><p>实验结果</p>
+</li>
+</ol>
+<h3 id="1、数据预处理"><a href="#1、数据预处理" class="headerlink" title="1、数据预处理"></a>1、数据预处理</h3><p><img src="/2018/10/25/MLclass/数据处理.png" alt="数据处理"></p>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><p>对数据集进行划分和归一化等常规操作后观察到两种类别存在不平衡的问题，这会对模型的训练产生偏差。为了解决该问题使用生成对抗网络（GAN）进行训练并产生新的数据加入到训练数据集中以平衡两种类别。生成对抗网络（GAN）能够学习到原有数据集的分布情况，产生的数据能与原有数据保持相同的分布即新的数据可以在一定程度（GAN的设计与训练的好坏）上认为是真实的样本。</p>
+<p><img src="/2018/10/25/MLclass/GAN.png" alt="GAN"></p>
+<h3 id="2、模型构建"><a href="#2、模型构建" class="headerlink" title="2、模型构建"></a>2、模型构建</h3><p>1、分别使用神经网络（NN）、随机树（ET）、逻辑回归（Logistic）、支持向量机（SVM）、GradientBoosting（gdbt）、AdaBoost、XGBoost、LightGBM、CatBoost等模型对数据集进行训练和测试。</p>
+<p>2、尝试使用单模型进行融合，使用融合后的模型对数据进行训练和测试。模型融合使用多数投票分类器。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/10/25/MLclass/融合.png" alt="融合" title="">
+                </div>
+                <div class="image-caption">融合</div>
+            </figure>
+<h3 id="3、实验结果"><a href="#3、实验结果" class="headerlink" title="3、实验结果"></a>3、实验结果</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>模型融合</th>
+<th>神经网络</th>
+<th>CatBoost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accuracy</td>
+<td>83.1%</td>
+<td>82.1%</td>
+<td>82.4%</td>
+</tr>
+<tr>
+<td>F1-score</td>
+<td>72.0%</td>
+<td>70.2%</td>
+<td>70.6%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/10/25/MLclass/模型融合.png" alt="模型融合" title="">
+                </div>
+                <div class="image-caption">模型融合</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/10/25/MLclass/模型融合(GAN).png" alt="模型融合(GAN)" title="">
+                </div>
+                <div class="image-caption">模型融合(GAN)</div>
+            </figure>]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>生成对抗网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于局部和精细化分割的行人重识别</title>
+    <url>/2018/10/15/PCB/</url>
+    <content><![CDATA[<p>(PCB+RPP)Beyond Part Models: Person Retrieval with Refined Part Pooling (and a Strong Convolutional Baseline)</p>
+<p><a href="https://arxiv.org/abs/1711.09349v3" target="_blank" rel="noopener">Paper</a>,<a href="https://github.com/GenkunAbe/reID-PCB" target="_blank" rel="noopener">code1</a>,<a href="https://github.com/syfafterzy/PCB_RPP_for_reID" target="_blank" rel="noopener">code2</a></p>
+<p>Market1501： rank1：93.8，mAP：81.6</p>
+<p>PCB（Part-based Convolutional  Baseline）：基于局部信息能够获得细粒度特征，对人体的水平分割比较符合人体分布，在一定程度上保护有效信息源，使其不被割裂。</p>
+<p>RPP（Refined Part Pooling）：实现了人体分割中的软分割，在原有水平分割的基础上再进行相应训练，融入对抗训练的思想使的再分割后的图像更加符合细粒度的特征提取，有效的解决了硬性分割带来的有效信息割裂的问题，保证了信息的完整性。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/31947809" target="_blank" rel="noopener">相关解读1</a> <a href="https://blog.csdn.net/Gavinmiaoc/article/details/80350613" target="_blank" rel="noopener">相关解读2</a></p>
+]]></content>
+      <categories>
+        <category>行人再识别</category>
+      </categories>
+      <tags>
+        <tag>多尺度</tag>
+        <tag>行人再识别</tag>
+        <tag>soft-attention</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习多粒度显著特征用于跨境追踪技术</title>
+    <url>/2018/10/10/MGN/</url>
+    <content><![CDATA[<p>(MGN)Learning Discriminative Features with Multiple Granularity for Person Re-Identification</p>
+<p><a href="http://www.sohu.com/a/238041608_633698" target="_blank" rel="noopener">视频介绍</a> ,<a href="https://arxiv.org/abs/1804.01438" target="_blank" rel="noopener">Paper</a>,<a href="https://github.com/seathiefwang/MGN-pytorch" target="_blank" rel="noopener">code1</a>,<a href="https://github.com/levyfan/reid-mgn" target="_blank" rel="noopener">code2</a></p>
+<p>Market1501： rank1：95.7，mAP：86.9</p>
+<p>利用多粒度实现了对全局和局部信息特征的同时提取。其中全局特征模块中对人的整体特征进行的提取可以更好的关注人的整体结构，对图片进行2分和3分的分割对人的局部信息进行提取。该网络依赖ResNet，ResNet大大提高了准确率（ResNet50本身可以达到 Market1501： rank1：89.13，mAP：73.5）</p>
+<p>多粒度的思想能充分提取特征。</p>
+]]></content>
+      <categories>
+        <category>行人再识别</category>
+      </categories>
+      <tags>
+        <tag>多尺度</tag>
+        <tag>行人再识别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法导论</title>
+    <url>/2018/10/08/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/</url>
+    <content><![CDATA[<h1 id="算法导论"><a href="#算法导论" class="headerlink" title="算法导论"></a>算法导论</h1><h2 id="第一章-算法在计算中的应用"><a href="#第一章-算法在计算中的应用" class="headerlink" title="第一章 算法在计算中的应用"></a>第一章 算法在计算中的应用</h2><h3 id="1-2-作为一种技术的算法"><a href="#1-2-作为一种技术的算法" class="headerlink" title="1.2 作为一种技术的算法"></a>1.2 作为一种技术的算法</h3><h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><p>1.2-2 插入排序运行步数为$8n^2$步，而归并排序运行$64nlgn$ 步，问对哪些n值，插入排序优于归并排序？<br>    $8n^2 &lt; 64nlgn$，n=2,3</p>
+<p>1.2.3 n最小值为何值时，运行时间为$100n^2$的一个算法在相同机器上快于运行时间为$2^n$ 的另一个算法？<br>    $100n^2  &lt; 2^n$,n=15</p>
+<h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><p>1-1 （运行时间比较）假设求解问题的算法需要$f(n)$ 毫秒，对下表中每个函数$f(n)$ 和时间t，确定可以在时间t内求解的问题的最大规模n。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1秒钟</th>
+<th>1分钟</th>
+<th>1小时</th>
+<th>1天</th>
+<th>1月</th>
+<th>1年</th>
+<th>1世纪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$lgn$</td>
+<td>$10^4$</td>
+<td>$6\times 10^5$</td>
+<td>$3.6\times 10^7$</td>
+<td>$8.64\times10^8$</td>
+<td>$2.592\times10^{10}$</td>
+<td>$3.1536\times10^{11}$</td>
+<td>$3.1536\times10^{13}$</td>
+</tr>
+<tr>
+<td>$\sqrt{n}$</td>
+<td>$10^6$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>$10^3$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$nlgn$</td>
+<td>386</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$n^2$</td>
+<td>31</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$n^3$</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$2^n$</td>
+<td>9</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$n!$</td>
+<td>6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="第二章-算法基础"><a href="#第二章-算法基础" class="headerlink" title="第二章 算法基础"></a>第二章 算法基础</h2><h3 id="2-1-插入排序"><a href="#2-1-插入排序" class="headerlink" title="2.1 插入排序"></a>2.1 插入排序</h3><h4 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSERTION-SORT(A)</span><br><span class="line">for j = 2 to A.length</span><br><span class="line">	key = A[j]</span><br><span class="line">	//inster A[j] into the sorted sequence A[1..j-1]</span><br><span class="line">	i = j-1</span><br><span class="line">	while i&gt;0 and A[i]&gt;key</span><br><span class="line">		A[i+1] = A[i]</span><br><span class="line">		i = i-1</span><br><span class="line">	A[j+1] = key</span><br></pre></td></tr></table></figure>
+<h4 id="python-实现"><a href="#python-实现" class="headerlink" title="python 实现"></a>python 实现</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sort</span><span class="params">(A)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(A)):</span><br><span class="line">        key = A[j]</span><br><span class="line">        i = j<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> i&gt;<span class="number">-1</span> <span class="keyword">and</span> A[i]&gt;key:</span><br><span class="line">            A[i+<span class="number">1</span>] = A[i]</span><br><span class="line">            i -= <span class="number">1</span></span><br><span class="line">        A[i+<span class="number">1</span>] = key</span><br><span class="line">    <span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
+<h4 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h4><p>2.1-2 重写INSERTION-SORT，使之按降序排序。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sort</span><span class="params">(A)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(A)):</span><br><span class="line">        key = A[j]</span><br><span class="line">        i = j<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> i&gt;<span class="number">-1</span> <span class="keyword">and</span> A[i]&lt;key: <span class="comment"># 将原来的A[i]&gt;k改为 A[i]&lt;k</span></span><br><span class="line">            A[i+<span class="number">1</span>] = A[i]</span><br><span class="line">            i -= <span class="number">1</span></span><br><span class="line">        A[i+<span class="number">1</span>] = key</span><br><span class="line"><span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
+<p>2.1-3 考虑以下查找问题：<br>    输入：n个数的一个序列A=<a<sub>1&lt;/sub&gt;，a<sub>2</sub>,…,a<sub>n</sub>&gt;    和一个数v<br>    输出：当v=A[i]时输出下标i，当v不在A中时输出特殊值 NIL<br>    写出线性查找的伪代码，它扫描整个序列来查找v。使用一个循环不变是来证明你的算法正确性。确保你的循环不变式满足三个必要的性质。</a<sub></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">j = -1</span><br><span class="line">for i = 0 to A.length:</span><br><span class="line">	if A[i] == v</span><br><span class="line">		j = i</span><br><span class="line">		break</span><br><span class="line">	else:</span><br><span class="line">       	i++</span><br><span class="line">if j == -1:</span><br><span class="line">	return NIL</span><br><span class="line">else:</span><br><span class="line">	return j</span><br></pre></td></tr></table></figure>
+<p>2.1-4 考虑将将两个n位二进制整数加起来，这两个整数分别存储在两个n位数组中A和B中，这两个整数的和应该按照二进制形式存储在一个（n+1）元数组C中，写出伪代码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">z = 0</span><br><span class="line">for j = 1 to n：</span><br><span class="line">	i = n - j</span><br><span class="line">	m = A[i] + B[i] + z</span><br><span class="line">	if m%2==0:</span><br><span class="line">		c[i+1] = 0</span><br><span class="line">	else:</span><br><span class="line">		c[i+1] = 1</span><br><span class="line">	if m&gt;1:</span><br><span class="line">		z = 1</span><br><span class="line">	else:</span><br><span class="line">		z = 0</span><br><span class="line">	j++</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-分析算法"><a href="#2-2-分析算法" class="headerlink" title="2.2 分析算法"></a>2.2 分析算法</h3><h5 id="练习-2"><a href="#练习-2" class="headerlink" title="练习"></a>练习</h5><p>2.2-1 用$\Theta$ 记号表示函数$n^3/1000 - 100n^2 -100n +3$</p>
+<p>$\Theta(n^3)$</p>
+<p>2.2-1 对储存在数组A中的n个数进行排序：首先找出A中最小元素并将其与A[1]中的元素进行交换。接着找出A中的次最小元素并将其与A[2]中的元素进行交换。对A中前n-1个圆度按照该方式继续，该算法叫做选择排序，写出其伪代码。用$\Theta$给出选择排序的最好情况与最坏情况运行的时间。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for i = 0 to A.length      </span><br><span class="line">	min = a[i]</span><br><span class="line">	tempj = i</span><br><span class="line">	for j = A.length - i to A.length  </span><br><span class="line">		if a[j] &lt; min:</span><br><span class="line">			min = a[j]</span><br><span class="line">			tempj = j</span><br><span class="line">	temp = a[i]</span><br><span class="line">	a[i] = min</span><br><span class="line">	a[j] = temp</span><br></pre></td></tr></table></figure>
+<p>最好情况时即已经排序好，则为$\Theta(n)$，最坏的情况为逆序，则为$\Theta(n^2)$</p>
+<p>2.2-3 线性查找平均需要检查输入序列的多少个元素，最坏的情况又如何？</p>
+<p>平均查找需要$\theta(n/2)$,最坏需要$\theta(n)$</p>
+<h3 id="2-3-设计算法"><a href="#2-3-设计算法" class="headerlink" title="2.3 设计算法"></a>2.3 设计算法</h3><h4 id="2-3-1-分治法"><a href="#2-3-1-分治法" class="headerlink" title="2.3.1 分治法"></a>2.3.1 分治法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MERGE(A, p, q, r)</span><br><span class="line">n1 = q - p + 1</span><br><span class="line">n2 = r - q</span><br><span class="line">let L[1..n1 + 1] and R[1..n2 + 1] by new arrays</span><br><span class="line">for i = 1 to n1</span><br><span class="line">	L[i] = A[p + i -1]</span><br><span class="line">for j =  1 to n2</span><br><span class="line">	R[j] = A[q + j]</span><br><span class="line">L[n1 + 1] = &amp; infin;</span><br><span class="line">L[n2 + 1] = &amp; infin;</span><br><span class="line">i = 1</span><br><span class="line">j = 1</span><br><span class="line">for k = p to r</span><br><span class="line">	if L[i] &lt;= R[j]</span><br><span class="line">		A[k] = L[i]</span><br><span class="line">		i = i + 1</span><br><span class="line">	else </span><br><span class="line">		A[k] = R[j]</span><br><span class="line">		j = j + 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MEGRE-SORT(A, p, r)</span><br><span class="line">if p &lt; r</span><br><span class="line">	q = [(p+r)/2]</span><br><span class="line">	MEGRE-SORT(A, p, q)</span><br><span class="line">	MEGRE-SORT(A, q+1, r)</span><br><span class="line">	MERGE(A, p, q, r)</span><br></pre></td></tr></table></figure>
+<p>归并排序算法python实现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sort</span><span class="params">(A)</span>:</span></span><br><span class="line">    <span class="comment"># 分</span></span><br><span class="line">    <span class="keyword">if</span> len(A)&lt;=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> A</span><br><span class="line"></span><br><span class="line">    middle = len(A)//<span class="number">2</span></span><br><span class="line">    left = sort(A[:middle])</span><br><span class="line">    right = sort(A[middle:])</span><br><span class="line">    <span class="comment"># 治</span></span><br><span class="line">    <span class="keyword">return</span> merge(left,right)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 治</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left,right)</span>:</span></span><br><span class="line">    c = []</span><br><span class="line">    h = j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> j&lt;len(left) <span class="keyword">and</span> h&lt;len(right):</span><br><span class="line">        <span class="keyword">if</span> left[j]&lt;right[h]:</span><br><span class="line">            c.append(left[j])</span><br><span class="line">            j+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            c.append(right[h])</span><br><span class="line">            h+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> j==len(left):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> right[h:]:</span><br><span class="line">            c.append(i)</span><br><span class="line">    <span class="keyword">if</span> h==len(right):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> left[j:]:</span><br><span class="line">            c.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> c</span><br></pre></td></tr></table></figure>
+<h2 id="第3章-函数的增长"><a href="#第3章-函数的增长" class="headerlink" title="第3章 函数的增长"></a>第3章 函数的增长</h2><h2 id="第7章-快速排序"><a href="#第7章-快速排序" class="headerlink" title="第7章 快速排序"></a>第7章 快速排序</h2><h3 id="7-1-快速排序的描述"><a href="#7-1-快速排序的描述" class="headerlink" title="7.1 快速排序的描述"></a>7.1 快速排序的描述</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">QUICKSOURT(A, p, r)</span><br><span class="line">	if p&lt;r</span><br><span class="line">		q = PARTITION(A, p, r)</span><br><span class="line">		QUICKSOURT(A, p, q-1)</span><br><span class="line">		QUICKSOURT(A, q+1, r)</span><br><span class="line"></span><br><span class="line">PARTITION(A, p, r)</span><br><span class="line">	x = A[r]</span><br><span class="line">	i = p-1</span><br><span class="line">	for j=p to r-1</span><br><span class="line">		if A[j]&lt;x</span><br><span class="line">			i = i+1</span><br><span class="line">			exchange A[i] with A[j]</span><br><span class="line">	exchange A[i+1] with A[r]</span><br></pre></td></tr></table></figure>
+<p>快速排序的python实现<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(A, p, r)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> p &lt; r:</span><br><span class="line">        q = partition(A, p, r)</span><br><span class="line">        quicksort(A, p, q<span class="number">-1</span>)</span><br><span class="line">        quicksort(A, q+<span class="number">1</span>, r)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(A, p, r)</span>:</span></span><br><span class="line">    x = A[r]</span><br><span class="line">    i = p<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(p, r):</span><br><span class="line">        <span class="keyword">if</span> A[j]&lt;=x:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            A[i], A[j] = A[j], A[i] <span class="comment"># 交换位置，将小于x的放到左边，i是划分的位置点</span></span><br><span class="line">    A[i+<span class="number">1</span>], A[r] = A[r], A[i+<span class="number">1</span>]  <span class="comment"># 最后将主元x放到两个序列中间</span></span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="7-2-快速排序的性能"><a href="#7-2-快速排序的性能" class="headerlink" title="7.2 快速排序的性能"></a>7.2 快速排序的性能</h3><p>1、最坏情况划分</p>
+<p>当每次划分的两个子问题分别含有n-1个元素和0个元素时，此时快速排序的时间复杂度为$O(n^2)$</p>
+<p>2、最好情况划分</p>
+<p>在最平衡划分时每个子问题的规模都不大于n/2，此时时间复杂度为$O(nlgn)$</p>
+<p>3、平衡的划分</p>
+<p>最一般的情况下，两个子问题都不是最坏的情况也不是最平衡时，时间复杂度同样为$O(nlgn)$</p>
+<h3 id="7-3-快速排序的随机化版本"><a href="#7-3-快速排序的随机化版本" class="headerlink" title="7.3 快速排序的随机化版本"></a>7.3 快速排序的随机化版本</h3><p>在上面的快速排序中主元每次都是取A[r]，随机化的版本则是每次随机化的选取数组中的一个元素作为主元，这样会使得数组的划分更为均衡化。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RANDOMIZED-PARTITION(A, p, r)</span><br><span class="line">	i = RANDOM(p, r)</span><br><span class="line">	exchange A[r] with A[i]</span><br><span class="line">	return PARTITION(A, p, r)</span><br><span class="line"># 随机化的快速排序不在调用PARTITION,而是调用RANDOMIZED-PARTITION</span><br><span class="line">RANDOMIZED-QUICKSOURT(A, p, r)</span><br><span class="line">	if p&lt;r</span><br><span class="line">		q = RANDOMIZED-PARTITION(A, p, r)</span><br><span class="line">		RANDOMIZED-QUICKSOURT(A, p, q-1)</span><br><span class="line">		RANDOMIZED-QUICKSOURT(A, q+1, r)</span><br></pre></td></tr></table></figure>
+<p>随机化的快速排序python实现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">randomzed_quicksort</span><span class="params">(A, p, r)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> p &lt; r:</span><br><span class="line">        q = randomzed_(A, p, r)</span><br><span class="line">        randomzed_quicksort(A, p, q<span class="number">-1</span>)</span><br><span class="line">        randomzed_quicksort(A, q+<span class="number">1</span>, r)</span><br><span class="line">        </span><br><span class="line"><span class="comment">#随机化过程</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">randomzed_</span><span class="params">(A, p, r)</span>:</span></span><br><span class="line">    i = random.randint(p, r)</span><br><span class="line">    A[r],A[i] = A[i],A[r]</span><br><span class="line">    <span class="keyword">return</span> partition(A, p, r)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(A, p, r)</span>:</span></span><br><span class="line">    x = A[r]</span><br><span class="line">    i = p<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(p, r):</span><br><span class="line">        <span class="keyword">if</span> A[j]&lt;=x:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            A[i], A[j] = A[j], A[i]</span><br><span class="line">    A[i+<span class="number">1</span>], A[r] = A[r], A[i+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+</search>
