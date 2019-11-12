@@ -6,7 +6,7 @@
     <content><![CDATA[<h1 id="PyTorch分布式训练"><a href="#PyTorch分布式训练" class="headerlink" title="PyTorch分布式训练"></a>PyTorch分布式训练</h1><p>目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="./distribute/1.png" alt="" title="">
+                    <img src="/2019/11/11/distribute/1.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
@@ -18,7 +18,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="./distribute/2.png" alt="" title="">
+                    <img src="/2019/11/11/distribute/2.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
