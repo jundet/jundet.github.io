@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>LDA与PDA | GISTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,降维">
+    <meta name="description" content="线性判别分析（LDA）LDA是一种经典的线性学习方法，也称为“Fisher判别分析”。 LDA的基本思想：给定训练集，设法将样例投影到一条直线上，使得同类样例的投影点尽可能接近，不同种类样例的投影点尽可能远。 为实现同类样例的投影点尽可能接近，可让同类样例投影点的协方差尽可能小。而实现不同种类样例的投影点尽可能远，则不同种类样例投影中心的距离尽可能大。 二分类问题同时实现以上两种情况则可最大化$J">
+<meta name="keywords" content="机器学习,降维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LDA与PDA">
+<meta property="og:url" content="http://www.gistime.cn/2019/11/14/ldapca/index.html">
+<meta property="og:site_name" content="GISTime">
+<meta property="og:description" content="线性判别分析（LDA）LDA是一种经典的线性学习方法，也称为“Fisher判别分析”。 LDA的基本思想：给定训练集，设法将样例投影到一条直线上，使得同类样例的投影点尽可能接近，不同种类样例的投影点尽可能远。 为实现同类样例的投影点尽可能接近，可让同类样例投影点的协方差尽可能小。而实现不同种类样例的投影点尽可能远，则不同种类样例投影中心的距离尽可能大。 二分类问题同时实现以上两种情况则可最大化$J">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-14T09:01:16.397Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LDA与PDA">
+<meta name="twitter:description" content="线性判别分析（LDA）LDA是一种经典的线性学习方法，也称为“Fisher判别分析”。 LDA的基本思想：给定训练集，设法将样例投影到一条直线上，使得同类样例的投影点尽可能接近，不同种类样例的投影点尽可能远。 为实现同类样例的投影点尽可能接近，可让同类样例投影点的协方差尽可能小。而实现不同种类样例的投影点尽可能远，则不同种类样例投影中心的距离尽可能大。 二分类问题同时实现以上两种情况则可最大化$J">
+    
+        <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/gistime.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://www.gistime.cn" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gistime.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GISTime</h5>
+          <!-- <a href="mailto:GISTime for everyone" title="GISTime for everyone" class="mail">GISTime for everyone</a> -->
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LDA与PDA</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LDA与PDA</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-14T07:45:45.000Z" itemprop="datePublished" class="page-time">
+  2019-11-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线性判别分析（LDA）"><span class="post-toc-text">线性判别分析（LDA）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二分类问题"><span class="post-toc-text">二分类问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多分类问题"><span class="post-toc-text">多分类问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主成分分析（PCA）"><span class="post-toc-text">主成分分析（PCA）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异同点比较"><span class="post-toc-text">异同点比较</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#相同点"><span class="post-toc-text">相同点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不同点"><span class="post-toc-text">不同点</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ldapca"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LDA与PDA</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-14 15:45:45" datetime="2019-11-14T07:45:45.000Z"  itemprop="datePublished">2019-11-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="线性判别分析（LDA）"><a href="#线性判别分析（LDA）" class="headerlink" title="线性判别分析（LDA）"></a>线性判别分析（LDA）</h2><p>LDA是一种经典的线性学习方法，也称为“Fisher判别分析”。</p>
+<p>LDA的基本思想：给定训练集，设法将样例投影到一条直线上，使得同类样例的投影点尽可能接近，不同种类样例的投影点尽可能远。</p>
+<p>为实现同类样例的投影点尽可能接近，可让同类样例投影点的协方差尽可能小。而实现不同种类样例的投影点尽可能远，则不同种类样例投影中心的距离尽可能大。</p>
+<h3 id="二分类问题"><a href="#二分类问题" class="headerlink" title="二分类问题"></a>二分类问题</h3><p>同时实现以上两种情况则可最大化$J$.</p>
+<script type="math/tex; mode=display">
+J= \frac{\|\omega^T\mu_0 - \omega^T\mu_1\|_2^2}{\omega^T \Sigma_0\omega + \omega^T\Sigma_1\omega}\\
+=\frac{\omega^T(\mu_0-\mu_1)(\mu_0-\mu_1)^T\omega}{\omega^T(\Sigma_0+\Sigma_1)\omega}</script><p>其中$\mu_i$为第i类的均值向量、$\Sigma_i$为第i类的协方差矩阵，$\omega$为投影直线。$\omega^T\mu_i$为第i类投影到$\omega$上的投影中心，$\omega^T \Sigma_i\omega$为第i类投影到$\omega$上的协方差矩阵</p>
+<p>设$S_\omega$为类内散度矩阵</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S_\omega&=\Sigma_0+\Sigma_1\\
+&=\sum_{x\in X_0}(x-\mu_0)(x-\mu_0)^T + \sum_{x\in X_1}(x-\mu_1)(x-\mu_1)^T
+\end{aligned}</script><p>设$S_b$为类间散度矩阵</p>
+<script type="math/tex; mode=display">
+S_b=(\mu_0-\mu_1)(\mu_0-\mu_1)^T</script><p>则</p>
+<script type="math/tex; mode=display">
+J=\frac{\omega^TS_b\omega}{\omega^TS_\omega\omega}</script><p>此时$J$就是LDA的最大化目标，即$S_b$与$S_\omega$的广义瑞利商。</p>
+<p>为求$\omega$令$\omega^TS_\omega\omega=1$,此时优化目标转变为</p>
+<script type="math/tex; mode=display">
+min_\omega -\omega^TS_b\omega\\
+s.t. \omega^TS_\omega\omega=1</script><p>由拉格朗日乘子式,</p>
+<script type="math/tex; mode=display">
+S_b\omega=\lambda S_\omega \omega</script><p>令$S_b\omega=\lambda(\mu_0-\mu_1)$则</p>
+<script type="math/tex; mode=display">
+\omega=S_\omega^{-1}(\mu_0-\mu_1)</script><h3 id="多分类问题"><a href="#多分类问题" class="headerlink" title="多分类问题"></a>多分类问题</h3><p>假定存在N个类，且第i类示例数为$m_i$。</p>
+<p>设全局散度矩阵为$S_t$</p>
+<script type="math/tex; mode=display">
+S_t=S_b+S_\omega\\
+=\sum_{i=1}^{m}(x_i-\mu)(x_i-\mu)^T</script><p>其中$\mu$是所有示例的均值向量，此时</p>
+<script type="math/tex; mode=display">
+S_\omega=\sum_{i=1}^N S_{\omega i}</script><p>其中</p>
+<script type="math/tex; mode=display">
+S_{\omega i}=\sum_{x \in X_i}(x-\mu_i)(x-\mu_i)^T</script><p>则</p>
+<script type="math/tex; mode=display">
+S_b=S_t-S_\omega\\
+=\sum_{i=1}^N m_i(x-\mu_i)(x-\mu_i)^T</script><p>多分类的优化目标为</p>
+<script type="math/tex; mode=display">
+max_W \frac{tr(W^TS_bW)}{tr(W^TS_\omega W)}</script><p>其中$W\in R^{d\times (N-1)}$,</p>
+<script type="math/tex; mode=display">
+S_bW=\lambda S_\omega W</script><p>$W$的闭式解则是$S_\omega^{-1}S_b$的$d’$个最大非零广义特征值所对应的特征向量组成的矩阵。</p>
+<p>LDA是一种经典的有监督降维技术，其流程为</p>
+<p>1.计算类内散度矩阵$S_\omega$</p>
+<p>2.计算类间散度矩阵$S_b$</p>
+<p>3.对$S_\omega^{-1}S_b$进行特征分解</p>
+<p>4.返回最大非零广义特征值对应的特征向量</p>
+<h2 id="主成分分析（PCA）"><a href="#主成分分析（PCA）" class="headerlink" title="主成分分析（PCA）"></a>主成分分析（PCA）</h2><p>PCA是一种典型的无监督降维方法。如果用一个超平面对所有样本进行恰当的描述，则超平面应满足的性质有：</p>
+<ul>
+<li><p>最近重构性：样本点到这个超平面的距离都足够近。</p>
+</li>
+<li><p>最大可分性： 样本点在这个超平面上的投影尽可能分开。</p>
+</li>
+</ul>
+<p>从最大可分性分析，样本点$x_i$在超平面上的投影为$W^Tx_i$，为实现所有样本点的投影尽可能分开这一目标，则应该使投影后的样本点之间方差最大化。投影后样本点的方差为$\sum_iW^Tx_ix_i^TW$,则最优化目标为</p>
+<script type="math/tex; mode=display">
+max_W  tr(W^TXX^TW)\\
+s.t. W^TW=I</script><p>对上式使用拉格朗日乘子式可得</p>
+<script type="math/tex; mode=display">
+XX^T\omega_i=\lambda \omega _i</script><p>于是对$XX^T$进行特征分解，对特征值进行排序，取前$d’$个特征值对应的特征向量构成特征矩阵。</p>
+<p>PCA的流程为</p>
+<p>1.对所有样本进行中心化：$x_i\gets x_i -\mu$,其中$\mu$是均值</p>
+<p>2.计算样本的协方差矩阵$XX^T$</p>
+<p>3.对矩阵进行特征值分解</p>
+<p>4.取最大的$d’$个特征值对应的特征向量构成特征矩阵（投影矩阵）。</p>
+<p>输出投影矩阵</p>
+<h2 id="异同点比较"><a href="#异同点比较" class="headerlink" title="异同点比较"></a>异同点比较</h2><h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p>1、LDA与PCA都是典型的降维方法。</p>
+<p>2、LDA与PCA都假设样本符合高斯分布。</p>
+<p>3、LDA与PCA都应用可特征值分解</p>
+<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><p>1、LDA为有监督，PCA为无监督</p>
+<p>2、PCA是去掉原有数据的冗余的维度，LDA是选择一个最佳的投影方向，使得投影后相同类别的数据分布紧凑，不同类别的数据尽量相互远离。</p>
+<p>3、LDA最多可以降到k-1维（k是训练样本的类别数量，k-1是因为最后一维的均值可以由前面的k-1维的均值表示）；PCA无限制</p>
+<p>4、LDA可能会过拟合数据。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-11-14T09:01:16.397Z" itemprop="dateUpdated">2019-11-14 17:01:16</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.gistime.cn">
+            <img src="/img/gistime.png" alt="GISTime">
+            GISTime
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/降维/">降维</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/11/14/ldapca/&title=《LDA与PDA》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/11/14/ldapca/&title=《LDA与PDA》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/11/14/ldapca/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LDA与PDA》 — GISTime&url=http://www.gistime.cn/2019/11/14/ldapca/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/11/14/ldapca/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/11/distribute/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PyTorch 分布式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span><a href="http://www.gistime.cn/" target="_blank">GISTime</a> &copy; 2017 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备17010437号</a><br>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/11/14/ldapca/&title=《LDA与PDA》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/11/14/ldapca/&title=《LDA与PDA》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/11/14/ldapca/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LDA与PDA》 — GISTime&url=http://www.gistime.cn/2019/11/14/ldapca/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/11/14/ldapca/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/11/14/ldapca/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'GISTime';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'GISTime';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
