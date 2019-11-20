@@ -14,27 +14,27 @@
     
     
     
-    <title>神经网络反向传播 | GISTime</title>
+    <title>支持向量机 | GISTime</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="机器学习,神经网络">
-    <meta name="description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
-<meta name="keywords" content="机器学习,神经网络">
+    <meta name="keywords" content="机器学习">
+    <meta name="description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="神经网络反向传播">
-<meta property="og:url" content="http://www.gistime.cn/2019/09/04/network/index.html">
+<meta property="og:title" content="支持向量机">
+<meta property="og:url" content="http://www.gistime.cn/2019/11/19/svm/index.html">
 <meta property="og:site_name" content="GISTime">
-<meta property="og:description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
+<meta property="og:description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.gistime.cn/2019/09/04/network/1.jpg">
-<meta property="og:updated_time" content="2019-11-19T08:46:30.532Z">
+<meta property="og:image" content="http://www.gistime.cn/2019/11/19/svm/1.png">
+<meta property="og:updated_time" content="2019-11-20T06:35:02.779Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="神经网络反向传播">
-<meta name="twitter:description" content="误差逆传播算法摘自机器学习-西瓜书-周志华 部分内容为个人理解 给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$">
-<meta name="twitter:image" content="http://www.gistime.cn/2019/09/04/network/1.jpg">
+<meta name="twitter:title" content="支持向量机">
+<meta name="twitter:description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
+<meta name="twitter:image" content="http://www.gistime.cn/2019/11/19/svm/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
     
@@ -108,7 +108,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">神经网络反向传播</div>
+        <div class="flex-col header-title ellipsis">支持向量机</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -130,15 +130,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">神经网络反向传播</h1>
+        <h1 class="title">支持向量机</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-09-04T08:14:18.000Z" itemprop="datePublished" class="page-time">
-  2019-09-04
+                <time datetime="2019-11-19T07:14:04.000Z" itemprop="datePublished" class="page-time">
+  2019-11-19
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/深度学习/">深度学习</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
 
             
         </h5>
@@ -155,21 +155,21 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#误差逆传播算法"><span class="post-toc-text">误差逆传播算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前项传播过程"><span class="post-toc-text">前项传播过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参数计算"><span class="post-toc-text">参数计算</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向传播过程"><span class="post-toc-text">反向传播过程</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持向量机（SVM）"><span class="post-toc-text">支持向量机（SVM）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线性可分支持向量机"><span class="post-toc-text">线性可分支持向量机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对偶问题"><span class="post-toc-text">对偶问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软间隔"><span class="post-toc-text">软间隔</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非线性支持向量机"><span class="post-toc-text">非线性支持向量机</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-network"
+<article id="post-svm"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">神经网络反向传播</h1>
+        <h1 class="post-card-title">支持向量机</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-09-04 16:14:18" datetime="2019-09-04T08:14:18.000Z"  itemprop="datePublished">2019-09-04</time>
+            <time class="post-time" title="2019-11-19 15:14:04" datetime="2019-11-19T07:14:04.000Z"  itemprop="datePublished">2019-11-19</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/深度学习/">深度学习</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
 
 
 
@@ -181,57 +181,88 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h1><p>摘自机器学习-西瓜书-周志华</p>
-<p>部分内容为个人理解</p>
-<p>给定训练集$D={(x_1,y_1),(x_2,y_2),…,(x_m,y_m)},x_i \in R^d,y_i\in R^l$,即输入示例由$d$个属性描述，输出$l$维实值向量。多层前馈网络结构拥有$d$个输入神经元、$l$个输出神经元、$q$个隐层神经元，其中输出层第$j$个神经元的阈值用$\theta_j$表示，隐层第$h$个神经元的阈值用$\gamma_h$表示。输入层第$i$个神经元与隐层第$h$个神经元之间的连接权（权重）为$\nu_{ih}$，隐层第$h$个神经元与输出层第$j$个神经元之间的连接权为$\omega_{hj}$。记隐层第$h$个神经元接收到的输入为$\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$,输出层第$j$个神经元接收到的输入为$\beta_j=\sum_{h=1}^q\omega_{hj}b_h$,其中$b_n$为隐层第$h$个神经元的输出。假设隐层和输出层神经元都是用$Sigmoid$函数。对训练例$(x_k,y_k)$，假定神经网络的输出为$\hat y_k = (\hat y^k_1,\hat y^k_2,…,\hat y^k_l)$,即</p>
-<script type="math/tex; mode=display">
-\hat y^k_j = f(\beta_j - \theta_j) \tag{1}</script><p>则网络在$（x_k，y_k）$上的均方误差为</p>
-<script type="math/tex; mode=display">
-E_k=\frac{1}{2} \sum^l_{j=1}({\hat y^k_j} - y^k_j)^2 \tag{2}</script><figure class="image-bubble">
+            <h2 id="支持向量机（SVM）"><a href="#支持向量机（SVM）" class="headerlink" title="支持向量机（SVM）"></a>支持向量机（SVM）</h2><p>推荐讲解视频 <a href="https://www.bilibili.com/video/av28186618?from=search&amp;seid=9446689980433433378" target="_blank" rel="noopener">白板推导</a></p>
+<p>支持向量机的思想是寻找样本分类的最大间隔。</p>
+<p>设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$.</p>
+<h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/09/04/network/1.jpg" alt="" title="">
+                    <img src="/2019/11/19/svm/1.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<h2 id="前项传播过程"><a href="#前项传播过程" class="headerlink" title="前项传播过程"></a>前项传播过程</h2><p>输入层输入 $x_1,x_2,…,x_m$</p>
-<p>隐层输入 $\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$</p>
-<p>隐层输出$b_h= f(\alpha_h-\gamma_h)$</p>
-<p>输出层输入 $\beta_j=\sum_{h=1}^q\omega_{hj}b_h$</p>
-<p>输出层输出 $\hat y^k_j = f(\beta_j - \theta_j)$</p>
-<p>其中$f(\cdot)$为激活函数，文中使用$Sigmoid$函数</p>
-<p>$Sigmoid(x) = \frac{1}{1+e^{-x}}$</p>
-<h2 id="参数计算"><a href="#参数计算" class="headerlink" title="参数计算"></a>参数计算</h2><p>网络中需要计算的参数总数为$(d+l+1)q+l$,输入层到隐层的$d\times q$个权重值，隐层到输出层的$q\times l$个权重值，$q$个隐层神经元的阈值、$l$个输出层神经网络的阈值。</p>
-<h2 id="反向传播过程"><a href="#反向传播过程" class="headerlink" title="反向传播过程"></a>反向传播过程</h2><p>任意参数$\nu$的更新估计式为</p>
+<p>线性可分支持向量机是最基本的支持向量机，分类超平面为</p>
 <script type="math/tex; mode=display">
-\nu \gets \nu + \Delta\nu</script><p>BP算法基于梯度下降策略，以目标的负梯度方向对参数进行调整，对式(2)的误差$E_k$，给定学习率$\eta$,有</p>
+w^Tx+b=0 \tag{1}</script><p>当样本点为正例时$w^Tx_i+b\ge 0,y_i=+1$,当样本点为反例时$w^Tx_i+b\le 0,y_i=-1$,因此</p>
 <script type="math/tex; mode=display">
-\Delta\omega_{hj} = -\eta \frac{\partial E_k}{\partial\omega_{hj}} \tag{3}</script><p>注意到$\omega_{hj}$先影响到$j$个输出层神经元的输入值$\beta_j$，在影响到其输出值$\hat y^k_j$,然后在影响到$E_k$,有</p>
+y_i(w^Tx_i+b)\ge 1 \tag{2}</script><p>样本点到超平面的距离</p>
 <script type="math/tex; mode=display">
-\frac{\partial E_k}{\partial\omega_{hj}} = \frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j}\cdot\frac{\partial \beta_j}{\partial\hat y^k_j} \tag{4}</script><p>根据$\beta_j$的定义显然有</p>
+r_i=\frac{|w^tx_i|+b}{||w||}</script><p>两个边界之间的距离为</p>
 <script type="math/tex; mode=display">
-\frac{\partial \beta_j}{\partial\hat y^k_j} = b_n \tag{5}</script><p>$Sigmoid$函数有一个很好的性质：</p>
-<script type="math/tex; mode=display">
-f^{'}(x)=f(x)(1-f(x))</script><p>令$g_j=-\frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j}$ ,则</p>
+r=\frac{2}{||w||}</script><p>要获得最大间隔即求最大的r，</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-g_j&=-\frac{\partial E_k}{\partial\hat y^k_j}\cdot\frac{\partial \hat y^k_j}{\partial\beta_j} \\
-&=-(\hat y^k_j-y^k_j)f^{'}(\beta - \theta_j)\\
-&= \hat y^k_j(1-\hat y^k_j)(y^k_j-\hat y^k_j) 
-\end{aligned}\tag{6}</script><p>将式(6)和式(5)代入式(4)，再代入式(3)可以得到：</p>
-<script type="math/tex; mode=display">
-\Delta\omega_hj = \eta g_jb_h</script><p>类似的可以得到</p>
-<script type="math/tex; mode=display">
-\Delta\theta_j=-\eta g_j</script><script type="math/tex; mode=display">
-\Delta \nu_ih = \eta e_hx_i</script><script type="math/tex; mode=display">
-\Delta\gamma_h=-\eta e_h</script><p>其中</p>
+& \max_{w,b}\quad \frac{2}{||w||}\\
+& s.t.\quad y_i(w^Tx_i+b)\ge 1,\quad i=1,2,...,m
+\end{aligned}</script><p>转化为最小化问题即</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h}\\
-&=-\sum^l_{j=1}\frac{\partial E_k}{\partial \beta_j}\cdot\frac{\partial \beta_j}{\partial b_h}f^{'}(\alpha_h-\gamma_h)\\
-&=\sum^l_{j=1}\omega_{hj}g_jf^{'}(\alpha_h-\gamma_h)\\
-&=b_h(1-b_h)\sum^l_{j=1}\omega_{hj}g_j
-\end{aligned}</script>
+& \min_{w,b}\quad \frac{1}{2}{||w||^2}\\
+& s.t.\quad y_i(w^Tx_i+b)\ge 1,\quad i=1,2,...,m
+\end{aligned} \tag{3}</script><p>式(3)即为支持向量机的基本型优化问题。</p>
+<p>求得最优化问题的结$w^<em>,b^</em>$,得到线性可分支持向量机，分离超平面为</p>
+<script type="math/tex; mode=display">
+w^*x+b^*=0</script><p>分类决策函数为</p>
+<script type="math/tex; mode=display">
+f(x)=sign(w^*x+b^*)</script><h3 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h3><p>式(3)的拉格朗日乘子式是</p>
+<script type="math/tex; mode=display">
+L(w,b,\lambda)=\frac{1}{2}{||w||^2}+\sum_{i=1}^{m}{\lambda_i(1-y_i(w^Tx_i+b))} \tag{4}</script><p>对式(4)中$w,b$分别求偏导可得</p>
+<script type="math/tex; mode=display">
+\frac{\partial L}{\partial b}=-\sum_{i=1}^m\lambda_i y_i\\
+\frac{\partial L}{\partial w}=w-\sum_{i=1}^m\lambda_iy_ix_i</script><p>令$\frac{\partial L}{\partial b},\frac{\partial L}{\partial w}$为0可求得</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^m\lambda_i y_i=0\\
+w=\sum_{i=1}^m\lambda_iy_ix_i \tag{5}</script><p>将式(5)代入$L(w,b,\lambda)$中可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+L(w,b,\lambda)&=\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}+\sum_{i=1}^{m}\lambda_i-\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}\\
+&=\sum_{i=1}^{m}\lambda_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}
+\end{aligned}</script><p>即原问题式(3)的对偶问题为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\max_\lambda \quad & \sum_{i=1}^{m}\lambda_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}\\
+s.t.,\quad & \sum_{i=1}^m\lambda_i y_i\quad=0\\
+&\lambda_i\ge0, \quad i=1,2,...,m
+\end{aligned} \tag{6}</script><p>注：此问题符合强对偶关系即</p>
+<script type="math/tex; mode=display">
+\min_{w,b}\max_\lambda L(w,b,\lambda)= \max_\lambda \min_{w,b} L(w,b,\lambda)</script><p>注：$强对偶关系\Leftrightarrow KKT$</p>
+<p>设$\lambda^<em>,w^</em>,b^*$为最优解则有KKT条件：</p>
+<script type="math/tex; mode=display">
+\lambda_i^*(y_i(w^{*T}x+b^*)-1)=0 \\
+y_i(w^{*T}x+b^*)-1\ge 0\\
+\lambda_i^*\ge 0</script><p>其中$w^<em>=\sum_{i=1}^m\lambda_i^</em> y_ix_i$,$b^<em>=y_i-\sum_{i=1}^m\lambda_i^</em>y_ix_i^Tx_j$</p>
+<h3 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h3><p>在线性可分支持向量机中假设所有的样本能够完全被超平面加以区分，但实际的数据中会存在误差，解决这些误差的方法为使用损失函数。</p>
+<p>最直接的损失函数为“0/1”损失函数，正确项为0，错误项为1，此时优化目标变为</p>
+<script type="math/tex; mode=display">
+\min_{w,b}\quad  \frac{1}{2}w^Tx +C\sum_{i=1}^m \ell_{0/1}(y_i(w^Tx_i+b)-1)</script><p>其中$C$为缩放系数（超参数），$\ell_{0/1}$为0/1损失函数。</p>
+<p>由于$\ell_{0/1}$不具有连续性，因此一般使用其他损失函数代替$\ell_{0/1}$。</p>
+<p>hinge（合页）损失：$\ell_{hinge}=max\{0,(y_i(w^Tx_i+b)-1)\}$</p>
+<p>引入松弛变量$\xi$，优化目标变为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\min_{w,b,\xi}\quad &\frac{1}{2}||w||^2+C\sum_{i=1}^m \xi_i\\
+s.t. \quad &y_i(w^Tx_i+b)-1\ge\xi_i,\\
+& \xi_i\ge0     
+\end{aligned}\tag{7}</script><p>其对偶问题为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\max_\lambda \quad & \sum_{i=1}^{m}\lambda_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}\\
+s.t.,\quad & \sum_{i=1}^m\lambda_i y_i\quad=0\\
+&C\ge\lambda_i\ge0, \quad i=1,2,...,m
+\end{aligned} \tag{8}</script><h3 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h3><p>通过非线性变换将样本转换到高维空间中在进行线性分类。在线性支持向量机学习的对偶问题中，目标函数只涉及样本间的内积，即$x_i^T x_j$。假设映射函数为$\phi(x)$，则在高维空间中样本间内积为$\phi(x_i^T)\phi(x_j)$。令</p>
+<script type="math/tex; mode=display">
+K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积。非线性支持向量机通过核化得到核线性判别分析（KLDA）。</p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -239,7 +270,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-11-19T08:46:30.532Z" itemprop="dateUpdated">2019-11-19 16:46:30</time>
+    最后更新时间：<time datetime="2019-11-20T06:35:02.779Z" itemprop="dateUpdated">2019-11-20 14:35:02</time>
 </span><br>
 
 
@@ -259,7 +290,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 
 
             
@@ -269,7 +300,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/11/19/svm/&title=《支持向量机》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -279,22 +310,22 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/11/19/svm/&title=《支持向量机》 — GISTime&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/04/network/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/11/19/svm/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《神经网络反向传播》 — GISTime&url=http://www.gistime.cn/2019/09/04/network/&via=http://www.gistime.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《支持向量机》 — GISTime&url=http://www.gistime.cn/2019/11/19/svm/&via=http://www.gistime.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/04/network/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/11/19/svm/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -314,21 +345,14 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/09/19/Optimizer/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">优化器</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/01/29/Django /" id="post-next" class="post-nav-link">
+      <a href="/2019/11/14/ldapca/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Django 使用教程</h4>
+        <h4 class="title">LDA与PDA</h4>
       </a>
     </div>
   
@@ -401,7 +425,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/11/19/svm/&title=《支持向量机》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -411,22 +435,22 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/09/04/network/&title=《神经网络反向传播》 — GISTime&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/11/19/svm/&title=《支持向量机》 — GISTime&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/09/04/network/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/11/19/svm/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《神经网络反向传播》 — GISTime&url=http://www.gistime.cn/2019/09/04/network/&via=http://www.gistime.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《支持向量机》 — GISTime&url=http://www.gistime.cn/2019/11/19/svm/&via=http://www.gistime.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/09/04/network/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/11/19/svm/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -437,7 +461,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/09/04/network/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/11/19/svm/" alt="微信分享二维码">
 </div>
 
 
