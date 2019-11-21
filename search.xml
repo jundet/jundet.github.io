@@ -6,7 +6,13 @@
     <content><![CDATA[<h2 id="支持向量机（SVM）"><a href="#支持向量机（SVM）" class="headerlink" title="支持向量机（SVM）"></a>支持向量机（SVM）</h2><p>推荐讲解视频 <a href="https://www.bilibili.com/video/av28186618?from=search&amp;seid=9446689980433433378" target="_blank" rel="noopener">白板推导</a></p>
 <p>支持向量机的思想是寻找样本分类的最大间隔。</p>
 <p>设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$.</p>
-<h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><p><img src="/2019/11/19/svm/1.png" alt=""></p>
+<h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/11/19/svm/1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>线性可分支持向量机是最基本的支持向量机，分类超平面为</p>
 <script type="math/tex; mode=display">
 w^Tx+b=0 \tag{1}</script><p>当样本点为正例时$w^Tx_i+b\ge 0,y_i=+1$,当样本点为反例时$w^Tx_i+b\le 0,y_i=-1$,因此</p>
@@ -172,13 +178,25 @@ XX^T\omega_i=\lambda \omega _i</script><p>于是对$XX^T$进行特征分解，�
   <entry>
     <title>PyTorch 分布式</title>
     <url>/2019/11/11/distribute/</url>
-    <content><![CDATA[<h1 id="PyTorch分布式训练"><a href="#PyTorch分布式训练" class="headerlink" title="PyTorch分布式训练"></a>PyTorch分布式训练</h1><p>目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。<br><img src="/2019/11/11/distribute/1.png" alt=""></p>
+    <content><![CDATA[<h1 id="PyTorch分布式训练"><a href="#PyTorch分布式训练" class="headerlink" title="PyTorch分布式训练"></a>PyTorch分布式训练</h1><p>目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/11/11/distribute/1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h2 id="数据并行"><a href="#数据并行" class="headerlink" title="数据并行"></a>数据并行</h2><p>PyTorch中实现数据并行的方法主要有DataParallel 和distributed 两种方法。</p>
 <h3 id="DataParallel"><a href="#DataParallel" class="headerlink" title="DataParallel"></a>DataParallel</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.nn.DataParallel(Module)</span><br></pre></td></tr></table></figure>
 <p>DataParallel可以实现数据的并行训练，默认会按照设定的batch size将数据平均分配到每个GPU上，假设在工作站A上共有4张GPU，设定batch size=32，此时每张卡上将会获得 size=32/4 =8 的数据量。</p>
 <p>在前向传播中每张卡将分别计算前向传播的参数，在反向传播过程中会将梯度汇集到一张卡上计算其梯度下降。一般会将数据汇集到原始GPU中，因此会产生GPU负载不均衡的问题，常常会出现第一张卡会满负载而其他卡利用率仅为一半的情况。</p>
 <p>盗张图 <a href="https://www.jianshu.com/p/9e36e5e36638?utm_source=oschina-app" target="_blank" rel="noopener">原图</a></p>
-<p><img src="/2019/11/11/distribute/2.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/11/11/distribute/2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>DataParallel(Module) <a href="https://pytorch.org/docs/1.0.0/nn.html?highlight=dataparallel#torch.nn.DataParallel" target="_blank" rel="noopener">官方文档</a> <a href="https://pytorch.org/tutorials/beginner/former_torchies/parallelism_tutorial.html?highlight=dataparallel" target="_blank" rel="noopener">官方示例</a></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This container parallelizes the application of the given :attr:`module` bysplitting the input across the specified devices by chunking in the batchdimension (other objects will be copied once per device). In the forwardpass, the module is replicated on each device, and each replica handles aportion of the input. During the backwards pass, gradients from each replicaare summed into the original module.</span><br></pre></td></tr></table></figure>
 <p>实现方法<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line">model = Net()</span><br><span class="line"><span class="comment"># 可直接指定需要使用GPU编号</span></span><br><span class="line">model = nn.DataParalle(model.cuda(), device_ids=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="comment"># 或者使用CUDA_VISIBLE_DEVICES指定</span></span><br><span class="line"><span class="comment"># os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'</span></span><br><span class="line"><span class="comment"># model = nn.DataParallel(model).cuda()</span></span><br></pre></td></tr></table></figure></p>
@@ -271,7 +289,13 @@ x^{(k)}=W^{(k)}x^{(k-1)}\\
 <p>直接使用标准化公式会导致网络表达能力下降，为了防止这一点，每个神经元增加两个调节参数（scale和shift），这两个参数是通过训练来学习到的，用来对变换后数据再变换，使得网络表达能力增强，即对变换后的数据进行如下的scale和shift操作：</p>
 <script type="math/tex; mode=display">
 y^{(k)}=\gamma ^{(k)}\hat{x}^{(k)}+\beta ^{(k)} \tag{2}</script><p>通过公式（1）我们可以将输入数据分布到均值为1，方差为0的标准正态分布上。但是这样的操作会使得BN层后面的神经元无论怎么学习都会统一缩放到这一区域。使用公式（2）可以将经过标准化的数据分布到均值为$\beta$方差为$\gamma ^2$的区间上，而$\beta$和$\gamma$两个参数与其他训练参数相同，通过梯度下降的方式学得。这样BN层便能将输入数据缩放至最适合该神经元的区间（分布）上。<br>在卷积神经网络中，数据维度为（N,C,H,W）</p>
-<p><img src="./Normalization/1.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./Normalization/1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>卷积层上的BN使用了类似权值共享的策略，把一整张特征图当做一个神经元进行处理。卷积神经网络经过卷积后得到的是一系列的特征图，网络某一层输入数据可以表示为四维矩阵(N,C,H,W)。在CNN中我们可以把每个特征图看成是一个特征处理（一个神经元），因此在使用Batch Normalization，mini-batch size 的大小就是：NHW，于是对于每个特征图都只有一对可学习参数：$\beta$和$\gamma$。相当于求取所有样本所对应的一个特征图的所有神经元的平均值、方差，然后对这个特征图神经元做归一化。</p>
 <p>PyTorch中BatchNorm2d的实现公式</p>
 <script type="math/tex; mode=display">
@@ -291,8 +315,13 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
 <li>不能用于测试阶段。测试阶段使用训练集的统计值取近似测试集的统计值是不合理的。</li>
 </ul>
 <h2 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h2><p>针对BN的一些缺点，Group Normalization 对channel进行分组，对每组channel进行Normalization</p>
-<p><img src="./Normalization/2.png" alt=""></p>
-]]></content>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./Normalization/2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>]]></content>
       <categories>
         <category>深度学习</category>
       </categories>
@@ -494,7 +523,13 @@ L(a,p,n)=\max\{d(a_i,p_i)-d(a_i,n_i)+margin,0\}</script><p>其中$d(x_i,y_i)=||x
 <script type="math/tex; mode=display">
 \hat y^k_j = f(\beta_j - \theta_j) \tag{1}</script><p>则网络在$（x_k，y_k）$上的均方误差为</p>
 <script type="math/tex; mode=display">
-E_k=\frac{1}{2} \sum^l_{j=1}({\hat y^k_j} - y^k_j)^2 \tag{2}</script><p><img src="/2019/09/04/network/1.jpg" alt=""></p>
+E_k=\frac{1}{2} \sum^l_{j=1}({\hat y^k_j} - y^k_j)^2 \tag{2}</script><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/09/04/network/1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h2 id="前项传播过程"><a href="#前项传播过程" class="headerlink" title="前项传播过程"></a>前项传播过程</h2><p>输入层输入 $x_1,x_2,…,x_m$</p>
 <p>隐层输入 $\alpha_h=\sum_{i=1}^d\nu_{ih}x_i$</p>
 <p>隐层输出$b_h= f(\alpha_h-\gamma_h)$</p>
@@ -662,7 +697,13 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 <p><img src="/2018/10/25/MLclass/GAN.png" alt="GAN"></p>
 <h3 id="2、模型构建"><a href="#2、模型构建" class="headerlink" title="2、模型构建"></a>2、模型构建</h3><p>1、分别使用神经网络（NN）、随机树（ET）、逻辑回归（Logistic）、支持向量机（SVM）、GradientBoosting（gdbt）、AdaBoost、XGBoost、LightGBM、CatBoost等模型对数据集进行训练和测试。</p>
 <p>2、尝试使用单模型进行融合，使用融合后的模型对数据进行训练和测试。模型融合使用多数投票分类器。</p>
-<p><img src="/2018/10/25/MLclass/融合.png" alt="融合"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/10/25/MLclass/融合.png" alt="融合" title="">
+                </div>
+                <div class="image-caption">融合</div>
+            </figure>
 <h3 id="3、实验结果"><a href="#3、实验结果" class="headerlink" title="3、实验结果"></a>3、实验结果</h3><div class="table-container">
 <table>
 <thead>
@@ -689,9 +730,20 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
 </tbody>
 </table>
 </div>
-<p><img src="/2018/10/25/MLclass/模型融合.png" alt="模型融合"></p>
-<p><img src="/2018/10/25/MLclass/模型融合(GAN" alt="模型融合(GAN)">.png)</p>
-]]></content>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/10/25/MLclass/模型融合.png" alt="模型融合" title="">
+                </div>
+                <div class="image-caption">模型融合</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/10/25/MLclass/模型融合(GAN).png" alt="模型融合(GAN)" title="">
+                </div>
+                <div class="image-caption">模型融合(GAN)</div>
+            </figure>]]></content>
       <categories>
         <category>机器学习</category>
       </categories>

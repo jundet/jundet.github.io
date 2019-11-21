@@ -21,19 +21,19 @@
     
     
     <meta name="keywords" content="机器学习">
-    <meta name="description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机 线性可分支持向量机是最基本的支持向量机，分类超平面为  w^Tx+b=0 \tag">
+    <meta name="description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="支持向量机">
 <meta property="og:url" content="http://www.gistime.cn/2019/11/19/svm/index.html">
 <meta property="og:site_name" content="GISTime">
-<meta property="og:description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机 线性可分支持向量机是最基本的支持向量机，分类超平面为  w^Tx+b=0 \tag">
+<meta property="og:description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.gistime.cn/2019/11/19/svm/1.png">
 <meta property="og:updated_time" content="2019-11-20T06:35:02.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机">
-<meta name="twitter:description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机 线性可分支持向量机是最基本的支持向量机，分类超平面为  w^Tx+b=0 \tag">
+<meta name="twitter:description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
 <meta name="twitter:image" content="http://www.gistime.cn/2019/11/19/svm/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
@@ -184,7 +184,13 @@
             <h2 id="支持向量机（SVM）"><a href="#支持向量机（SVM）" class="headerlink" title="支持向量机（SVM）"></a>支持向量机（SVM）</h2><p>推荐讲解视频 <a href="https://www.bilibili.com/video/av28186618?from=search&amp;seid=9446689980433433378" target="_blank" rel="noopener">白板推导</a></p>
 <p>支持向量机的思想是寻找样本分类的最大间隔。</p>
 <p>设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$.</p>
-<h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><p><img src="/2019/11/19/svm/1.png" alt=""></p>
+<h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/11/19/svm/1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>线性可分支持向量机是最基本的支持向量机，分类超平面为</p>
 <script type="math/tex; mode=display">
 w^Tx+b=0 \tag{1}</script><p>当样本点为正例时$w^Tx_i+b\ge 0,y_i=+1$,当样本点为反例时$w^Tx_i+b\le 0,y_i=-1$,因此</p>
@@ -362,6 +368,23 @@ K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积
 
 
 
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
 
 
 
