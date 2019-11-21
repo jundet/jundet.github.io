@@ -21,20 +21,20 @@
     
     
     <meta name="keywords" content="深度学习,PyTorch">
-    <meta name="description" content="PyTorch分布式训练目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。">
+    <meta name="description" content="PyTorch分布式训练目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。 数据并行PyTorch中实现数据并行的方法主要有DataParallel 和distributed 两种方法。 DataParallel1torch.nn.DataParallel(Module) D">
 <meta name="keywords" content="深度学习,PyTorch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PyTorch 分布式">
 <meta property="og:url" content="http://www.gistime.cn/2019/11/11/distribute/index.html">
 <meta property="og:site_name" content="GISTime">
-<meta property="og:description" content="PyTorch分布式训练目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。">
+<meta property="og:description" content="PyTorch分布式训练目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。 数据并行PyTorch中实现数据并行的方法主要有DataParallel 和distributed 两种方法。 DataParallel1torch.nn.DataParallel(Module) D">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.gistime.cn/2019/11/11/distribute/1.png">
 <meta property="og:image" content="http://www.gistime.cn/2019/11/11/distribute/2.png">
 <meta property="og:updated_time" content="2019-11-12T12:33:18.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PyTorch 分布式">
-<meta name="twitter:description" content="PyTorch分布式训练目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。">
+<meta name="twitter:description" content="PyTorch分布式训练目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。 数据并行PyTorch中实现数据并行的方法主要有DataParallel 和distributed 两种方法。 DataParallel1torch.nn.DataParallel(Module) D">
 <meta name="twitter:image" content="http://www.gistime.cn/2019/11/11/distribute/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
@@ -182,25 +182,13 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="PyTorch分布式训练"><a href="#PyTorch分布式训练" class="headerlink" title="PyTorch分布式训练"></a>PyTorch分布式训练</h1><p>目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/11/11/distribute/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+            <h1 id="PyTorch分布式训练"><a href="#PyTorch分布式训练" class="headerlink" title="PyTorch分布式训练"></a>PyTorch分布式训练</h1><p>目前分布式训练的方法中主要分为数据并行与模型并行两种方法，其中在大多实验中以数据并行为主。模型并行主要存在于工业应用中，一般模型较大、训练数据是学术实验中训练数据的几何倍数。<br><img src="/2019/11/11/distribute/1.png" alt=""></p>
 <h2 id="数据并行"><a href="#数据并行" class="headerlink" title="数据并行"></a>数据并行</h2><p>PyTorch中实现数据并行的方法主要有DataParallel 和distributed 两种方法。</p>
 <h3 id="DataParallel"><a href="#DataParallel" class="headerlink" title="DataParallel"></a>DataParallel</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.DataParallel(Module)</span><br></pre></td></tr></table></figure>
 <p>DataParallel可以实现数据的并行训练，默认会按照设定的batch size将数据平均分配到每个GPU上，假设在工作站A上共有4张GPU，设定batch size=32，此时每张卡上将会获得 size=32/4 =8 的数据量。</p>
 <p>在前向传播中每张卡将分别计算前向传播的参数，在反向传播过程中会将梯度汇集到一张卡上计算其梯度下降。一般会将数据汇集到原始GPU中，因此会产生GPU负载不均衡的问题，常常会出现第一张卡会满负载而其他卡利用率仅为一半的情况。</p>
 <p>盗张图 <a href="https://www.jianshu.com/p/9e36e5e36638?utm_source=oschina-app" target="_blank" rel="noopener">原图</a></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/11/11/distribute/2.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="/2019/11/11/distribute/2.png" alt=""></p>
 <p>DataParallel(Module) <a href="https://pytorch.org/docs/1.0.0/nn.html?highlight=dataparallel#torch.nn.DataParallel" target="_blank" rel="noopener">官方文档</a> <a href="https://pytorch.org/tutorials/beginner/former_torchies/parallelism_tutorial.html?highlight=dataparallel" target="_blank" rel="noopener">官方示例</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This container parallelizes the application of the given :attr:`module` bysplitting the input across the specified devices by chunking in the batchdimension (other objects will be copied once per device). In the forwardpass, the module is replicated on each device, and each replica handles aportion of the input. During the backwards pass, gradients from each replicaare summed into the original module.</span><br></pre></td></tr></table></figure>
 <p>实现方法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line">model = Net()</span><br><span class="line"><span class="comment"># 可直接指定需要使用GPU编号</span></span><br><span class="line">model = nn.DataParalle(model.cuda(), device_ids=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="comment"># 或者使用CUDA_VISIBLE_DEVICES指定</span></span><br><span class="line"><span class="comment"># os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'</span></span><br><span class="line"><span class="comment"># model = nn.DataParallel(model).cuda()</span></span><br></pre></td></tr></table></figure></p>

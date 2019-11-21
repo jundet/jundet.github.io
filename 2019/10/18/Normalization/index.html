@@ -198,13 +198,7 @@ x^{(k)}=W^{(k)}x^{(k-1)}\\
 <p>直接使用标准化公式会导致网络表达能力下降，为了防止这一点，每个神经元增加两个调节参数（scale和shift），这两个参数是通过训练来学习到的，用来对变换后数据再变换，使得网络表达能力增强，即对变换后的数据进行如下的scale和shift操作：</p>
 <script type="math/tex; mode=display">
 y^{(k)}=\gamma ^{(k)}\hat{x}^{(k)}+\beta ^{(k)} \tag{2}</script><p>通过公式（1）我们可以将输入数据分布到均值为1，方差为0的标准正态分布上。但是这样的操作会使得BN层后面的神经元无论怎么学习都会统一缩放到这一区域。使用公式（2）可以将经过标准化的数据分布到均值为$\beta$方差为$\gamma ^2$的区间上，而$\beta$和$\gamma$两个参数与其他训练参数相同，通过梯度下降的方式学得。这样BN层便能将输入数据缩放至最适合该神经元的区间（分布）上。<br>在卷积神经网络中，数据维度为（N,C,H,W）</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="./Normalization/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="./Normalization/1.png" alt=""></p>
 <p>卷积层上的BN使用了类似权值共享的策略，把一整张特征图当做一个神经元进行处理。卷积神经网络经过卷积后得到的是一系列的特征图，网络某一层输入数据可以表示为四维矩阵(N,C,H,W)。在CNN中我们可以把每个特征图看成是一个特征处理（一个神经元），因此在使用Batch Normalization，mini-batch size 的大小就是：NHW，于是对于每个特征图都只有一对可学习参数：$\beta$和$\gamma$。相当于求取所有样本所对应的一个特征图的所有神经元的平均值、方差，然后对这个特征图神经元做归一化。</p>
 <p>PyTorch中BatchNorm2d的实现公式</p>
 <script type="math/tex; mode=display">
@@ -224,13 +218,8 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
 <li>不能用于测试阶段。测试阶段使用训练集的统计值取近似测试集的统计值是不合理的。</li>
 </ul>
 <h2 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h2><p>针对BN的一些缺点，Group Normalization 对channel进行分组，对每组channel进行Normalization</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="./Normalization/2.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="./Normalization/2.png" alt=""></p>
+
         </div>
 
         <blockquote class="post-copyright">
