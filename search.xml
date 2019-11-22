@@ -578,7 +578,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
   </entry>
   <entry>
     <title>Django 使用教程</title>
-    <url>/2019/01/29/Django%20/</url>
+    <url>/2019/01/29/Django/</url>
     <content><![CDATA[<h2 id="示例1：安装Django并创建简单项目"><a href="#示例1：安装Django并创建简单项目" class="headerlink" title="示例1：安装Django并创建简单项目"></a>示例1：安装Django并创建简单项目</h2><p>详情见<a href="https://docs.djangoproject.com/zh-hans/2.1/intro/tutorial01/" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.1/intro/tutorial01/</a></p>
 <p>环境基础为windows10+anaconda3</p>
 <h3 id="1、安装Django（版本2-1-5）"><a href="#1、安装Django（版本2-1-5）" class="headerlink" title="1、安装Django（版本2.1.5）"></a>1、安装Django（版本2.1.5）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install Django==2.1.5</span><br></pre></td></tr></table></figure>
@@ -612,7 +612,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
   </entry>
   <entry>
     <title>Video Person Re-Identification</title>
-    <url>/2018/11/14/video%20person%20reid/</url>
+    <url>/2018/11/14/video_person_reid/</url>
     <content><![CDATA[<p><a href="https://handong1587.github.io/deep_learning/2015/10/09/re-id.html" target="_blank" rel="noopener">Paper</a> <a href="http://robustsystems.coe.neu.edu/sites/robustsystems.coe.neu.edu/files/systems/projectpages/reiddataset.html" target="_blank" rel="noopener">Datasets</a> <a href="https://github.com/KaiyangZhou/deep-person-reid" target="_blank" rel="noopener">Code1</a> <a href="https://github.com/jiyanggao/Video-Person-ReID" target="_blank" rel="noopener">Code2</a></p>
 <h4 id="Leaderboard"><a href="#Leaderboard" class="headerlink" title="Leaderboard"></a>Leaderboard</h4><div class="table-container">
 <table>
@@ -790,7 +790,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
   </entry>
   <entry>
     <title>算法导论</title>
-    <url>/2018/10/08/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/</url>
+    <url>/2018/10/08/algorithm/</url>
     <content><![CDATA[<h1 id="算法导论"><a href="#算法导论" class="headerlink" title="算法导论"></a>算法导论</h1><h2 id="第一章-算法在计算中的应用"><a href="#第一章-算法在计算中的应用" class="headerlink" title="第一章 算法在计算中的应用"></a>第一章 算法在计算中的应用</h2><h3 id="1-2-作为一种技术的算法"><a href="#1-2-作为一种技术的算法" class="headerlink" title="1.2 作为一种技术的算法"></a>1.2 作为一种技术的算法</h3><h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><p>1.2-2 插入排序运行步数为$8n^2$步，而归并排序运行$64nlgn$ 步，问对哪些n值，插入排序优于归并排序？<br>    $8n^2 &lt; 64nlgn$，n=2,3</p>
 <p>1.2.3 n最小值为何值时，运行时间为$100n^2$的一个算法在相同机器上快于运行时间为$2^n$ 的另一个算法？<br>    $100n^2  &lt; 2^n$,n=15</p>
 <h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><p>1-1 （运行时间比较）假设求解问题的算法需要$f(n)$ 毫秒，对下表中每个函数$f(n)$ 和时间t，确定可以在时间t内求解的问题的最大规模n。</p>
