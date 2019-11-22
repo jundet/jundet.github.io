@@ -238,7 +238,7 @@ XX^T\omega_i=\lambda \omega _i</script><p>于是对$XX^T$进行特征分解，�
   <entry>
     <title>深度学习中的正则化</title>
     <url>/2019/10/22/regularization/</url>
-    <content><![CDATA[<h1 id="深度学习中的正则化"><a href="#深度学习中的正则化" class="headerlink" title="深度学习中的正则化"></a>深度学习中的正则化</h1><p>在对训练数据进行训练的过程中很容易造成过拟合，从而降低模型的泛化能力</p>
+    <content><![CDATA[<h1 id="深度学习中的正则化"><a href="#深度学习中的正则化" class="headerlink" title="深度学习中的正则化"></a>深度学习中的正则化</h1><p>在对训练数据进行训练的过程中很容易造成过拟合，从而降低模型的泛化能力1</p>
 ]]></content>
       <categories>
         <category>深度学习</category>

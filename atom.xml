@@ -100,15 +100,15 @@
     <link href="http://www.gistime.cn/2019/10/22/regularization/"/>
     <id>http://www.gistime.cn/2019/10/22/regularization/</id>
     <published>2019-10-22T13:09:53.000Z</published>
-    <updated>2019-10-23T07:42:42.812Z</updated>
+    <updated>2019-11-21T14:34:58.119Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="深度学习中的正则化"><a href="#深度学习中的正则化" class="headerlink" title="深度学习中的正则化"></a>深度学习中的正则化</h1><p>在对训练数据进行训练的过程中很容易造成过拟合，从而降低模型的泛化能力</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="深度学习中的正则化"><a href="#深度学习中的正则化" class="headerlink" title="深度学习中的正则化"></a>深度学习中的正则化</h1><p>在对训练数据进行训练的过程中很容易造成过拟合，从而降低模型的泛化能力1</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;深度学习中的正则化&quot;&gt;&lt;a href=&quot;#深度学习中的正则化&quot; class=&quot;headerlink&quot; title=&quot;深度学习中的正则化&quot;&gt;&lt;/a&gt;深度学习中的正则化&lt;/h1&gt;&lt;p&gt;在对训练数据进行训练的过程中很容易造成过拟合，从而降低模型的泛化能力&lt;/p&gt;
+        &lt;h1 id=&quot;深度学习中的正则化&quot;&gt;&lt;a href=&quot;#深度学习中的正则化&quot; class=&quot;headerlink&quot; title=&quot;深度学习中的正则化&quot;&gt;&lt;/a&gt;深度学习中的正则化&lt;/h1&gt;&lt;p&gt;在对训练数据进行训练的过程中很容易造成过拟合，从而降低模型的泛化能力1&lt;/p&gt;
 
       
     
