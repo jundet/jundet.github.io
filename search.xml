@@ -612,7 +612,7 @@ e_h&=-\frac{\partial E_k}{\partial b_h}\cdot\frac{\partial b_h}{\partial\alpha_h
   </entry>
   <entry>
     <title>Video Person Re-Identification</title>
-    <url>/2018/11/14/video_person_reid/</url>
+    <url>/2018/11/14/reid/</url>
     <content><![CDATA[<p><a href="https://handong1587.github.io/deep_learning/2015/10/09/re-id.html" target="_blank" rel="noopener">Paper</a> <a href="http://robustsystems.coe.neu.edu/sites/robustsystems.coe.neu.edu/files/systems/projectpages/reiddataset.html" target="_blank" rel="noopener">Datasets</a> <a href="https://github.com/KaiyangZhou/deep-person-reid" target="_blank" rel="noopener">Code1</a> <a href="https://github.com/jiyanggao/Video-Person-ReID" target="_blank" rel="noopener">Code2</a></p>
 <h4 id="Leaderboard"><a href="#Leaderboard" class="headerlink" title="Leaderboard"></a>Leaderboard</h4><div class="table-container">
 <table>
