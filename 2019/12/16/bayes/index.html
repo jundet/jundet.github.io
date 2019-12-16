@@ -14,27 +14,25 @@
     
     
     
-    <title>支持向量机 | GISTime</title>
+    <title>朴素贝叶斯分类器 | GISTime</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="机器学习">
-    <meta name="description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
+    <meta name="description" content="贝叶斯分类器获得后验概率$P(c|x)$的两种策略：给定$x$，通过直接建模$P(c|x)$来预测$c$，这样的方法称为判别式模型(discriminative models)。先对联合概率分布$P(x,c)$建模，然后有次获得$P(c|x)$，这样的方法称为生成式模型(generative models)。决策树、BP神经网络、支持向量机等为判别式模型。朴素贝叶斯、隐马尔可夫模型等为生成式模型。">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="支持向量机">
-<meta property="og:url" content="http://www.gistime.cn/2019/11/19/svm/index.html">
+<meta property="og:title" content="朴素贝叶斯分类器">
+<meta property="og:url" content="http://www.gistime.cn/2019/12/16/bayes/index.html">
 <meta property="og:site_name" content="GISTime">
-<meta property="og:description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
+<meta property="og:description" content="贝叶斯分类器获得后验概率$P(c|x)$的两种策略：给定$x$，通过直接建模$P(c|x)$来预测$c$，这样的方法称为判别式模型(discriminative models)。先对联合概率分布$P(x,c)$建模，然后有次获得$P(c|x)$，这样的方法称为生成式模型(generative models)。决策树、BP神经网络、支持向量机等为判别式模型。朴素贝叶斯、隐马尔可夫模型等为生成式模型。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.gistime.cn/2019/11/19/svm/1.png">
-<meta property="og:updated_time" content="2019-11-20T06:35:02.779Z">
+<meta property="og:updated_time" content="2019-12-16T08:11:32.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="支持向量机">
-<meta name="twitter:description" content="支持向量机（SVM）推荐讲解视频 白板推导 支持向量机的思想是寻找样本分类的最大间隔。 设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$. 线性可分支持向量机">
-<meta name="twitter:image" content="http://www.gistime.cn/2019/11/19/svm/1.png">
+<meta name="twitter:title" content="朴素贝叶斯分类器">
+<meta name="twitter:description" content="贝叶斯分类器获得后验概率$P(c|x)$的两种策略：给定$x$，通过直接建模$P(c|x)$来预测$c$，这样的方法称为判别式模型(discriminative models)。先对联合概率分布$P(x,c)$建模，然后有次获得$P(c|x)$，这样的方法称为生成式模型(generative models)。决策树、BP神经网络、支持向量机等为判别式模型。朴素贝叶斯、隐马尔可夫模型等为生成式模型。">
     
         <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
     
@@ -108,7 +106,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">支持向量机</div>
+        <div class="flex-col header-title ellipsis">朴素贝叶斯分类器</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -130,11 +128,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">支持向量机</h1>
+        <h1 class="title">朴素贝叶斯分类器</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-11-19T07:14:04.000Z" itemprop="datePublished" class="page-time">
-  2019-11-19
+                <time datetime="2019-12-16T07:12:29.000Z" itemprop="datePublished" class="page-time">
+  2019-12-16
 </time>
 
 
@@ -155,18 +153,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持向量机（SVM）"><span class="post-toc-text">支持向量机（SVM）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线性可分支持向量机"><span class="post-toc-text">线性可分支持向量机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对偶问题"><span class="post-toc-text">对偶问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软间隔"><span class="post-toc-text">软间隔</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非线性支持向量机"><span class="post-toc-text">非线性支持向量机</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#贝叶斯分类器"><span class="post-toc-text">贝叶斯分类器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#朴素贝叶斯分类器"><span class="post-toc-text">朴素贝叶斯分类器</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-svm"
+<article id="post-bayes"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">支持向量机</h1>
+        <h1 class="post-card-title">朴素贝叶斯分类器</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-11-19 15:14:04" datetime="2019-11-19T07:14:04.000Z"  itemprop="datePublished">2019-11-19</time>
+            <time class="post-time" title="2019-12-16 15:12:29" datetime="2019-12-16T07:12:29.000Z"  itemprop="datePublished">2019-12-16</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
@@ -181,88 +179,24 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="支持向量机（SVM）"><a href="#支持向量机（SVM）" class="headerlink" title="支持向量机（SVM）"></a>支持向量机（SVM）</h2><p>推荐讲解视频 <a href="https://www.bilibili.com/video/av28186618?from=search&amp;seid=9446689980433433378" target="_blank" rel="noopener">白板推导</a></p>
-<p>支持向量机的思想是寻找样本分类的最大间隔。</p>
-<p>设样本$D=\{(x_1,y_1),(x_1,y_1),…,(x_m,y_m)\}$,其中$y_i \in \{+1,-1\}$,当$x_i$为正例时$y_i=+1$，当$x_i$为反例时，$y_i=-1$.</p>
-<h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/11/19/svm/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>线性可分支持向量机是最基本的支持向量机，分类超平面为</p>
+            <h1 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h1><p>获得后验概率$P(c|x)$的两种策略：给定$x$，通过直接建模$P(c|x)$来预测$c$，这样的方法称为判别式模型(discriminative models)。先对联合概率分布$P(x,c)$建模，然后有次获得$P(c|x)$，这样的方法称为生成式模型(generative models)。决策树、BP神经网络、支持向量机等为判别式模型。朴素贝叶斯、隐马尔可夫模型等为生成式模型。对于生成式模型，</p>
 <script type="math/tex; mode=display">
-w^Tx+b=0 \tag{1}</script><p>当样本点为正例时$w^Tx_i+b\ge 0,y_i=+1$,当样本点为反例时$w^Tx_i+b\le 0,y_i=-1$,因此</p>
+P(c|x)=\frac{P(x|c)}{P(x)}</script><p>基于贝叶斯定理有</p>
 <script type="math/tex; mode=display">
-y_i(w^Tx_i+b)\ge 1 \tag{2}</script><p>样本点到超平面的距离</p>
+P(c|x)=\frac{P(c)P(x|c)}{P(x)}</script><p>其中$P(c)$是类先验概率，$P(x|c)$是样本$x$相对于标记$c$的类条件概率，$P(x)$是用于归一化的证据因子。</p>
+<h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p>上述贝叶斯估计基于类条件概率$P(x|c)$是所有属性的联合概率，难以从有限的训练样本直接估计，朴素贝叶斯分类器采用了属性条件独立性假设：对已知类别，假设所有属性相互独立。</p>
+<p>基于属性条件独立性假设有:</p>
 <script type="math/tex; mode=display">
-r_i=\frac{|w^tx_i|+b}{||w||}</script><p>两个边界之间的距离为</p>
+P(c|x)=\frac{P(c)P(x|c)}{P(x)}=\frac{P(c)}{P(x)}\prod_{i=1}^dP(x_i|c)</script><p>其中d为属性数目，$x_i$为$x$在第i个属性上的取值。由于对所有类别来说$P(x)$相同，因此贝叶斯判定准则为</p>
 <script type="math/tex; mode=display">
-r=\frac{2}{||w||}</script><p>要获得最大间隔即求最大的r，</p>
+h_{nb}(x)=\mathop{\arg\max}_{c\in y}P(c)\prod_{i=1}^dP(x_i|c)</script><p>对于离散属性而言，设$D_{c,x_i}$表示$D_c$中第i个属性上取值为$x_i$的样本组成的集合，则条件概率$P(x_i|c)$可表示为</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-& \max_{w,b}\quad \frac{2}{||w||}\\
-& s.t.\quad y_i(w^Tx_i+b)\ge 1,\quad i=1,2,...,m
-\end{aligned}</script><p>转化为最小化问题即</p>
+P(x_i|c)=\frac{|D_{c,x_i}|}{|D_c|}</script><p>对于连续属性，假定$p(x_i|c)\backsim N(\mu_{c,i},\sigma^2_{c,i})$,其中$\mu_{c,i}和\sigma^2_{c,i}$分别表示第i类样本在第i个属性上取值的均值和方差，</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-& \min_{w,b}\quad \frac{1}{2}{||w||^2}\\
-& s.t.\quad y_i(w^Tx_i+b)\ge 1,\quad i=1,2,...,m
-\end{aligned} \tag{3}</script><p>式(3)即为支持向量机的基本型优化问题。</p>
-<p>求得最优化问题的结$w^<em>,b^</em>$,得到线性可分支持向量机，分离超平面为</p>
+P(x_i|c)=\frac{1}{\sqrt{2\pi}\sigma_{c,i}}exp(-\frac{(x_i-\mu_{c,i})^2}{2\sigma^2_{c,i}})</script><p>使用极大似然估计可能会出现所要估计的概率值为0的情况。这是引入拉普拉斯平滑进行修正。</p>
 <script type="math/tex; mode=display">
-w^*x+b^*=0</script><p>分类决策函数为</p>
-<script type="math/tex; mode=display">
-f(x)=sign(w^*x+b^*)</script><h3 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h3><p>式(3)的拉格朗日乘子式是</p>
-<script type="math/tex; mode=display">
-L(w,b,\lambda)=\frac{1}{2}{||w||^2}+\sum_{i=1}^{m}{\lambda_i(1-y_i(w^Tx_i+b))} \tag{4}</script><p>对式(4)中$w,b$分别求偏导可得</p>
-<script type="math/tex; mode=display">
-\frac{\partial L}{\partial b}=-\sum_{i=1}^m\lambda_i y_i\\
-\frac{\partial L}{\partial w}=w-\sum_{i=1}^m\lambda_iy_ix_i</script><p>令$\frac{\partial L}{\partial b},\frac{\partial L}{\partial w}$为0可求得</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^m\lambda_i y_i=0\\
-w=\sum_{i=1}^m\lambda_iy_ix_i \tag{5}</script><p>将式(5)代入$L(w,b,\lambda)$中可得</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-L(w,b,\lambda)&=\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}+\sum_{i=1}^{m}\lambda_i-\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}\\
-&=\sum_{i=1}^{m}\lambda_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}
-\end{aligned}</script><p>即原问题式(3)的对偶问题为</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\max_\lambda \quad & \sum_{i=1}^{m}\lambda_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}\\
-s.t.,\quad & \sum_{i=1}^m\lambda_i y_i\quad=0\\
-&\lambda_i\ge0, \quad i=1,2,...,m
-\end{aligned} \tag{6}</script><p>注：此问题符合强对偶关系即</p>
-<script type="math/tex; mode=display">
-\min_{w,b}\max_\lambda L(w,b,\lambda)= \max_\lambda \min_{w,b} L(w,b,\lambda)</script><p>注：$强对偶关系\Leftrightarrow KKT$</p>
-<p>设$\lambda^<em>,w^</em>,b^*$为最优解则有KKT条件：</p>
-<script type="math/tex; mode=display">
-\lambda_i^*(y_i(w^{*T}x+b^*)-1)=0 \\
-y_i(w^{*T}x+b^*)-1\ge 0\\
-\lambda_i^*\ge 0</script><p>其中$w^<em>=\sum_{i=1}^m\lambda_i^</em> y_ix_i$,$b^<em>=y_i-\sum_{i=1}^m\lambda_i^</em>y_ix_i^Tx_j$</p>
-<h3 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h3><p>在线性可分支持向量机中假设所有的样本能够完全被超平面加以区分，但实际的数据中会存在误差，解决这些误差的方法为使用损失函数。</p>
-<p>最直接的损失函数为“0/1”损失函数，正确项为0，错误项为1，此时优化目标变为</p>
-<script type="math/tex; mode=display">
-\min_{w,b}\quad  \frac{1}{2}w^Tx +C\sum_{i=1}^m \ell_{0/1}(y_i(w^Tx_i+b)-1)</script><p>其中$C$为缩放系数（超参数），$\ell_{0/1}$为0/1损失函数。</p>
-<p>由于$\ell_{0/1}$不具有连续性，因此一般使用其他损失函数代替$\ell_{0/1}$。</p>
-<p>hinge（合页）损失：$\ell_{hinge}=max\{0,(y_i(w^Tx_i+b)-1)\}$</p>
-<p>引入松弛变量$\xi$，优化目标变为</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\min_{w,b,\xi}\quad &\frac{1}{2}||w||^2+C\sum_{i=1}^m \xi_i\\
-s.t. \quad &y_i(w^Tx_i+b)-1\ge\xi_i,\\
-& \xi_i\ge0     
-\end{aligned}\tag{7}</script><p>其对偶问题为</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\max_\lambda \quad & \sum_{i=1}^{m}\lambda_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\lambda_i\lambda_jy_iy_ix_i^Tx_i}\\
-s.t.,\quad & \sum_{i=1}^m\lambda_i y_i\quad=0\\
-&C\ge\lambda_i\ge0, \quad i=1,2,...,m
-\end{aligned} \tag{8}</script><h3 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h3><p>通过非线性变换将样本转换到高维空间中在进行线性分类。在线性支持向量机学习的对偶问题中，目标函数只涉及样本间的内积，即$x_i^T x_j$。假设映射函数为$\phi(x)$，则在高维空间中样本间内积为$\phi(x_i^T)\phi(x_j)$。令</p>
-<script type="math/tex; mode=display">
-K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积。非线性支持向量机通过核化得到核线性判别分析（KLDA）。</p>
-
+\hat{P}(x)=\frac{|D_c|+1}{|D|+N}\\
+\hat{P}(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}</script>
         </div>
 
         <blockquote class="post-copyright">
@@ -270,7 +204,7 @@ K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-11-20T06:35:02.779Z" itemprop="dateUpdated">2019-11-20 14:35:02</time>
+    最后更新时间：<time datetime="2019-12-16T08:11:32.609Z" itemprop="dateUpdated">2019-12-16 16:11:32</time>
 </span><br>
 
 
@@ -300,7 +234,7 @@ K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/11/19/svm/&title=《支持向量机》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/12/16/bayes/&title=《朴素贝叶斯分类器》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -310,22 +244,22 @@ K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/11/19/svm/&title=《支持向量机》 — GISTime&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/12/16/bayes/&title=《朴素贝叶斯分类器》 — GISTime&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/11/19/svm/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/12/16/bayes/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《支持向量机》 — GISTime&url=http://www.gistime.cn/2019/11/19/svm/&via=http://www.gistime.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《朴素贝叶斯分类器》 — GISTime&url=http://www.gistime.cn/2019/12/16/bayes/&via=http://www.gistime.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/11/19/svm/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/12/16/bayes/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -345,21 +279,14 @@ K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/12/10/resnet/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">深度残差网络ResNet</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/11/14/ldapca/" id="post-next" class="post-nav-link">
+      <a href="/2019/12/13/decision-tree/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">LDA与PDA</h4>
+        <h4 class="title">决策树</h4>
       </a>
     </div>
   
@@ -449,7 +376,7 @@ K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/11/19/svm/&title=《支持向量机》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2019/12/16/bayes/&title=《朴素贝叶斯分类器》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -459,22 +386,22 @@ K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/11/19/svm/&title=《支持向量机》 — GISTime&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2019/12/16/bayes/&title=《朴素贝叶斯分类器》 — GISTime&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/11/19/svm/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2019/12/16/bayes/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《支持向量机》 — GISTime&url=http://www.gistime.cn/2019/11/19/svm/&via=http://www.gistime.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《朴素贝叶斯分类器》 — GISTime&url=http://www.gistime.cn/2019/12/16/bayes/&via=http://www.gistime.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/11/19/svm/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2019/12/16/bayes/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -485,7 +412,7 @@ K(i,j)=\phi(x_i^T)\phi(x_j)</script><p>即用核函数$K(i,j)$代替原有内积
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/11/19/svm/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2019/12/16/bayes/" alt="微信分享二维码">
 </div>
 
 

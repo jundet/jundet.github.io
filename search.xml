@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>朴素贝叶斯分类器</title>
+    <url>/2019/12/16/bayes/</url>
+    <content><![CDATA[<h1 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h1><p>获得后验概率$P(c|x)$的两种策略：给定$x$，通过直接建模$P(c|x)$来预测$c$，这样的方法称为判别式模型(discriminative models)。先对联合概率分布$P(x,c)$建模，然后有次获得$P(c|x)$，这样的方法称为生成式模型(generative models)。决策树、BP神经网络、支持向量机等为判别式模型。朴素贝叶斯、隐马尔可夫模型等为生成式模型。对于生成式模型，</p>
+<script type="math/tex; mode=display">
+P(c|x)=\frac{P(x|c)}{P(x)}</script><p>基于贝叶斯定理有</p>
+<script type="math/tex; mode=display">
+P(c|x)=\frac{P(c)P(x|c)}{P(x)}</script><p>其中$P(c)$是类先验概率，$P(x|c)$是样本$x$相对于标记$c$的类条件概率，$P(x)$是用于归一化的证据因子。</p>
+<h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p>上述贝叶斯估计基于类条件概率$P(x|c)$是所有属性的联合概率，难以从有限的训练样本直接估计，朴素贝叶斯分类器采用了属性条件独立性假设：对已知类别，假设所有属性相互独立。</p>
+<p>基于属性条件独立性假设有:</p>
+<script type="math/tex; mode=display">
+P(c|x)=\frac{P(c)P(x|c)}{P(x)}=\frac{P(c)}{P(x)}\prod_{i=1}^dP(x_i|c)</script><p>其中d为属性数目，$x_i$为$x$在第i个属性上的取值。由于对所有类别来说$P(x)$相同，因此贝叶斯判定准则为</p>
+<script type="math/tex; mode=display">
+h_{nb}(x)=\mathop{\arg\max}_{c\in y}P(c)\prod_{i=1}^dP(x_i|c)</script><p>对于离散属性而言，设$D_{c,x_i}$表示$D_c$中第i个属性上取值为$x_i$的样本组成的集合，则条件概率$P(x_i|c)$可表示为</p>
+<script type="math/tex; mode=display">
+P(x_i|c)=\frac{|D_{c,x_i}|}{|D_c|}</script><p>对于连续属性，假定$p(x_i|c)\backsim N(\mu_{c,i},\sigma^2_{c,i})$,其中$\mu_{c,i}和\sigma^2_{c,i}$分别表示第i类样本在第i个属性上取值的均值和方差，</p>
+<script type="math/tex; mode=display">
+P(x_i|c)=\frac{1}{\sqrt{2\pi}\sigma_{c,i}}exp(-\frac{(x_i-\mu_{c,i})^2}{2\sigma^2_{c,i}})</script><p>使用极大似然估计可能会出现所要估计的概率值为0的情况。这是引入拉普拉斯平滑进行修正。</p>
+<script type="math/tex; mode=display">
+\hat{P}(x)=\frac{|D_c|+1}{|D|+N}\\
+\hat{P}(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}</script>]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>决策树</title>
+    <url>/2019/12/13/decision-tree/</url>
+    <content><![CDATA[<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h3 id="ID3——最大信息增益"><a href="#ID3——最大信息增益" class="headerlink" title="ID3——最大信息增益"></a>ID3——最大信息增益</h3><p>信息熵是度量样本集合纯度最常用的一个指标。假定当前样本集合D中第k类样本所占的比利为$p_k(k=1,2,…,|y|)$,则D的信息熵定义为</p>
+<script type="math/tex; mode=display">
+Ent(D)=-\sum_{k=1}^{|y|}p_klog_2p_k</script><p>$Ent(D)$的值越小则D的纯度越高。</p>
+<p>假定离散属性a有V个可能的取值${a^1,a^2,…,a^V}$，若使用a来对样本集进行划分，则会产生V个分治节点，其中$v$个分治节点包含D中做在属性a上取值为$a^v$的样本，记为$D^v$.则属性a对样本集D进行划分所获得的信息增益为</p>
+<script type="math/tex; mode=display">
+Gain(D,a)=Ent(D)-\sum_{v=1}^V\frac{|D^v|}{|D|}Ent(D^v)</script><p>ID3决策树以信息增益为准则选择划分属性。$a*=\arg\max_{a\in A} Gain(D,a)$</p>
+<h3 id="C4-5——最大增益率"><a href="#C4-5——最大增益率" class="headerlink" title="C4.5——最大增益率"></a>C4.5——最大增益率</h3><p>增益率定义为</p>
+<script type="math/tex; mode=display">
+Gain\_ratio(D,a)=\frac{Gain(D,a)}{IV(a)}</script><p>其中</p>
+<script type="math/tex; mode=display">
+IV(a)=-\sum_{v=1}^V\frac{|D^v|}{|D|}log2{\frac{|D^v|}{|D|}}</script><p>C4.5决策树以信息增益率为准则选择划分属性。</p>
+<h3 id="CART——最小基尼指数"><a href="#CART——最小基尼指数" class="headerlink" title="CART——最小基尼指数"></a>CART——最小基尼指数</h3><p>基尼值是另一个描述数据集D纯度的指标其定义为</p>
+<script type="math/tex; mode=display">
+Gini(D)=\sum_{k=1}^{|y|}\sum_{k'\not=k}p_kp_k'\\
+=1-\sum_{k=1}^{|y|}p_k^2</script><p>$Gini(D)$越小，则数据集D的纯度越高。</p>
+<p>属性a的基尼指数定义为</p>
+<script type="math/tex; mode=display">
+Gini\_index(D,a)=\sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)</script><p>CART决策树选择基尼指数最小的属性作为最优划分属性。</p>
+<h3 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h3><p>剪枝处理是决策树对付过拟合的主要手段。主要分为预剪枝和后剪枝。</p>
+<p>预剪枝是指在决策树生成过程中，对每个节点在划分前先进行估计，若当前节点的划分不能带来决策树泛化性的提升则停止划分并将当前节点表姐为叶节点。后剪枝则是先从训练集生成一颗完整的局册数，然后自地向上对非叶节点进行考察，拖该节点对应的自述替换为叶节点能带来决策树泛化性能的提升，则该子树替换为叶节点。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>分类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深度残差网络ResNet</title>
+    <url>/2019/12/10/resnet/</url>
+    <content><![CDATA[<h1 id="深度残差网络ResNet"><a href="#深度残差网络ResNet" class="headerlink" title="深度残差网络ResNet"></a>深度残差网络ResNet</h1><p><a href="https://arxiv.org/pdf/1512.03385.pdf" target="_blank" rel="noopener">arxiv</a></p>
+<p>ResNet是目前应用最为广泛的特征提取网络之一。在Deep Residual Learning for Image Recognition中，作者将ResNet的网络层数做到了152层，其主要实现的方式是残差学习（Residual Learning）</p>
+<h2 id="残差学习"><a href="#残差学习" class="headerlink" title="残差学习"></a>残差学习</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/12/10/resnet/1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如上图所示，假设输入为$X$，两层网络层与relu组成常用的网络块$F(X)$。一般的网络VGG、Alexnet等实现的$X \to H(X)$，其学习的参数层$F(X)=H(X)$.残差学习通过直接把恒等映射(identity mapping)作为网络的一部分，实现了残差函数$F(X)=H(X)-X$,即学习的参数由原来的$H(X)$转为$H(X)-X$。在前向传播过程中为$F(X)+X$，在经过relu后输出结果。用公式表示为</p>
+<script type="math/tex; mode=display">
+y=relu(F(x,\{w_i\})+x)</script><p><a href="https://www.zhihu.com/question/64494691?sort=created" target="_blank" rel="noopener">ResNet解决了什么问题</a></p>
+<p>ResNet解决了训练很深网络时出现的梯度退化（不是梯度消失），由于非线性激活函数Relu的存在每次输入到输出的过程几乎是不可逆的，都会造成信息损失。随着网络层的增加这种损失会越来越大。使用残差网络能够使得特征在层层前行传播的过程中保留更多的信息。</p>
+<p>不是过拟合欠拟合问题：</p>
+<p>深度CNN的训练误差和测试误差都很大</p>
+<p>不是梯度爆炸/消失问题：</p>
+<p>梯度爆炸/消失问题在使用Bacth Normalization(BN)时已经基本被解决</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>深度网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>支持向量机</title>
     <url>/2019/11/19/svm/</url>
     <content><![CDATA[<h2 id="支持向量机（SVM）"><a href="#支持向量机（SVM）" class="headerlink" title="支持向量机（SVM）"></a>支持向量机（SVM）</h2><p>推荐讲解视频 <a href="https://www.bilibili.com/video/av28186618?from=search&amp;seid=9446689980433433378" target="_blank" rel="noopener">白板推导</a></p>
