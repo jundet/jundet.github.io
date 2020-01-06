@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.gistime.cn/2019/10/18/Normalization/Normalization/1.png">
 <meta property="og:image" content="http://www.gistime.cn/2019/10/18/Normalization/Normalization/2.png">
-<meta property="og:updated_time" content="2019-10-22T12:27:40.012Z">
+<meta property="og:updated_time" content="2019-12-23T06:47:40.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习中的标准化">
 <meta name="twitter:description" content="深度学习中的标准化(Normalization)深度网络训练的问题假设网络没有非线性函数，不考虑偏置项，设每层网络层输入为$x^{(k-1)} \in R^{n_{k-1}}$,参数为$W^{(k)}\in R^{n_kn_{k-1}}$,输出为$x^{(k)}\in R^{n_{k-1}}$,每一层的操作是  x^{(k)}=W^{(k)}x^{(k-1)}\\ = W^{(k)}W^{(k-1">
@@ -194,7 +194,7 @@ x^{(k)}=W^{(k)}x^{(k-1)}\\
 \hat{x_i}=\frac{1}{\sigma _i}(x_i-\mu _i) \tag{1}</script><p>其中</p>
 <script type="math/tex; mode=display">
 \mu _i = \frac{1}{m}\sum_{k\in S_i}x_k, (均值)\\
-\sigma _i = \sqrt{\frac{1}{m}\sum_{k\in S_i}(x_k-\mu _i)^2 +\epsilon} ,(方差)</script><p>其中$\epsilon$是一个很小的正值，比如$10^{-8}$,这样可以强制避免$\sqrt{z}$ 的梯度在z=0时未定义的问题。在测试阶段$\mu$和$\sigma$可以被替换为训练阶段收集的运行均值。这使得模型可以对单一样本评估，而无需使用定义与整个小批量的$\mu$和$\sigma$。</p>
+\sigma _i = \sqrt{\frac{1}{m}\sum_{k\in S_i}(x_k-\mu _i)^2 +\epsilon} ,(标准差)</script><p>其中$\epsilon$是一个很小的正值，比如$10^{-8}$,这样可以强制避免$\sqrt{z}$ 的梯度在z=0时未定义的问题。在测试阶段$\mu$和$\sigma$可以被替换为训练阶段收集的运行均值。这使得模型可以对单一样本评估，而无需使用定义与整个小批量的$\mu$和$\sigma$。</p>
 <p>直接使用标准化公式会导致网络表达能力下降，为了防止这一点，每个神经元增加两个调节参数（scale和shift），这两个参数是通过训练来学习到的，用来对变换后数据再变换，使得网络表达能力增强，即对变换后的数据进行如下的scale和shift操作：</p>
 <script type="math/tex; mode=display">
 y^{(k)}=\gamma ^{(k)}\hat{x}^{(k)}+\beta ^{(k)} \tag{2}</script><p>通过公式（1）我们可以将输入数据分布到均值为1，方差为0的标准正态分布上。但是这样的操作会使得BN层后面的神经元无论怎么学习都会统一缩放到这一区域。使用公式（2）可以将经过标准化的数据分布到均值为$\beta$方差为$\gamma ^2$的区间上，而$\beta$和$\gamma$两个参数与其他训练参数相同，通过梯度下降的方式学得。这样BN层便能将输入数据缩放至最适合该神经元的区间（分布）上。<br>在卷积神经网络中，数据维度为（N,C,H,W）</p>
@@ -238,7 +238,7 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-10-22T12:27:40.012Z" itemprop="dateUpdated">2019-10-22 20:27:40</time>
+    最后更新时间：<time datetime="2019-12-23T06:47:40.967Z" itemprop="dateUpdated">2019-12-23 14:47:40</time>
 </span><br>
 
 
@@ -397,7 +397,7 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
         </p>
     </div> -->
     <div class="bottom">
-        <p><span><a href="http://www.gistime.cn/" target="_blank">GISTime</a> &copy; 2017 - 2019</span>
+        <p><span><a href="http://www.gistime.cn/" target="_blank">GISTime</a> &copy; 2017 - 2020</span>
             <span>
                 
                 <a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备17010437号</a><br>
