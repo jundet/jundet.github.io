@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>OpenCV-Cmake</title>
+    <url>/2021/01/11/opencvcmake/</url>
+    <content><![CDATA[<h1 id="OpenCV-Cmake"><a href="#OpenCV-Cmake" class="headerlink" title="OpenCV-Cmake"></a>OpenCV-Cmake</h1><p>版本opencv4.4 .0，windows下编译</p>
+<p>1、下载源码和Cmake</p>
+<p>（1）opencv4.4：<a href="https://github.com/opencv/opencv/releases" target="_blank" rel="noopener">https://github.com/opencv/opencv/releases</a></p>
+<p>选择4.4版本的Sourcecode(zip)进行下载</p>
+<p>（2）opencv_contrib：<a href="https://github.com/opencv/opencv_contrib/releases" target="_blank" rel="noopener">https://github.com/opencv/opencv_contrib/releases</a></p>
+<p>选择4.4版本的Sourcecode(zip)进行下载</p>
+<p>（3）Cmake：<a href="https://cmake.org/download/" target="_blank" rel="noopener">https://cmake.org/download/</a></p>
+<p>下载并安装cmake-3.18.1-win64-x64.msi（文章编写时使用的版本为3.18.1）</p>
+<p>2、生成并编译opencv</p>
+<p>系统已经安装Visual Studio 2015，下载的opencv源码已解压。</p>
+<p>（1）打开Cmake并选择opencv源码位置和生成路径。</p>
+<p>（2）点击Configure进行参数配置。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://gitee.com/tjunde/img/raw/master/pic/20200811102554.png" alt="image-20200811102554724" title="">
+                </div>
+                <div class="image-caption">image-20200811102554724</div>
+            </figure>
+<p>（3）选择VS版本和需要生成的版本（Win32、x64），点击Finish。如果需要opencv-contrib则在OPENCV_EXTRA_MODULES_PATH中填入opencv-contrib/modylese的路径。另外如还需opencv的其他功能则勾选该功能模块。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://gitee.com/tjunde/img/raw/master/pic/20200811105423.png" alt="image-20200811105423139" title="">
+                </div>
+                <div class="image-caption">image-20200811105423139</div>
+            </figure>
+<p>（4）点击Generate生成文件。</p>
+<p>（5）进入build文件夹打开生成的OpenCV.sln。</p>
+<p>（6）找到Cmake Targets/INSTALL，右键生成。此过程时间较长</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://gitee.com/tjunde/img/raw/master/pic/20200811103628.png" alt="image-20200811103628268" title="">
+                </div>
+                <div class="image-caption">image-20200811103628268</div>
+            </figure>
+<p>3、可能遇到的问题</p>
+<p>（1）国内源码下载慢的问题。</p>
+<p>解决方法：1.搭梯子。2.借助gitee。将opencv项目导入到gitee中然后下载对应版本的源码。</p>
+<p>（2）Configure过程中文件下载超时，文件无法下载。</p>
+<p>解决方法：打开build下CMakeDownloadLog.txt找到下载失败的文件手动下载，然后将下载的文件放到opencv源码的.cache对应的文件夹下，最后根据hash值修改文件名。</p>
+<p>例如ippicv下文件下载错误，将文件放置到.cache/ippicv文件夹下并修改文件名为Hash+文件名。</p>
+<p>在CMakeDownloadLog.txt中对应的文件为地址”<a href="https://raw.staticdn.net/opencv/opencv_3rdparty/a56b6ac6f030c312b2dce17430eef13aed9af274/ippicv/ippicv_2020_win_intel64_20191018_general.zip" target="_blank" rel="noopener">https://raw.staticdn.net/opencv/opencv_3rdparty/a56b6ac6f030c312b2dce17430eef13aed9af274/ippicv/ippicv_2020_win_intel64_20191018_general.zip</a>“</p>
+<p>复制地址到浏览器打开并保存到本地，也可以借助迅雷等下载工具下载。在经过第一次configure后一般下载失败的文件会存在对应目录中，其大小为0kb，可直接将下载的文件重命名后替换对应的文件。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://gitee.com/tjunde/img/raw/master/pic/20200811104704.png" alt="image-20200811104704758" title="">
+                </div>
+                <div class="image-caption">image-20200811104704758</div>
+            </figure>
+<p>（3）生成opencv_world失败</p>
+<p>LINK : fatal error LNK1210: 已超过内部 ILK 大小限制；链接时使用 /INCREMENTAL:NO</p>
+<p>vs中选中opencv world项目 右键 <strong>属性-&gt;连接器-&gt;常规-&gt;启用增量链接:选择否(/INCREMENTAL:NO)</strong>，重新编译。</p>
+]]></content>
+      <categories>
+        <category>机器视觉</category>
+      </categories>
+      <tags>
+        <tag>cmake</tag>
+        <tag>opencv</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>行人重识别中的CMC和mAP</title>
+    <url>/2020/03/14/cmcmap/</url>
+    <content><![CDATA[<p>行人重识别中的对结果的评价指标主要使用累计匹配曲线（Cumulative Matching Characteristics，CMC）和平均准确度（mean Average Precision，mAP）两种评价指标。</p>
+<h2 id="mAP"><a href="#mAP" class="headerlink" title="mAP"></a>mAP</h2><h3 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h3><p>准确率（Precision）表示返回的结果中真正相关结果的比率，也称为查准率。</p>
+<p>召回率（Recall）表示返回的相关结果数站实际相关结果总数的比率，也称为查全率。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./cmcmap/p.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<script type="math/tex; mode=display">
+P=\frac{A}{A+B}\\
+R=\frac{A}{A+C}</script><h3 id="P-R曲线图"><a href="#P-R曲线图" class="headerlink" title="P-R曲线图"></a>P-R曲线图</h3><p>通过准确率和召回率可以绘制出其P-R曲线图，如图所示分别求出召回率在0%，10%，20%，…，100%时的准确率然后绘制出图像。通过观察可以发现，曲线下的面积越大其性能也越好，因此使用P-R曲线图可以很好的对模型进行评价。单个查询的P-R曲线图虽然直观明显，但是难以明确表示两个查询的检索结果。</p>
+<h3 id="平均正确率（Average-Precision，AP）"><a href="#平均正确率（Average-Precision，AP）" class="headerlink" title="平均正确率（Average Precision，AP）"></a>平均正确率（Average Precision，AP）</h3><p>使用平均准确率可以实现对多个查询的评价，其中平均的方法包括宏平均（Macro）和微平均（Micro）两种。宏平均对每个查询求出某个指标，然后对这些指标进行算数平均。微平均则将所有查询视为一次查询，将所有查询结果求和然后进行指标计算。</p>
+<h3 id="平均准确度（mAP）"><a href="#平均准确度（mAP）" class="headerlink" title="平均准确度（mAP）"></a>平均准确度（mAP）</h3><p>mAP则对所有查询的AP求宏平均。</p>
+]]></content>
+      <categories>
+        <category>行人再识别</category>
+      </categories>
+      <tags>
+        <tag>行人再识别</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>朴素贝叶斯分类器</title>
     <url>/2019/12/16/bayes/</url>
     <content><![CDATA[<h1 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h1><p>获得后验概率$P(c|x)$的两种策略：给定$x$，通过直接建模$P(c|x)$来预测$c$，这样的方法称为判别式模型(discriminative models)。先对联合概率分布$P(x,c)$建模，然后有次获得$P(c|x)$，这样的方法称为生成式模型(generative models)。决策树、BP神经网络、支持向量机等为判别式模型。朴素贝叶斯、隐马尔可夫模型等为生成式模型。对于生成式模型，</p>

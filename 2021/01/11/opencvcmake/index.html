@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>OpenCV-Cmake | GISTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="cmake,opencv">
+    <meta name="description" content="OpenCV-Cmake版本opencv4.4 .0，windows下编译 1、下载源码和Cmake （1）opencv4.4：https://github.com/opencv/opencv/releases 选择4.4版本的Sourcecode(zip)进行下载 （2）opencv_contrib：https://github.com/opencv/opencv_contrib/release">
+<meta name="keywords" content="cmake,opencv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenCV-Cmake">
+<meta property="og:url" content="http://www.gistime.cn/2021/01/11/opencvcmake/index.html">
+<meta property="og:site_name" content="GISTime">
+<meta property="og:description" content="OpenCV-Cmake版本opencv4.4 .0，windows下编译 1、下载源码和Cmake （1）opencv4.4：https://github.com/opencv/opencv/releases 选择4.4版本的Sourcecode(zip)进行下载 （2）opencv_contrib：https://github.com/opencv/opencv_contrib/release">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://gitee.com/tjunde/img/raw/master/pic/20200811102554.png">
+<meta property="og:image" content="https://gitee.com/tjunde/img/raw/master/pic/20200811105423.png">
+<meta property="og:image" content="https://gitee.com/tjunde/img/raw/master/pic/20200811103628.png">
+<meta property="og:image" content="https://gitee.com/tjunde/img/raw/master/pic/20200811104704.png">
+<meta property="og:updated_time" content="2021-01-11T14:19:58.809Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenCV-Cmake">
+<meta name="twitter:description" content="OpenCV-Cmake版本opencv4.4 .0，windows下编译 1、下载源码和Cmake （1）opencv4.4：https://github.com/opencv/opencv/releases 选择4.4版本的Sourcecode(zip)进行下载 （2）opencv_contrib：https://github.com/opencv/opencv_contrib/release">
+<meta name="twitter:image" content="https://gitee.com/tjunde/img/raw/master/pic/20200811102554.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="GISTime" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/gistime.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="http://www.gistime.cn" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gistime.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GISTime</h5>
+          <!-- <a href="mailto:GISTime for everyone" title="GISTime for everyone" class="mail">GISTime for everyone</a> -->
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">OpenCV-Cmake</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">OpenCV-Cmake</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-01-11T14:15:13.000Z" itemprop="datePublished" class="page-time">
+  2021-01-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器视觉/">机器视觉</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#OpenCV-Cmake"><span class="post-toc-text">OpenCV-Cmake</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-opencvcmake"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">OpenCV-Cmake</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-01-11 22:15:13" datetime="2021-01-11T14:15:13.000Z"  itemprop="datePublished">2021-01-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器视觉/">机器视觉</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="OpenCV-Cmake"><a href="#OpenCV-Cmake" class="headerlink" title="OpenCV-Cmake"></a>OpenCV-Cmake</h1><p>版本opencv4.4 .0，windows下编译</p>
+<p>1、下载源码和Cmake</p>
+<p>（1）opencv4.4：<a href="https://github.com/opencv/opencv/releases" target="_blank" rel="noopener">https://github.com/opencv/opencv/releases</a></p>
+<p>选择4.4版本的Sourcecode(zip)进行下载</p>
+<p>（2）opencv_contrib：<a href="https://github.com/opencv/opencv_contrib/releases" target="_blank" rel="noopener">https://github.com/opencv/opencv_contrib/releases</a></p>
+<p>选择4.4版本的Sourcecode(zip)进行下载</p>
+<p>（3）Cmake：<a href="https://cmake.org/download/" target="_blank" rel="noopener">https://cmake.org/download/</a></p>
+<p>下载并安装cmake-3.18.1-win64-x64.msi（文章编写时使用的版本为3.18.1）</p>
+<p>2、生成并编译opencv</p>
+<p>系统已经安装Visual Studio 2015，下载的opencv源码已解压。</p>
+<p>（1）打开Cmake并选择opencv源码位置和生成路径。</p>
+<p>（2）点击Configure进行参数配置。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://gitee.com/tjunde/img/raw/master/pic/20200811102554.png" alt="image-20200811102554724" title="">
+                </div>
+                <div class="image-caption">image-20200811102554724</div>
+            </figure>
+<p>（3）选择VS版本和需要生成的版本（Win32、x64），点击Finish。如果需要opencv-contrib则在OPENCV_EXTRA_MODULES_PATH中填入opencv-contrib/modylese的路径。另外如还需opencv的其他功能则勾选该功能模块。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://gitee.com/tjunde/img/raw/master/pic/20200811105423.png" alt="image-20200811105423139" title="">
+                </div>
+                <div class="image-caption">image-20200811105423139</div>
+            </figure>
+<p>（4）点击Generate生成文件。</p>
+<p>（5）进入build文件夹打开生成的OpenCV.sln。</p>
+<p>（6）找到Cmake Targets/INSTALL，右键生成。此过程时间较长</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://gitee.com/tjunde/img/raw/master/pic/20200811103628.png" alt="image-20200811103628268" title="">
+                </div>
+                <div class="image-caption">image-20200811103628268</div>
+            </figure>
+<p>3、可能遇到的问题</p>
+<p>（1）国内源码下载慢的问题。</p>
+<p>解决方法：1.搭梯子。2.借助gitee。将opencv项目导入到gitee中然后下载对应版本的源码。</p>
+<p>（2）Configure过程中文件下载超时，文件无法下载。</p>
+<p>解决方法：打开build下CMakeDownloadLog.txt找到下载失败的文件手动下载，然后将下载的文件放到opencv源码的.cache对应的文件夹下，最后根据hash值修改文件名。</p>
+<p>例如ippicv下文件下载错误，将文件放置到.cache/ippicv文件夹下并修改文件名为Hash+文件名。</p>
+<p>在CMakeDownloadLog.txt中对应的文件为地址”<a href="https://raw.staticdn.net/opencv/opencv_3rdparty/a56b6ac6f030c312b2dce17430eef13aed9af274/ippicv/ippicv_2020_win_intel64_20191018_general.zip" target="_blank" rel="noopener">https://raw.staticdn.net/opencv/opencv_3rdparty/a56b6ac6f030c312b2dce17430eef13aed9af274/ippicv/ippicv_2020_win_intel64_20191018_general.zip</a>“</p>
+<p>复制地址到浏览器打开并保存到本地，也可以借助迅雷等下载工具下载。在经过第一次configure后一般下载失败的文件会存在对应目录中，其大小为0kb，可直接将下载的文件重命名后替换对应的文件。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://gitee.com/tjunde/img/raw/master/pic/20200811104704.png" alt="image-20200811104704758" title="">
+                </div>
+                <div class="image-caption">image-20200811104704758</div>
+            </figure>
+<p>（3）生成opencv_world失败</p>
+<p>LINK : fatal error LNK1210: 已超过内部 ILK 大小限制；链接时使用 /INCREMENTAL:NO</p>
+<p>vs中选中opencv world项目 右键 <strong>属性-&gt;连接器-&gt;常规-&gt;启用增量链接:选择否(/INCREMENTAL:NO)</strong>，重新编译。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-01-11T14:19:58.809Z" itemprop="dateUpdated">2021-01-11 22:19:58</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.gistime.cn">
+            <img src="/img/gistime.png" alt="GISTime">
+            GISTime
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cmake/">cmake</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2021/01/11/opencvcmake/&title=《OpenCV-Cmake》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2021/01/11/opencvcmake/&title=《OpenCV-Cmake》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2021/01/11/opencvcmake/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《OpenCV-Cmake》 — GISTime&url=http://www.gistime.cn/2021/01/11/opencvcmake/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2021/01/11/opencvcmake/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/03/14/cmcmap/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">行人重识别中的CMC和mAP</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'jundet',
+            repo: 'jundet.github.io',
+            oauth: {
+                client_id: '0a14ff8056853607b9b1',
+                client_secret: '898b73bbcc59c541fbe2189edd9a0d7707661abc',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span><a href="http://www.gistime.cn/" target="_blank">GISTime</a> &copy; 2017 - 2021</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备17010437号</a><br>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.gistime.cn/2021/01/11/opencvcmake/&title=《OpenCV-Cmake》 — GISTime&pic=http://www.gistime.cn/img/gistime.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.gistime.cn/2021/01/11/opencvcmake/&title=《OpenCV-Cmake》 — GISTime&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.gistime.cn/2021/01/11/opencvcmake/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《OpenCV-Cmake》 — GISTime&url=http://www.gistime.cn/2021/01/11/opencvcmake/&via=http://www.gistime.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.gistime.cn/2021/01/11/opencvcmake/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.gistime.cn/2021/01/11/opencvcmake/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'GISTime';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'GISTime';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
